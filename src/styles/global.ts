@@ -1,0 +1,34 @@
+import { createGlobalStyle } from 'styled-components';
+
+export default createGlobalStyle`
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body, button, input, textarea {
+    font-family: 'Roboto', arial, sans-serif, helvetica;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+`;
