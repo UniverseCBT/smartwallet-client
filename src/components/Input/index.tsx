@@ -2,11 +2,17 @@ import React from 'react';
 
 import { Container } from './styles';
 
-const Input = () => {
+type InputProps = {
+  icon: string;
+  text: string;
+}
+
+const Input: React.FC<InputProps> = ({ icon, text }) => {
   return (
     <Container>
       <label>
-        <input type="text" />
+        <img src={icon} alt=""/>
+        <input type="text" placeholder={text} />
       </label>
     </Container>
   );
