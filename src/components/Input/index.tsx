@@ -11,7 +11,9 @@ const Input: React.FC<InputProps> = ({ icon, text }) => {
   return (
     <Container>
       <label>
-        <img src={icon} alt={text} />
+        <div>
+          <img src={icon} alt={text} />
+        </div>
         <input type="text" placeholder={text} />
       </label>
     </Container>
