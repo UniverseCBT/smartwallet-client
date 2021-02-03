@@ -14,10 +14,32 @@ export const Container = styled.div`
     background: #fff;
     border-radius: 4px;
     padding: 10px 5px 10px 20px;
+    height: 60px;
 
-    img {
-      width: 40px;
+    div {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: relative;
+        left: 0;
+        top: 0;
+        display: inline-block;
+        width: 2px;
+        height: 100%;
+        background: #333;
+        margin: 0 5px;
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+      }
     }
+
 
     input {
       border: none;
