@@ -17,21 +17,23 @@ export const Container = styled.div`
     height: 60px;
 
     div {
+      position: relative;
+      height: 100%;
+      width: 35px;
       display: flex;
       align-items: center;
-      height: 100%;
-      position: relative;
+      margin-right: 8px;
 
       &::after {
         content: "";
         position: relative;
         left: 0;
         top: 0;
-        display: inline-block;
+        display: block;
         width: 2px;
         height: 100%;
-        background: #333;
-        margin: 0 5px;
+        border-right: 1px solid #EEEEEE;
+        margin-left: 15px;
       }
 
       img {
