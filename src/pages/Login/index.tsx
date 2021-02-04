@@ -17,7 +17,7 @@ const Login = () => {
           <div>
             <Input icon={cardUserIcon} text="Username or Email" />
             <Input icon={lockIcon} text="Password" />
-            <Button text="seila" />
+            <Button text="Sing in" />
           </div>
         </Container>
         {/* <Background /> */}
