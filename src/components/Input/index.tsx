@@ -3,7 +3,7 @@ import React from 'react';
 import { Container } from './styles';
 
 type InputProps = {
-  icon: string;
+  icon?: string;
   text?: string;
 }
 
