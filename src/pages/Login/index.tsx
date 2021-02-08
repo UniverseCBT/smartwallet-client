@@ -1,28 +1,31 @@
 import React from 'react';
 
-import { Wrapper, Background } from './styles'
-import { Container } from '../../components/Container/styles';
+import { Container } from './styles';
+import Row from '../../components/Grid/Row';
+import Col from '../../components/Grid/Col';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
-import cardUserIcon from '../../assets/icons/card.svg';
+import cardAcessIcon from '../../assets/icons/card.svg';
 import lockIcon from '../../assets/icons/lock.svg';
 
 const Login = () => {
   return (
-    <>
-      <Wrapper>
-        <Container>
-          <div>
-            <Input icon={cardUserIcon} text="Username or Email" />
-            <Input icon={lockIcon} text="Password" />
-            <Button text="Sing in" />
+    <Container>
+      <Row>
+        <Col column={1}>
+          <div className="background">
+            <h1>Template</h1>
           </div>
-        </Container>
-        {/* <Background /> */}
-      </Wrapper>
-    </>
+        </Col>
+        <Col column={3}>
+          <Input icon={cardAcessIcon} text="Username/Email" />
+          <Input icon={lockIcon} text="Password" />
+          <Button text="Sign In" />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
