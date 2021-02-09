@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Container } from './styles';
 import Row from '../../components/Grid/Row';
@@ -26,6 +27,14 @@ const Login = () => {
             <Input icon={cardAcessIcon} text="Username/Email" />
             <Input icon={lockIcon} text="Password" />
             <Button text="Sign In" />
+            <div>
+              <Link to="/">Forgot Password</Link>
+            </div>
+            <p>
+              Not a member?
+              {' '}
+              <Link to="/">Sign Up</Link>
+            </p>
           </Form>
         </Col>
       </Row>

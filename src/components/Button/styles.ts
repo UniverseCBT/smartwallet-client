@@ -7,7 +7,7 @@ export const Container = styled.button`
   border: none;
   border-radius: 8px;
   padding: 0.8rem 0;
-  margin-top: 10px;
+  margin-top: 20px;
   font-size: 1rem;
   font-weight: bold;
 
