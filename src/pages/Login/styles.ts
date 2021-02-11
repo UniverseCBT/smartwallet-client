@@ -7,7 +7,7 @@ export const Container = styled.div`
     position: relative;
     z-index: 10;
     padding: 0 20px;
-    height: 50vh;
+    height: 40vh;
 
     h1 {
       padding: 40px 0 10px;
