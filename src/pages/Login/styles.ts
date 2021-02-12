@@ -7,7 +7,11 @@ export const Container = styled.div`
     position: relative;
     z-index: 10;
     padding: 0 20px;
-    height: 50vh;
+    height: 40vh;
+
+    @media screen and (min-width: 768px) {
+      height: 100vh;
+    }
 
     h1 {
       padding: 40px 0 10px;
