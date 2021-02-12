@@ -10,8 +10,22 @@ export const Container = styled.div`
   border-radius: 15px 15px 0 0;
   z-index: 100;
 
-  @media screen and (min-width: 420px) {
+  @media screen and (min-width: 420px) and (max-width: 767px) {
     padding: 80px 10px 60px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    position: fixed;
+    bottom: 0;
+    height: auto;
+    padding: 40px 10px 20px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    position: relative;
+    border-radius: 0;
+    height: 100vh;
+    width: 100%;
   }
 
   > form {

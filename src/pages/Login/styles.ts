@@ -9,6 +9,10 @@ export const Container = styled.div`
     padding: 0 20px;
     height: 40vh;
 
+    @media screen and (min-width: 768px) {
+      height: 100vh;
+    }
+
     h1 {
       padding: 40px 0 10px;
       color: #fff;
