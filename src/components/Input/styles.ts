@@ -8,6 +8,7 @@ export const Container = styled.div`
   }
 
   label {
+    position: relative;
     display: flex;
     align-items: center;
     cursor: text;
@@ -15,8 +16,9 @@ export const Container = styled.div`
     border-radius: 8px;
     padding: 10px 5px 10px 20px;
     height: 50px;
+    /* overflow: hidden; */
 
-    div {
+    > div {
       position: relative;
       height: 100%;
       width: 35px;
@@ -56,6 +58,20 @@ export const Container = styled.div`
         font-size: 0.9em;
         color: #C9C9C9;
         font-weight: 300;
+      }
+    }
+
+    > button {
+      border: none;
+      background: none;
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translate3d(0, -50%, 0);
+
+      img {
+        height: 30px;
+        width: 30px;
       }
     }
   }
