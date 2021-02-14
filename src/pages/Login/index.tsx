@@ -5,6 +5,7 @@ import { Container } from './styles';
 import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
 
+import Content from '../../components/userAuth/Content';
 import Form from '../../components/userAuth/Form';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -25,21 +26,21 @@ const Login = () => {
           </div>
         </Col>
         <Col column={3}>
-          <Form>
-            <form>
+          <Content>
+            <Form>
               <Input icon={cardAcessIcon} text="Username/Email" />
               <Input icon={lockIcon} text="Password" />
-              <Button text="Sign In" />
               <div>
-                <Link to="/">Forgot Password</Link>
+                <Link to="/">Forgot your password?</Link>
               </div>
-              <p>
-                Not a member?
-                {' '}
-                <Link to="/">Sign Up</Link>
-              </p>
-            </form>
-          </Form>
+              <Button text="Sign In" />
+            </Form>
+            <p>
+              Not a member?
+              {' '}
+              <Link to="/">Sign Up</Link>
+            </p>
+          </Content>
         </Col>
       </Row>
     </Container>
