@@ -1,0 +1,32 @@
+<svg id="open" xmlns="http://www.w3.org/2000/svg" width="284" height="284" viewBox="0 0 284 284">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #d9fff6;
+        stroke-width: 20.46px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke: #174c64;
+      }
+
+      .cls-2, .cls-3 {
+        fill: none;
+        stroke-linecap: round;
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        stroke-width: 21.1px;
+      }
+
+      .cls-3 {
+        stroke-width: 18.53px;
+      }
+    </style>
+  </defs>
+  <ellipse class="cls-1" cx="137.031" cy="-139.375" rx="42.375" ry="42.375"/>
+  <ellipse class="cls-1" cx="136.031" cy="-406.375" rx="42.375" ry="42.375"/>
+  <path class="cls-2" d="M17.509-499.777l244.03,165.863"/>
+  <path class="cls-3" d="M22.113,116.829s41.563,50.894,116.376,50.894,115.4-50.894,115.4-50.894"/>
+</svg>

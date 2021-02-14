@@ -29,7 +29,7 @@ const Login = () => {
           <Content>
             <Form>
               <Input icon={cardAcessIcon} text="Username/Email" />
-              <Input icon={lockIcon} text="Password" />
+              <Input icon={lockIcon} type="password" text="Password" />
               <div>
                 <Link to="/">Forgot your password?</Link>
               </div>
