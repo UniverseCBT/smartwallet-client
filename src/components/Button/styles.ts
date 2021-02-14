@@ -12,7 +12,10 @@ export const Container = styled.button`
   font-weight: bold;
 
   @media screen and (min-width: 1024px) {
-    padding: 1rem 5rem;
+    padding: 14px 5rem;
     width: unset;
+    display: block;
+    margin-left: auto;
+    margin-top: 5px;
   }
 `;
