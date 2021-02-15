@@ -4,7 +4,6 @@ import { Container } from './styles';
 
 import closeEyesIcon from '../../assets/icons/close_eyes.svg';
 import openEyesIcon from '../../assets/icons/open_eyes.svg';
-import slashEyesIcon from '../../assets/icons/eyes_slash.svg';
 
 type InputProps = {
   icon?: string;
@@ -15,6 +14,7 @@ type InputProps = {
 const Input: React.FC<InputProps> = ({ icon, text, type }) => {
   const [isPassword, setIsPassword] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [defaultType, setDefaultType] = useState('');
 
   useEffect(() => {
     function handleInputType() {
@@ -30,6 +30,16 @@ const Input: React.FC<InputProps> = ({ icon, text, type }) => {
     setVisible(!visible);
   }, [visible, setVisible]);
 
+  useEffect(() => {
+    if (isPassword) {
+      setDefaultType('password');
+
+      if (visible) {
+        setDefaultType('text');
+      }
+    }
+  }, [isPassword, visible, setDefaultType]);
+
   return (
     <Container>
       <label>
@@ -38,14 +48,13 @@ const Input: React.FC<InputProps> = ({ icon, text, type }) => {
         </div>
 
         <input
-          // eslint-disable-next-line no-nested-ternary
-          type={type}
+          type={isPassword ? defaultType : type}
           placeholder={text}
         />
         {
           isPassword && (
           <button type="button" onClick={() => visiblePasswordType()}>
-            <img src={closeEyesIcon} alt="visible" />
+            <img src={visible ? openEyesIcon : closeEyesIcon} alt={visible ? 'Visible' : 'Hidden'} />
           </button>
           )
         }
