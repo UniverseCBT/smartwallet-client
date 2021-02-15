@@ -49,6 +49,7 @@ export const Container = styled.div`
       border: none;
       position: relative;
       margin-left: 20px;
+      margin-right: 45px;
       font-size: 1.1em;
       color: #C9C9C9;
       font-weight: 300;
@@ -66,12 +67,15 @@ export const Container = styled.div`
       background: none;
       position: absolute;
       top: 50%;
-      right: 10px;
+      right: 0;
       transform: translate3d(0, -50%, 0);
+      background: #fff;
+      width: 40px;
+      height: 100%;
 
       img {
-        height: 30px;
-        width: 30px;
+        height: 20px;
+        width: 20px;
       }
     }
   }
