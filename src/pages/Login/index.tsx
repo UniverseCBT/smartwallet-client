@@ -27,6 +27,11 @@ const Login = () => {
         </Col>
         <Col column={3}>
           <Content>
+            <p>
+              Not a member?
+              {' '}
+              <Link to="/">Sign Up</Link>
+            </p>
             <Form>
               <Input icon={cardAcessIcon} text="Username/Email" />
               <Input icon={lockIcon} type="password" text="Password" />
@@ -35,11 +40,6 @@ const Login = () => {
               </div>
               <Button text="Sign In" />
             </Form>
-            <p>
-              Not a member?
-              {' '}
-              <Link to="/">Sign Up</Link>
-            </p>
           </Content>
         </Col>
       </Row>
