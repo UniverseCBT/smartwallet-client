@@ -7,6 +7,7 @@ export const Container = styled.form`
   @media screen and (min-width: 1024px) {
     position: relative;
     top: 0;
+    margin-top: 120px;
   }
 
   > div {
@@ -18,17 +19,6 @@ export const Container = styled.form`
       display: inline-block;
       color: #A2A2A2;
       text-align: right;
-    }
-  }
-
-  p {
-    display: block;
-    text-align: center;
-    color: #4C616B;
-
-    > a {
-      color: #2DCDA3;
-      font-weight: bold;
     }
   }
 `;
