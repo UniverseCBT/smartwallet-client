@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-const rotate = keyframes`
+const upAnimation = keyframes`
   0% {
     transform: translateY(500px);
   }
@@ -10,28 +10,74 @@ const rotate = keyframes`
   }
 `;
 
+const treeAnimationRight = keyframes`
+  0% {
+    transform: translate3D(-5px, 5px, 0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate3D(0, 0, 0);
+    opacity: 1;
+  }
+`;
+
+const treeAnimationLeft = keyframes`
+  0% {
+    transform: translate3D(15px, 15px, 0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate3D(0, 0, 0);
+    opacity: 1;
+  }
+`;
+
 export const Container = styled.div`
   display: none;
 
   @media screen and (min-width: 1024px) {
     display: block;
     position: absolute;
-    bottom: 0;
+    bottom: -5px;
   }
 
-  .teste-1 {
-    .test {
-      animation-name: ${rotate};
-      animation-duration: 3s;
-      animation-fill-mode: forwards;
-    }
+  .mainArrowUp {
+    animation-name: ${upAnimation};
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+  }
 
-    .teste2 {
-      animation-name: ${rotate};
-      animation-duration: 3s;
-      animation-fill-mode: forwards;
-      animation-delay: 4s;
-      transform: translateY(500px);
-    }
+  .handUp {
+    animation-name: ${upAnimation};
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    animation-delay: 3s;
+    transform: translateY(500px);
+  }
+
+  .firstTree {
+    animation-name: ${treeAnimationRight};
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+    animation-delay: 6s;
+    animation-timing-function: slidein;
+  }
+
+  .secondTree {
+    animation-name: ${treeAnimationRight};
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+    animation-delay: 7s;
+    animation-timing-function: slidein;
+  }
+
+  .thirdTree {
+    animation-name: ${treeAnimationLeft};
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+    animation-delay: 8s;
+    animation-timing-function: slidein;
   }
 `;
