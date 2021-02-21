@@ -10,6 +10,30 @@ export const Container = styled.form`
     margin-top: 140px;
   }
 
+  .description {
+    display: none;
+
+    @media screen and (min-width: 1024px) {
+      margin: 40px 0;
+      display: block;
+
+      h1, p {
+        text-align: left;
+      }
+
+      h1 {
+        color: #646464;
+        font-size: 30px;
+      }
+
+      p {
+        margin-top: 10px;
+        font-size: 20px;
+        color: #B5B5B5;
+      }
+    }
+  }
+
   > div {
     text-align: right;
     height: auto;
