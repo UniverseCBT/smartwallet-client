@@ -23,11 +23,11 @@ export const Container = styled.div`
       font-weight: bold;
     }
 
-    /* @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 1024px) {
       h1, p {
         display: none;
       }
-    } */
+    }
 
     img {
       width: 230px;

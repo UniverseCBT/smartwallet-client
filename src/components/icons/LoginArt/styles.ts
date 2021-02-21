@@ -61,7 +61,7 @@ export const Container = styled.div`
     animation-name: ${treeAnimationRight};
     animation-duration: 1s;
     animation-fill-mode: backwards;
-    animation-delay: 6s;
+    animation-delay: 4s;
     animation-timing-function: slidein;
   }
 
@@ -69,7 +69,7 @@ export const Container = styled.div`
     animation-name: ${treeAnimationRight};
     animation-duration: 1s;
     animation-fill-mode: backwards;
-    animation-delay: 7s;
+    animation-delay: 5s;
     animation-timing-function: slidein;
   }
 
@@ -77,7 +77,42 @@ export const Container = styled.div`
     animation-name: ${treeAnimationLeft};
     animation-duration: 1s;
     animation-fill-mode: backwards;
-    animation-delay: 8s;
+    animation-delay: 6s;
     animation-timing-function: slidein;
+  }
+
+  .miniArrowUp {
+    animation-name: ${upAnimation};
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    transform: translateY(500px);
+  }
+
+  .one {
+    animation-delay: 5s;
+  }
+
+  .two {
+    animation-delay: 6s;
+  }
+
+  .three {
+    animation-delay: 7s;
+  }
+
+  .four {
+    animation-delay: 8s;
+  }
+
+  .five {
+    animation-delay: 9s;
+  }
+
+  .six {
+    animation-delay: 10s;
+  }
+
+  .seven {
+    animation-delay: 11s;
   }
 `;
