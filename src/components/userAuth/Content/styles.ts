@@ -24,7 +24,7 @@ export const Background = styled.div`
   @media screen and (min-width: 1024px) {
     border-radius: 30px 0 0 0;
     overflow-y: auto;
-    height: 100%;
+    height: 100vh;
   }
 `;
 
