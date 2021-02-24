@@ -29,17 +29,6 @@ export const Background = styled.div`
 `;
 
 export const Container = styled.div`
-  p {
-    display: block;
-    text-align: right;
-    color: #4C616B;
-
-    > a {
-      color: #2DCDA3;
-      font-weight: bold;
-    }
-  }
-
   @media screen and (min-width: 1024px) {
     position: relative;
     border-radius: 0;

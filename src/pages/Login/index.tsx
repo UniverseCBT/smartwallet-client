@@ -8,6 +8,7 @@ import Col from '../../components/Grid/Col';
 import Content from '../../components/userAuth/Content';
 import Form from '../../components/userAuth/Form';
 import Input from '../../components/Input';
+import Header from '../../components/userAuth/Header';
 
 import Button from '../../components/Button';
 
@@ -29,11 +30,13 @@ const Login = () => {
         </Col>
         <Col column={3}>
           <Content>
-            <p>
-              Not a member?
-              {' '}
-              <Link to="/register">Sign Up</Link>
-            </p>
+            <Header>
+              <p>
+                Not a member?
+                {' '}
+                <Link to="/register">Sign Up</Link>
+              </p>
+            </Header>
             <Form>
               <Input icon={cardAcessIcon} text="Username/Email" />
               <Input icon={lockIcon} type="password" text="Password" />

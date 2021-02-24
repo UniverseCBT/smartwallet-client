@@ -9,6 +9,7 @@ import Content from '../../components/userAuth/Content';
 import Form from '../../components/userAuth/Form';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import Header from '../../components/userAuth/Header';
 
 import cardAcessIcon from '../../assets/icons/card.svg';
 import lockIcon from '../../assets/icons/lock.svg';
@@ -20,25 +21,35 @@ const Login = () => {
         <Col column={1}>
           <div className="bg-login">
             <div className="back">
-              <p>back to login</p>
+              {/* Navigation */}
             </div>
           </div>
         </Col>
         <Col column={3}>
           <Content>
-            <p>
-              Having trouble ?
-              {' '}
-              <Link to="/">Get Help</Link>
-            </p>
+            <Header>
+              <div className="back-login">
+                <Link to="/login">
+                  <strong>
+                    {'<'}
+                  </strong>
+                  Back to login
+                </Link>
+              </div>
+              <p>
+                Having trouble ?
+                {' '}
+                <Link to="/">Get Help</Link>
+              </p>
+            </Header>
             <Form>
               <div className="description">
                 <h1>Lets start with your account</h1>
                 <p>Tip: make a list on everything you spend more than twice a month</p>
               </div>
               <Input icon={cardAcessIcon} type="text" text="Name" />
-              <Input icon={cardAcessIcon} type="text" text="Email" />
               <Input icon={cardAcessIcon} type="text" text="Username" />
+              <Input icon={cardAcessIcon} type="text" text="Email" />
               <Input icon={lockIcon} type="password" text="Password" />
               <Input icon={lockIcon} type="password" text="Repeat password" />
               <Button text="Next" />
