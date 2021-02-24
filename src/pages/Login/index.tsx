@@ -38,6 +38,10 @@ const Login = () => {
               </p>
             </Header>
             <Form>
+              <div className="description">
+                <h1>Welcome Back!</h1>
+                <p>Let`s sign you in</p>
+              </div>
               <Input icon={cardAcessIcon} text="Username/Email" />
               <Input icon={lockIcon} type="password" text="Password" />
               <div>
