@@ -11,6 +11,8 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Header from '../../components/userAuth/Header';
 
+import Logo from '../../components/icons/Logo';
+
 import cardAcessIcon from '../../assets/icons/card.svg';
 import lockIcon from '../../assets/icons/lock.svg';
 
@@ -20,6 +22,10 @@ const Login = () => {
       <Row>
         <Col column={1}>
           <div className="bg-login">
+            <div className="logo">
+              <Logo />
+              <p>SmartWallet</p>
+            </div>
             <div className="back">
               {/* Navigation */}
             </div>
