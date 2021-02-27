@@ -21,10 +21,14 @@ const Login = () => {
     <Container>
       <Row>
         <Col column={1}>
-          <div className="bg-login">
+          <div className="navigation">
             <div className="logo">
               <Logo />
-              <p>SmartWallet</p>
+              <div className="logo-content">
+                <div className="content-description">
+                  <p>SmartWallet</p>
+                </div>
+              </div>
             </div>
             <div className="back">
               {/* Navigation */}
