@@ -9,11 +9,9 @@ export const Container = styled.div`
     padding: 0 20px;
     height: 40vh;
 
-    @media screen and (min-width: 768px) {
-      max-width: 400px;
-      width: 100%;
-      margin: 0 auto;
-    }
+    /* @media screen and (min-width: 768px) {
+      padding: 10px;
+    } */
 
     .logo {
       display: flex;
@@ -21,7 +19,15 @@ export const Container = styled.div`
       justify-content: center;
       padding: 30px 0;
 
-      .logo-content {
+      @media screen and (min-width: 1024px) {
+        justify-content: flex-start;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+
+        .logo-content {
         display: flex;
         align-items: center;
 
@@ -33,22 +39,24 @@ export const Container = styled.div`
           width: 2px;
           background: #174C64;
           margin: 0 0 0 15px;
-          border-radius: 30px;
+          border-radius: 1000px;
           position: relative;
+          left: 0;
+          top: 0;
           z-index: 50;
         }
 
         .content-description {
-          overflow: hidden;
-          position: relative;
-
-          p {
-            color: #F3F4F8;
-            font-weight: bold;
             position: relative;
-            top: 0;
-            left: 0;
-            margin-left: 10px;
+
+            p {
+              color: #F3F4F8;
+              font-weight: bold;
+              position: relative;
+              top: 0;
+              left: 0;
+              margin-left: 10px;
+            }
           }
         }
       }

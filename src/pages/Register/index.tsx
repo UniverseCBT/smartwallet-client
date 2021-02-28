@@ -5,13 +5,13 @@ import { Container } from './styles';
 import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
 
-import Content from '../../components/userAuth/Content';
-import Form from '../../components/userAuth/Form';
+import Header from '../../components/_auth/Header';
+import Content from '../../components/_auth/Content';
+import Form from '../../components/_auth/Form';
+import SideNavigation from '../../components/_auth/SideNavigation';
+
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-import Header from '../../components/userAuth/Header';
-
-import Logo from '../../components/icons/Logo';
 
 import cardAcessIcon from '../../assets/icons/card.svg';
 import lockIcon from '../../assets/icons/lock.svg';
@@ -21,19 +21,7 @@ const Login = () => {
     <Container>
       <Row>
         <Col column={1}>
-          <div className="navigation">
-            <div className="logo">
-              <Logo />
-              <div className="logo-content">
-                <div className="content-description">
-                  <p>SmartWallet</p>
-                </div>
-              </div>
-            </div>
-            <div className="back">
-              {/* Navigation */}
-            </div>
-          </div>
+          <SideNavigation />
         </Col>
         <Col column={3}>
           <Content>

@@ -5,10 +5,10 @@ import { Container } from './styles';
 import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
 
-import Content from '../../components/userAuth/Content';
-import Form from '../../components/userAuth/Form';
+import Header from '../../components/_auth/Header';
+import Content from '../../components/_auth/Content';
+import Form from '../../components/_auth/Form';
 import Input from '../../components/Input';
-import Header from '../../components/userAuth/Header';
 
 import Button from '../../components/Button';
 
@@ -34,7 +34,7 @@ const Login = () => {
               <p>
                 Not a member?
                 {' '}
-                <Link to="/register">Sign Up</Link>
+                <Link to="/register/perfil">Sign Up</Link>
               </p>
             </Header>
             <Form>
