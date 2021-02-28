@@ -5,12 +5,15 @@ import { Container, Header, Content } from './styles';
 
 import Logo from '../../icons/Logo';
 
+import card from '../../../assets/icons/card.svg';
+
 type SideNavigationProps = {
   children?: React.ReactNode;
 }
 
 type RegisterPages = {
   page: string;
+  icon: string;
 }
 
 const SideNavigation = ({ children }: SideNavigationProps) => {
@@ -28,16 +31,20 @@ const SideNavigation = ({ children }: SideNavigationProps) => {
     setRegisterPages(
       [
         {
-          page: 'perfil'
+          page: 'perfil',
+          icon: card
         },
         {
-          page: 'income'
+          page: 'income',
+          icon: card
         },
         {
-          page: 'expense'
+          page: 'expense',
+          icon: card
         },
         {
-          page: 'overview'
+          page: 'overview',
+          icon: card
         },
       ]
     );
@@ -64,7 +71,10 @@ const SideNavigation = ({ children }: SideNavigationProps) => {
           isRegister ? (
             <ul>
               { registerPages.map((registerItems) => (
-                <li key={registerItems.page}>{registerItems.page}</li>
+                <li key={registerItems.page}>
+                  <img src={registerItems.icon} alt={registerItems.page} />
+                  {registerItems.page}
+                </li>
               )) }
             </ul>
           ) : (
