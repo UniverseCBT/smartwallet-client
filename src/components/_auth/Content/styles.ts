@@ -10,10 +10,6 @@ export const Background = styled.div`
   border-radius: 15px 15px 0 0;
   z-index: 100;
 
-  @media screen and (min-width: 420px) and (max-width: 767px) {
-    padding: 80px 10px 60px;
-  }
-
   @media screen and (min-width: 1024px) {
     border-radius: 30px 0 0 0;
     overflow-y: auto;
@@ -22,8 +18,12 @@ export const Background = styled.div`
 `;
 
 export const Container = styled.div`
+  position: sticky;
+  top: 40px;
+
   @media screen and (min-width: 1024px) {
     position: relative;
+    top: 0;
     border-radius: 0;
     max-width: 650px;
     width: 100%;
