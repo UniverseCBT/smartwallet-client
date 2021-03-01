@@ -1,14 +1,24 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+type ContentProps = {
+  register?: boolean;
+}
 
 export const Container = styled.div`
   padding: 40px 0;
-  margin: 0 10px;
+  overflow: hidden;
+
+  @media screen and (min-width: 1024px) {
+    position: relative;
+    height: 100vh;
+  }
 `;
 
 export const Header = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
+  margin: 0 20px;
 
   @media screen and (min-width: 1024px) {
     display: block;
@@ -49,4 +59,34 @@ export const Header = styled.div`
   }
 `;
 
-export const Content = styled.div``;
+export const Content = styled.div<ContentProps>`
+  ${props => !props.register && css`
+    margin: 40px 0 20px;
+    text-align: center;
+
+    h1 {
+      padding: 0 0 10px;
+      color: #F3F4F8;
+    }
+
+    p {
+      color: #F3F4F8;
+      font-weight: bold;
+    }
+
+    @media screen and (min-width: 1024px) {
+      width: 100%;
+
+      .art {
+        display: flex;
+        justify-content: center;
+      }
+
+      h1, p {
+        display: none;
+      }
+    }
+  `}
+
+  ${props => props.register && css``}
+`;

@@ -66,13 +66,15 @@ const SideNavigation = ({ children }: SideNavigationProps) => {
           </div>
         </Link>
       </Header>
-      <Content>
+      <Content register={isRegister}>
         {
           isRegister ? (
             <ul>
               { registerPages.map((registerItems) => (
                 <li key={registerItems.page}>
-                  <img src={registerItems.icon} alt={registerItems.page} />
+                  <div className="icon-background">
+                    <img src={registerItems.icon} alt={registerItems.page} />
+                  </div>
                   {registerItems.page}
                 </li>
               )) }

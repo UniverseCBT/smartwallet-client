@@ -14,13 +14,6 @@ export const Background = styled.div`
     padding: 80px 10px 60px;
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    position: fixed;
-    bottom: 0;
-    height: auto;
-    padding: 40px 10px 20px;
-  }
-
   @media screen and (min-width: 1024px) {
     border-radius: 30px 0 0 0;
     overflow-y: auto;
