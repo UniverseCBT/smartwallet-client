@@ -5,6 +5,7 @@ import { Container } from './styles';
 import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
 
+import SideNavigation from '../../components/_auth/SideNavigation';
 import Header from '../../components/_auth/Header';
 import Content from '../../components/_auth/Content';
 import Form from '../../components/_auth/Form';
@@ -22,11 +23,13 @@ const Login = () => {
     <Container>
       <Row>
         <Col column={1}>
-          <div className="bg-login">
+          <SideNavigation>
             <h1>Let`s sign you in</h1>
             <p>Welcome back.</p>
-            <LoginArt />
-          </div>
+            <div className="art">
+              <LoginArt />
+            </div>
+          </SideNavigation>
         </Col>
         <Col column={3}>
           <Content>
