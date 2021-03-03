@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Container, Header, Content } from './styles';
+import { Container, Header, Content, Step } from './styles';
 
 import Logo from '../../icons/Logo';
-
-import card from '../../../assets/icons/card.svg';
 
 type SideNavigationProps = {
   children?: React.ReactNode;
@@ -13,7 +11,7 @@ type SideNavigationProps = {
 
 type RegisterPages = {
   page: string;
-  icon: string;
+  active: boolean;
 }
 
 const SideNavigation = ({ children }: SideNavigationProps) => {
@@ -32,19 +30,19 @@ const SideNavigation = ({ children }: SideNavigationProps) => {
       [
         {
           page: 'perfil',
-          icon: card
+          active: true,
         },
         {
           page: 'income',
-          icon: card
+          active: false,
         },
         {
           page: 'expense',
-          icon: card
+          active: false,
         },
         {
           page: 'overview',
-          icon: card
+          active: false,
         },
       ]
     );
@@ -70,12 +68,21 @@ const SideNavigation = ({ children }: SideNavigationProps) => {
         {
           isRegister ? (
             <ul>
-              { registerPages.map((registerItems) => (
+              { registerPages.map((registerItems, registerIndex) => (
                 <li key={registerItems.page}>
-                  <div className="icon-background">
-                    <img src={registerItems.icon} alt={registerItems.page} />
-                  </div>
-                  {registerItems.page}
+                  <Step active={registerItems.active}>
+                    <span className="content-number">
+                      {`0${registerIndex + 1}`}
+                    </span>
+                    <div>
+                      <span>
+                        {`STEP ${registerIndex + 1}`}
+                      </span>
+                      <p>
+                        {registerItems.page}
+                      </p>
+                    </div>
+                  </Step>
                 </li>
               )) }
             </ul>
