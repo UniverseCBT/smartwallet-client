@@ -28,22 +28,22 @@ const Login = () => {
             <Header>
               <div className="back-login">
                 <Link to="/login">
-                  <strong>
-                    {'<'}
-                  </strong>
+                  <strong>{'<'}</strong>
                   Back to login
                 </Link>
               </div>
               <p>
-                Having trouble ?
-                {' '}
+                {`Having trouble ? `}
                 <Link to="/">Get Help</Link>
               </p>
             </Header>
             <Form>
               <div className="description">
                 <h1>Lets start with your account</h1>
-                <p>Tip: make a list on everything you spend more than twice a month</p>
+                <p>
+                  Tip: make a list on everything you spend more than twice a
+                  month
+                </p>
               </div>
               <Input icon={cardAcessIcon} type="text" text="Name" />
               <Input icon={cardAcessIcon} type="text" text="Username" />

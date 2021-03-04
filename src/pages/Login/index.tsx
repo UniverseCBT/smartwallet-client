@@ -35,8 +35,7 @@ const Login = () => {
           <Content>
             <Header>
               <p>
-                Not a member?
-                {' '}
+                {`Not a member ? `}
                 <Link to="/register/perfil">Sign Up</Link>
               </p>
             </Header>

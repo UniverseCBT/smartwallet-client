@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background: linear-gradient(172deg, #09C4A7 0%, #01AA90 100%);
+  background: linear-gradient(172deg, #09c4a7 0%, #01aa90 100%);
 
   .navigation {
     position: relative;
@@ -28,29 +28,29 @@ export const Container = styled.div`
         align-items: center;
 
         .logo-content {
-        display: flex;
-        align-items: center;
+          display: flex;
+          align-items: center;
 
-        &:before {
-          content: '';
-          display: inline-block;
-          min-height: 100%;
-          height: 23px;
-          width: 2px;
-          background: #174C64;
-          margin: 0 0 0 15px;
-          border-radius: 1000px;
-          position: relative;
-          left: 0;
-          top: 0;
-          z-index: 50;
-        }
+          &:before {
+            content: '';
+            display: inline-block;
+            min-height: 100%;
+            height: 23px;
+            width: 2px;
+            background: #174c64;
+            margin: 0 0 0 15px;
+            border-radius: 1000px;
+            position: relative;
+            left: 0;
+            top: 0;
+            z-index: 50;
+          }
 
-        .content-description {
+          .content-description {
             position: relative;
 
             p {
-              color: #F3F4F8;
+              color: #f3f4f8;
               font-weight: bold;
               position: relative;
               top: 0;
