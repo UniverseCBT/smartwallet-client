@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Container, Header, Content, Step } from './styles';
@@ -29,20 +29,20 @@ const SideNavigation = ({ children }: SideNavigationProps) => {
     setRegisterPages([
       {
         page: 'Perfil',
-        active: true,
+        active: true
       },
       {
         page: 'Income',
-        active: false,
+        active: false
       },
       {
         page: 'Expense',
-        active: false,
+        active: false
       },
       {
         page: 'Overview',
-        active: false,
-      },
+        active: false
+      }
     ]);
   }, [setRegisterPages]);
 
@@ -51,6 +51,12 @@ const SideNavigation = ({ children }: SideNavigationProps) => {
       setIsRegister(true);
     }
   }, [page, setIsRegister]);
+
+  const totalSteps = useMemo(() => {
+    return registerPages.length;
+  }, [registerPages]);
+
+  console.log(totalSteps);
 
   return (
     <Container>
@@ -71,6 +77,10 @@ const SideNavigation = ({ children }: SideNavigationProps) => {
                 <Step active={registerItems.active}>
                   <span className="content-number">
                     {`0${registerIndex + 1}`}
+                    <span className="content-separate-bar" />
+                    <span className="total-step">
+                      {`0${registerPages.length}`}
+                    </span>
                   </span>
                   <div>
                     <span>{`STEP ${registerIndex + 1}`}</span>
