@@ -144,8 +144,11 @@ export const Step = styled.div<StepProps>`
     color: #ffffffa6;
     padding: 15px;
     border-radius: 4px;
-    margin-right: 30px;
-    font-size: 24px;
+    margin-right: 10px;
+    font-size: 42px;
+
+    display: flex;
+    align-items: center;
 
     ${props =>
       props.active &&
@@ -153,29 +156,44 @@ export const Step = styled.div<StepProps>`
         color: #fff;
         border: 2px solid #fff;
       `}
+
+    .content-separate-bar {
+      display: block;
+      height: 40px;
+      width: 2px;
+      background: #fff;
+      margin: 0 20px;
+    }
+
+    .total-step {
+      color: #ffffffa6;
+      font-size: 26px;
+    }
   }
 
-  span {
-    font-weight: bold;
-    color: #ffffffa6;
-    font-size: 12px;
+  > div {
+    span {
+      font-weight: lighter;
+      color: #ffffffa6;
+      font-size: 14px;
 
-    ${props =>
-      props.active &&
-      css`
-        color: #fff;
-      `}
-  }
+      ${props =>
+        props.active &&
+        css`
+          color: #fff;
+        `}
+    }
 
-  p {
-    color: #ffffffa6;
-    font-size: 16px;
+    p {
+      color: #ffffffa6;
+      font-size: 24px;
 
-    ${props =>
-      props.active &&
-      css`
-        color: #fff;
-        font-weight: bold;
-      `}
+      ${props =>
+        props.active &&
+        css`
+          color: #fff;
+          font-weight: bold;
+        `}
+    }
   }
 `;

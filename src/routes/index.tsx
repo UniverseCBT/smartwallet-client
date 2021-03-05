@@ -12,7 +12,7 @@ const Routes = () => {
         <Route path="/register/perfil" component={Register} />
       </Switch>
     </BrowserRouter>
-  )
-}
+  );
+};
 
 export default Routes;
