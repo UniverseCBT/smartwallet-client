@@ -1,12 +1,16 @@
 import styled, { css } from 'styled-components';
 
-type ContentProps = {
+interface ContentProps {
   register?: boolean;
-};
+}
 
-type StepProps = {
+interface StepProps {
   active: boolean;
-};
+}
+
+interface StepContentProps {
+  active: boolean;
+}
 
 export const Container = styled.div`
   padding: 40px 0;
@@ -67,8 +71,8 @@ export const Content = styled.div<ContentProps>`
   ${props =>
     !props.register &&
     css`
-      margin: 40px 0 20px;
-      text-align: center;
+      margin: 40px 10px 20px;
+      text-align: left;
 
       h1 {
         padding: 0 0 10px;
@@ -116,7 +120,7 @@ export const Content = styled.div<ContentProps>`
               height: 100%;
               width: 2px;
               background: #ffffffa6;
-              transform: translate3d(20px, -15%, 0);
+              transform: translate3d(21px, -15%, 0);
             }
           }
         }
@@ -128,7 +132,7 @@ export const Step = styled.div<StepProps>`
   display: none;
   align-items: center;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1024px) {
     display: flex;
   }
 
@@ -137,6 +141,10 @@ export const Step = styled.div<StepProps>`
     css`
       display: flex;
       margin: 40px 10px 20px;
+
+      @media screen and (min-width: 1024px) {
+        margin: 40px 0 0;
+      }
     `}
 
   .content-number {
@@ -157,8 +165,13 @@ export const Step = styled.div<StepProps>`
         border: 2px solid #fff;
       `}
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1024px) {
       display: none;
+    }
+
+    @media screen and (min-width: 1024px) {
+      font-size: 18px;
+      padding: 10px;
     }
   }
 
@@ -168,17 +181,34 @@ export const Step = styled.div<StepProps>`
     margin-top: 5px;
     color: #f3f4f8;
     font-weight: bold;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 18px;
+      margin-top: 0;
+      color: ${props => (props.active ? '#f3f4f8' : '#ffffffa6')};
+      font-weight: ${props => (props.active ? 'bold' : 'normal')};
+    }
   }
 `;
 
-export const StepContent = styled.div`
+export const StepContent = styled.div<StepContentProps>`
   color: #f3f4f8;
   font-size: 14px;
   font-weight: bold;
+
+  @media screen and (min-width: 1024px) {
+    font-weight: ${props => (props.active ? 'bold' : 'normal')};
+    font-size: 12px;
+    color: ${props => (props.active ? '#f3f4f8' : '#ffffffa6')};
+  }
 
   .total-step {
     margin-left: 5px;
     color: #ffffffa6;
     font-weight: normal;
+
+    @media screen and (min-width: 1024px) {
+      display: none;
+    }
   }
 `;
