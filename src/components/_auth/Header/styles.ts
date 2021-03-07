@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -20,7 +20,7 @@ export const Container = styled.div`
 
       &:hover {
         strong {
-          background: #F3F4F8;
+          background: #f3f4f8;
           color: #333;
           font-weight: normal;
           margin-right: 0;
@@ -28,26 +28,26 @@ export const Container = styled.div`
       }
 
       strong {
-        background: #09C4A7;
+        background: #09c4a7;
         color: #fff;
         padding: 5px 11px;
         border-radius: 1000px;
         margin-right: 5px;
-        transition: all .2s;
+        transition: all 0.2s;
       }
     }
   }
 
   p {
-    color: #4C616B;
+    color: #4c616b;
     display: none;
 
     @media screen and (min-width: 468px) {
-      display: unset;
+      display: block;
     }
 
     > a {
-      color: #2DCDA3;
+      color: #2dcda3;
       font-weight: bold;
     }
   }

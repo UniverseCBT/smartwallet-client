@@ -73,13 +73,13 @@ const SideNavigation = ({ children }: SideNavigationProps) => {
                     {`0${registerIndex + 1}`}
                   </span>
                   <div>
-                    <StepContent>
+                    <StepContent active={registerItems.active}>
                       {`STEP 0${registerIndex + 1}`}
                       <span className="total-step">
                         {`/ 0${registerPages.length}`}
                       </span>
                     </StepContent>
-                    <p>{`Register ${registerItems.page}`}</p>
+                    <p>{` ${registerItems.page}`}</p>
                   </div>
                 </Step>
               </li>
