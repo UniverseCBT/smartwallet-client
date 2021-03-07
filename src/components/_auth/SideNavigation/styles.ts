@@ -136,7 +136,7 @@ export const Step = styled.div<StepProps>`
     props.active &&
     css`
       display: flex;
-      margin: 40px 20px 20px;
+      margin: 40px 10px 20px;
     `}
 
   .content-number {
@@ -157,43 +157,28 @@ export const Step = styled.div<StepProps>`
         border: 2px solid #fff;
       `}
 
-    .content-separate-bar {
-      display: block;
-      height: 40px;
-      width: 2px;
-      background: #fff;
-      margin: 0 20px;
-    }
-
-    .total-step {
-      color: #ffffffa6;
-      font-size: 26px;
+    @media screen and (max-width: 768px) {
+      display: none;
     }
   }
 
-  > div {
-    span {
-      font-weight: lighter;
-      color: #ffffffa6;
-      font-size: 14px;
+  p {
+    display: block;
+    font-size: 28px;
+    margin-top: 5px;
+    color: #f3f4f8;
+    font-weight: bold;
+  }
+`;
 
-      ${props =>
-        props.active &&
-        css`
-          color: #fff;
-        `}
-    }
+export const StepContent = styled.div`
+  color: #f3f4f8;
+  font-size: 14px;
+  font-weight: bold;
 
-    p {
-      color: #ffffffa6;
-      font-size: 24px;
-
-      ${props =>
-        props.active &&
-        css`
-          color: #fff;
-          font-weight: bold;
-        `}
-    }
+  .total-step {
+    margin-left: 5px;
+    color: #ffffffa6;
+    font-weight: normal;
   }
 `;

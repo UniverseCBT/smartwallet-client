@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Container, Header, Content, Step } from './styles';
+import { Container, Header, Content, Step, StepContent } from './styles';
 
 import Logo from '../../icons/Logo';
 
@@ -52,12 +52,6 @@ const SideNavigation = ({ children }: SideNavigationProps) => {
     }
   }, [page, setIsRegister]);
 
-  const totalSteps = useMemo(() => {
-    return registerPages.length;
-  }, [registerPages]);
-
-  console.log(totalSteps);
-
   return (
     <Container>
       <Header>
@@ -77,14 +71,15 @@ const SideNavigation = ({ children }: SideNavigationProps) => {
                 <Step active={registerItems.active}>
                   <span className="content-number">
                     {`0${registerIndex + 1}`}
-                    <span className="content-separate-bar" />
-                    <span className="total-step">
-                      {`0${registerPages.length}`}
-                    </span>
                   </span>
                   <div>
-                    <span>{`STEP ${registerIndex + 1}`}</span>
-                    <p>{registerItems.page}</p>
+                    <StepContent>
+                      {`STEP 0${registerIndex + 1}`}
+                      <span className="total-step">
+                        {`/ 0${registerPages.length}`}
+                      </span>
+                    </StepContent>
+                    <p>{`Register ${registerItems.page}`}</p>
                   </div>
                 </Step>
               </li>
