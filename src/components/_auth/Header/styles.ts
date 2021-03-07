@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+interface Props {
+  page?: string;
+}
+
+export const Container = styled.div<Props>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -28,19 +32,19 @@ export const Container = styled.div`
       }
 
       strong {
-        background: #09c4a7;
-        color: #fff;
+        color: #333;
         padding: 5px 11px;
         border-radius: 1000px;
         margin-right: 5px;
         transition: all 0.2s;
+        font-weight: normal;
       }
     }
   }
 
   p {
     color: #4c616b;
-    display: none;
+    display: ${props => (props.page !== 'register' ? 'unset' : 'none')};
 
     @media screen and (min-width: 468px) {
       display: block;
