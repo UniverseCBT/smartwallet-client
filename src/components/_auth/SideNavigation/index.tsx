@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 
 import { Container, Header, Content, Step, StepContent } from './styles';
 
@@ -16,14 +16,18 @@ type RegisterPages = {
 
 const SideNavigation = ({ children }: SideNavigationProps) => {
   const [page, setPage] = useState<string>('');
+  const [registerPageName, setRegisterPageName] = useState<string>('');
   const [registerPages, setRegisterPages] = useState<RegisterPages[]>([]);
   const [isRegister, setIsRegister] = useState<boolean>(false);
 
+  const { url } = useRouteMatch();
+
   useEffect(() => {
-    const [, urlName] = window.location.pathname.split('/');
+    const [, urlName, registerName] = url.split('/');
 
     setPage(urlName);
-  }, [setPage]);
+    setRegisterPageName(registerName);
+  }, [setPage, setRegisterPageName, url]);
 
   useEffect(() => {
     setRegisterPages([
