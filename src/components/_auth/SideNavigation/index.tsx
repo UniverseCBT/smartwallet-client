@@ -10,8 +10,10 @@ type SideNavigationProps = {
 };
 
 type RegisterPages = {
+  step: number;
   page: string;
-  active: boolean;
+  active?: boolean;
+  hasActive?: boolean;
 };
 
 const SideNavigation = ({ children }: SideNavigationProps) => {
@@ -32,23 +34,40 @@ const SideNavigation = ({ children }: SideNavigationProps) => {
   useEffect(() => {
     setRegisterPages([
       {
+        step: 1,
         page: 'Perfil',
-        active: true
+        active: false
       },
       {
+        step: 2,
         page: 'Income',
         active: false
       },
       {
+        step: 3,
         page: 'Expense',
         active: false
       },
       {
+        step: 4,
         page: 'Overview',
         active: false
       }
     ]);
   }, [setRegisterPages]);
+
+  useEffect(() => {
+    registerPages.forEach(registerItem => {
+      const registerNameLowerCase = registerItem.page.toLowerCase();
+
+      if (registerNameLowerCase === registerPageName) {
+        Object.assign(registerItem, {
+          ...registerItem,
+          active: true
+        });
+      }
+    });
+  }, [registerPages, registerPageName]);
 
   useEffect(() => {
     if (page === 'register') {

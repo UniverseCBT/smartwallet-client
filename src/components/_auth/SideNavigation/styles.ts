@@ -5,11 +5,11 @@ interface ContentProps {
 }
 
 interface StepProps {
-  active: boolean;
+  active?: boolean;
 }
 
 interface StepContentProps {
-  active: boolean;
+  active?: boolean;
 }
 
 export const Container = styled.div`
