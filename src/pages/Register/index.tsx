@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Container } from './styles';
@@ -13,10 +13,12 @@ import SideNavigation from '../../components/_auth/SideNavigation';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
+import nameIcon from '../../assets/icons/name.svg';
+import emailIcon from '../../assets/icons/email.svg';
 import cardAcessIcon from '../../assets/icons/card.svg';
 import lockIcon from '../../assets/icons/lock.svg';
 
-const Login = () => {
+const Register = () => {
   return (
     <Container>
       <Row>
@@ -45,9 +47,9 @@ const Login = () => {
                   month
                 </p>
               </div>
-              <Input icon={cardAcessIcon} type="text" text="Name" />
+              <Input icon={nameIcon} type="text" text="Name" />
               <Input icon={cardAcessIcon} type="text" text="Username" />
-              <Input icon={cardAcessIcon} type="text" text="Email" />
+              <Input icon={emailIcon} type="text" text="Email" />
               <Input icon={lockIcon} type="password" text="Password" />
               <Input icon={lockIcon} type="password" text="Repeat password" />
               <Button text="Next" />
@@ -59,4 +61,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
