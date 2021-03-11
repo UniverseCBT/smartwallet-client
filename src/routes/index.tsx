@@ -13,9 +13,6 @@ const Routes = () => {
         </Route>
         <Route path="/login" component={Login} />
         <Route path="/register/perfil" component={Register} />
-        <Route path="/register/income" component={Register} />
-        <Route path="/register/expense" component={Register} />
-        <Route path="/register/overview" component={Register} />
       </Switch>
     </BrowserRouter>
   );
