@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import Income from '../pages/Income';
 
 const Routes = () => {
   return (
@@ -13,6 +14,7 @@ const Routes = () => {
         </Route>
         <Route path="/login" component={Login} />
         <Route path="/register/perfil" component={Register} />
+        <Route path="/register/income" component={Income} isPrivate />
       </Switch>
     </BrowserRouter>
   );
