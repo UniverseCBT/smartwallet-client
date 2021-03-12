@@ -1,19 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Container } from './styles';
+import Wrapper from '../../components/_noauth/Wrapper';
 
 import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
 
-import Header from '../../components/_auth/Header';
-import Content from '../../components/_auth/Content';
-import Form from '../../components/_auth/Form';
-import SideNavigation from '../../components/_auth/SideNavigation';
+import Header from '../../components/_noauth/Header';
+import Content from '../../components/_noauth/Content';
+import Form from '../../components/_noauth/Form';
+import SideNavigation from '../../components/_noauth/SideNavigation';
 
 const Income = () => {
   return (
-    <Container>
+    <Wrapper>
       <Row>
         <Col column={1}>
           <SideNavigation />
@@ -34,9 +34,9 @@ const Income = () => {
             </Header>
             <Form>
               <div className="description">
-                <h1>Lets start with your account</h1>
+                <h1>Lets calculate your income</h1>
                 <p>
-                  Tip: make a list on everything you spend more than twice a
+                  Tip : make a list on everything you spend more than twice a
                   month
                 </p>
               </div>
@@ -44,7 +44,7 @@ const Income = () => {
           </Content>
         </Col>
       </Row>
-    </Container>
+    </Wrapper>
   );
 };
 

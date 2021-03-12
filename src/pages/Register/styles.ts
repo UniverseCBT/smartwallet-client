@@ -1,17 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background: linear-gradient(172deg, #09c4a7 0%, #01aa90 100%);
-
   .navigation {
     position: relative;
     z-index: 10;
     padding: 0 20px;
     height: 40vh;
-
-    /* @media screen and (min-width: 768px) {
-      padding: 10px;
-    } */
 
     .logo {
       display: flex;
