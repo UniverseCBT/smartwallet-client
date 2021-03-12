@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Background = styled.div`
-  background: #F3F4F8;
+  background: #f3f4f8;
   position: relative;
   left: 0;
   height: 105vh;
@@ -11,7 +11,7 @@ export const Background = styled.div`
   z-index: 100;
 
   @media screen and (min-width: 1024px) {
-    border-radius: 30px 0 0 0;
+    border-radius: 0;
     overflow-y: auto;
     height: 100vh;
   }
