@@ -1,9 +1,13 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import { Container } from './styles';
 
-const Card = () => {
-  return <div />;
+type Props = {
+  children: React.ReactChildren;
+};
+
+const Card = ({ children }: Props) => {
+  return <Container>{children}</Container>;
 };
 
 export default Card;

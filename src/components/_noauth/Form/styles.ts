@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.form`
   position: sticky;
@@ -17,7 +17,8 @@ export const Container = styled.form`
       margin: 40px 0;
       display: block;
 
-      h1, p {
+      h1,
+      p {
         text-align: left;
       }
 
@@ -29,19 +30,18 @@ export const Container = styled.form`
       p {
         margin-top: 10px;
         font-size: 20px;
-        color: #B5B5B5;
+        color: #b5b5b5;
       }
     }
   }
 
   > div {
-    text-align: right;
     height: auto;
     margin: 20px 0;
 
     > a {
       display: inline-block;
-      color: #A2A2A2;
+      color: #a2a2a2;
       text-align: right;
     }
   }

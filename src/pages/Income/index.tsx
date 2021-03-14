@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { PaycheckForm } from './styles';
+
 import Wrapper from '../../components/_noauth/Wrapper';
 
 import Row from '../../components/Grid/Row';
@@ -21,12 +23,6 @@ const Income = () => {
         <Col column={3}>
           <Content>
             <Header>
-              <div className="back-login">
-                <Link to="/login">
-                  <strong>{'<'}</strong>
-                  Back to login
-                </Link>
-              </div>
               <p>
                 {`Having trouble ? `}
                 <Link to="/">Get Help</Link>
@@ -40,6 +36,35 @@ const Income = () => {
                   month
                 </p>
               </div>
+              <PaycheckForm>
+                <Row>
+                  <Col>
+                    <label htmlFor="paycheck">
+                      <span>Paycheck</span>
+                      <input type="text" id="paycheck" />
+                    </label>
+                  </Col>
+                  <Col>
+                    <label htmlFor="payment">
+                      <span>Your paycheck is</span>
+                      <input type="text" id="payment" />
+                    </label>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <label htmlFor="expectedMoney">
+                      <span>Expected money</span>
+                      <input type="text" id="expectedMoney" />
+                    </label>
+                  </Col>
+                </Row>
+                <Row>
+                  <div className="right-button">
+                    <button type="button">Create Paycheck</button>
+                  </div>
+                </Row>
+              </PaycheckForm>
             </Form>
           </Content>
         </Col>
