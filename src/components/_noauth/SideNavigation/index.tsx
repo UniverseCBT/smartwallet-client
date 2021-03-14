@@ -17,12 +17,12 @@ type RegisterPages = {
 };
 
 const SideNavigation = ({ children }: SideNavigationProps) => {
+  const { url } = useRouteMatch();
+
   const [page, setPage] = useState<string>('');
   const [registerPageName, setRegisterPageName] = useState<string>('');
   const [registerPages, setRegisterPages] = useState<RegisterPages[]>([]);
   const [isRegister, setIsRegister] = useState<boolean>(false);
-
-  const { url } = useRouteMatch();
 
   useEffect(() => {
     const [, urlName, registerName] = url.split('/');

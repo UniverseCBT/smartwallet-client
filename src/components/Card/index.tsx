@@ -2,12 +2,12 @@ import React from 'react';
 
 import { Container } from './styles';
 
-type FormProps = {
-  children: React.ReactNode;
+type Props = {
+  children: React.ReactChildren;
 };
 
-const Form = ({ children }: FormProps) => {
+const Card = ({ children }: Props) => {
   return <Container>{children}</Container>;
 };
 
-export default Form;
+export default Card;

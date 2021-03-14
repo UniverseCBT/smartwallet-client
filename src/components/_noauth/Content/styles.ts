@@ -25,7 +25,7 @@ export const Container = styled.div`
     position: relative;
     top: 0;
     border-radius: 0;
-    max-width: 650px;
+    max-width: 850px;
     width: 100%;
     padding: 0 40px;
     margin: 0 auto;

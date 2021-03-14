@@ -9,7 +9,7 @@ type InputProps = {
   icon?: string;
   text?: string;
   type?: string;
-}
+};
 
 const Input: React.FC<InputProps> = ({ icon, text, type }) => {
   const [isPassword, setIsPassword] = useState(false);
@@ -47,20 +47,18 @@ const Input: React.FC<InputProps> = ({ icon, text, type }) => {
           <img src={icon} alt={text} />
         </div>
 
-        <input
-          type={isPassword ? defaultType : type}
-          placeholder={text}
-        />
-        {
-          isPassword && (
+        <input type={isPassword ? defaultType : type} placeholder={text} />
+        {isPassword && (
           <button type="button" onClick={() => visiblePasswordType()}>
-            <img src={visible ? openEyesIcon : closeEyesIcon} alt={visible ? 'Visible' : 'Hidden'} />
+            <img
+              src={visible ? openEyesIcon : closeEyesIcon}
+              alt={visible ? 'Visible' : 'Hidden'}
+            />
           </button>
-          )
-        }
+        )}
       </label>
     </Container>
   );
-}
+};
 
 export default Input;
