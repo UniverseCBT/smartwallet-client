@@ -1,7 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { PaycheckForm } from './styles';
+import {
+  PaycheckForm,
+  PaycheckList,
+  PaycheckItems,
+  Card,
+  Image,
+  Utils,
+  Money
+} from './styles';
 
 import Wrapper from '../../components/_noauth/Wrapper';
 
@@ -12,6 +20,8 @@ import Header from '../../components/_noauth/Header';
 import Content from '../../components/_noauth/Content';
 import Form from '../../components/_noauth/Form';
 import SideNavigation from '../../components/_noauth/SideNavigation';
+
+import card from '../../assets/icons/card.svg';
 
 const Income = () => {
   return (
@@ -66,6 +76,24 @@ const Income = () => {
                 </Row>
               </PaycheckForm>
             </Form>
+            <PaycheckList>
+              <h2>Paychecks added</h2>
+              <PaycheckItems>
+                <Card>
+                  <Image>
+                    <img src={card} alt="seila" />
+                  </Image>
+                  <Utils>
+                    <strong>front end dev</strong>
+                    <span>Weekly</span>
+                  </Utils>
+                  <Money>
+                    <span>Expected</span>
+                    <strong>$500.00</strong>
+                  </Money>
+                </Card>
+              </PaycheckItems>
+            </PaycheckList>
           </Content>
         </Col>
       </Row>

@@ -5,6 +5,20 @@ export const PaycheckForm = styled.div`
     margin-top: 20px;
   }
 
+  div {
+    > div + div {
+      margin-top: 20px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    div {
+      > div + div {
+        margin-top: 0;
+      }
+    }
+  }
+
   label {
     display: block;
     position: relative;
@@ -16,7 +30,7 @@ export const PaycheckForm = styled.div`
 
     span {
       display: block;
-      color: #2dcda3;
+      color: #646464;
       font-weight: bold;
       font-size: 10px;
     }
@@ -46,3 +60,19 @@ export const PaycheckForm = styled.div`
     }
   }
 `;
+
+export const PaycheckList = styled.div`
+  h2 {
+    color: #646464;
+  }
+`;
+
+export const PaycheckItems = styled.div``;
+
+export const Card = styled.div``;
+
+export const Image = styled.div``;
+
+export const Utils = styled.div``;
+
+export const Money = styled.div``;
