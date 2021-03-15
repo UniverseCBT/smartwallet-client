@@ -67,11 +67,27 @@ export const PaycheckList = styled.div`
   }
 `;
 
-export const PaycheckItems = styled.div``;
+export const PaycheckItems = styled.div`
+  margin-top: 10px;
+`;
 
-export const Card = styled.div``;
+export const Card = styled.div`
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
 
-export const Image = styled.div``;
+  & + div {
+    margin-top: 10px;
+  }
+`;
+
+export const Image = styled.div`
+  background: #01aa90;
+  padding: 5px;
+  border-radius: 1000px;
+`;
 
 export const Utils = styled.div``;
 
