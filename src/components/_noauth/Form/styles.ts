@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 export const Container = styled.form`
   position: sticky;
+  background: #f3f4f8;
+  padding-bottom: 10px;
+  border-radius: 0 0 15px 15px;
   top: 40px;
 
   @media screen and (min-width: 1024px) {

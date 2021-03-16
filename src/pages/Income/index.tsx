@@ -60,8 +60,6 @@ const Income = () => {
                       <input type="text" id="payment" />
                     </label>
                   </Col>
-                </Row>
-                <Row>
                   <Col>
                     <label htmlFor="expectedMoney">
                       <span>Expected money</span>
