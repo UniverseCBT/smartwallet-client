@@ -64,11 +64,19 @@ export const PaycheckForm = styled.div`
 export const PaycheckList = styled.div`
   h2 {
     color: #646464;
+    font-size: 1.2rem;
+    margin: 20px 5px;
   }
 `;
 
 export const PaycheckItems = styled.div`
   margin-top: 10px;
+  height: 100%;
+
+  @media screen and (min-width: 1024px) {
+    height: 100%;
+    overflow-y: auto;
+  }
 `;
 
 export const Card = styled.div`
@@ -77,6 +85,7 @@ export const Card = styled.div`
   padding: 10px;
   display: flex;
   align-items: center;
+  position: relative;
 
   & + div {
     margin-top: 10px;
@@ -84,11 +93,39 @@ export const Card = styled.div`
 `;
 
 export const Image = styled.div`
-  background: #01aa90;
   padding: 5px;
-  border-radius: 1000px;
 `;
 
-export const Utils = styled.div``;
+export const Utils = styled.div`
+  flex: 3;
+  margin-left: 10px;
 
-export const Money = styled.div``;
+  strong {
+    display: block;
+    font-size: 1.2rem;
+    color: #646464;
+  }
+
+  span {
+    color: #c9c9c9;
+    font-size: 0.9rem;
+  }
+`;
+
+export const Money = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  span {
+    color: #c9c9c9;
+    font-weight: bold;
+    font-size: 0.8rem;
+  }
+
+  strong {
+    font-size: 1.4rem;
+    color: #646464;
+    margin-top: 5px;
+  }
+`;
