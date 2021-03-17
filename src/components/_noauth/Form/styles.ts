@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.form`
   position: sticky;
+  top: 0;
+  z-index: 1000;
   background: #f3f4f8;
-  padding-bottom: 10px;
-  border-radius: 0 0 15px 15px;
-  top: 40px;
+  padding: 10px 0;
 
   @media screen and (min-width: 1024px) {
     position: relative;

@@ -22,6 +22,7 @@ import Form from '../../components/_noauth/Form';
 import SideNavigation from '../../components/_noauth/SideNavigation';
 
 import card from '../../assets/icons/card.svg';
+import more from '../../assets/icons/more.svg';
 
 const Income = () => {
   return (
@@ -66,17 +67,123 @@ const Income = () => {
                       <input type="text" id="expectedMoney" />
                     </label>
                   </Col>
-                </Row>
-                <Row>
-                  <div className="right-button">
-                    <button type="button">Create Paycheck</button>
-                  </div>
+                  <Col column={1}>
+                    <div className="right-button">
+                      <button type="button">
+                        <img src={more} alt="more paycheck" />
+                      </button>
+                    </div>
+                  </Col>
                 </Row>
               </PaycheckForm>
             </Form>
             <PaycheckList>
               <h2>Paychecks added</h2>
               <PaycheckItems>
+                <Card>
+                  <Image>
+                    <img src={card} alt="seila" />
+                  </Image>
+                  <Utils>
+                    <strong>front end dev</strong>
+                    <span>Weekly</span>
+                  </Utils>
+                  <Money>
+                    <span>Expected</span>
+                    <strong>$500.00</strong>
+                  </Money>
+                </Card>
+                <Card>
+                  <Image>
+                    <img src={card} alt="seila" />
+                  </Image>
+                  <Utils>
+                    <strong>front end dev</strong>
+                    <span>Weekly</span>
+                  </Utils>
+                  <Money>
+                    <span>Expected</span>
+                    <strong>$500.00</strong>
+                  </Money>
+                </Card>
+                <Card>
+                  <Image>
+                    <img src={card} alt="seila" />
+                  </Image>
+                  <Utils>
+                    <strong>front end dev</strong>
+                    <span>Weekly</span>
+                  </Utils>
+                  <Money>
+                    <span>Expected</span>
+                    <strong>$500.00</strong>
+                  </Money>
+                </Card>
+                <Card>
+                  <Image>
+                    <img src={card} alt="seila" />
+                  </Image>
+                  <Utils>
+                    <strong>front end dev</strong>
+                    <span>Weekly</span>
+                  </Utils>
+                  <Money>
+                    <span>Expected</span>
+                    <strong>$500.00</strong>
+                  </Money>
+                </Card>
+                <Card>
+                  <Image>
+                    <img src={card} alt="seila" />
+                  </Image>
+                  <Utils>
+                    <strong>front end dev</strong>
+                    <span>Weekly</span>
+                  </Utils>
+                  <Money>
+                    <span>Expected</span>
+                    <strong>$500.00</strong>
+                  </Money>
+                </Card>
+                <Card>
+                  <Image>
+                    <img src={card} alt="seila" />
+                  </Image>
+                  <Utils>
+                    <strong>front end dev</strong>
+                    <span>Weekly</span>
+                  </Utils>
+                  <Money>
+                    <span>Expected</span>
+                    <strong>$500.00</strong>
+                  </Money>
+                </Card>
+                <Card>
+                  <Image>
+                    <img src={card} alt="seila" />
+                  </Image>
+                  <Utils>
+                    <strong>front end dev</strong>
+                    <span>Weekly</span>
+                  </Utils>
+                  <Money>
+                    <span>Expected</span>
+                    <strong>$500.00</strong>
+                  </Money>
+                </Card>
+                <Card>
+                  <Image>
+                    <img src={card} alt="seila" />
+                  </Image>
+                  <Utils>
+                    <strong>front end dev</strong>
+                    <span>Weekly</span>
+                  </Utils>
+                  <Money>
+                    <span>Expected</span>
+                    <strong>$500.00</strong>
+                  </Money>
+                </Card>
                 <Card>
                   <Image>
                     <img src={card} alt="seila" />

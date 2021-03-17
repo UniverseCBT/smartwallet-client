@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
 export const PaycheckForm = styled.div`
+  background-color: #f3f4f8;
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+
   > div + div {
     margin-top: 20px;
   }
@@ -46,8 +51,10 @@ export const PaycheckForm = styled.div`
 
   .right-button {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    height: 100%;
 
     button {
       border: none;
@@ -56,7 +63,13 @@ export const PaycheckForm = styled.div`
       font-weight: bold;
       font-size: 12px;
       padding: 10px 15px;
-      border-radius: 8px;
+      border-radius: 1000px;
+      width: 40px;
+      height: 40px;
+
+      img {
+        width: 10px;
+      }
     }
   }
 `;
@@ -86,6 +99,7 @@ export const Card = styled.div`
   display: flex;
   align-items: center;
   position: relative;
+  z-index: 100;
 
   & + div {
     margin-top: 10px;
