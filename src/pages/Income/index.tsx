@@ -76,181 +76,181 @@ const Income = () => {
                   </Col>
                 </Row>
               </PaycheckForm>
+              <PaycheckList>
+                <h2>Paychecks added</h2>
+                <PaycheckItems>
+                  <Card>
+                    <Image>
+                      <img src={card} alt="seila" />
+                    </Image>
+                    <Utils>
+                      <strong>front end dev</strong>
+                      <span>Weekly</span>
+                    </Utils>
+                    <Money>
+                      <span>Expected</span>
+                      <strong>$500.00</strong>
+                    </Money>
+                  </Card>
+                  <Card>
+                    <Image>
+                      <img src={card} alt="seila" />
+                    </Image>
+                    <Utils>
+                      <strong>front end dev</strong>
+                      <span>Weekly</span>
+                    </Utils>
+                    <Money>
+                      <span>Expected</span>
+                      <strong>$500.00</strong>
+                    </Money>
+                  </Card>
+                  <Card>
+                    <Image>
+                      <img src={card} alt="seila" />
+                    </Image>
+                    <Utils>
+                      <strong>front end dev</strong>
+                      <span>Weekly</span>
+                    </Utils>
+                    <Money>
+                      <span>Expected</span>
+                      <strong>$500.00</strong>
+                    </Money>
+                  </Card>
+                  <Card>
+                    <Image>
+                      <img src={card} alt="seila" />
+                    </Image>
+                    <Utils>
+                      <strong>front end dev</strong>
+                      <span>Weekly</span>
+                    </Utils>
+                    <Money>
+                      <span>Expected</span>
+                      <strong>$500.00</strong>
+                    </Money>
+                  </Card>
+                  <Card>
+                    <Image>
+                      <img src={card} alt="seila" />
+                    </Image>
+                    <Utils>
+                      <strong>front end dev</strong>
+                      <span>Weekly</span>
+                    </Utils>
+                    <Money>
+                      <span>Expected</span>
+                      <strong>$500.00</strong>
+                    </Money>
+                  </Card>
+                  <Card>
+                    <Image>
+                      <img src={card} alt="seila" />
+                    </Image>
+                    <Utils>
+                      <strong>front end dev</strong>
+                      <span>Weekly</span>
+                    </Utils>
+                    <Money>
+                      <span>Expected</span>
+                      <strong>$500.00</strong>
+                    </Money>
+                  </Card>
+                  <Card>
+                    <Image>
+                      <img src={card} alt="seila" />
+                    </Image>
+                    <Utils>
+                      <strong>front end dev</strong>
+                      <span>Weekly</span>
+                    </Utils>
+                    <Money>
+                      <span>Expected</span>
+                      <strong>$500.00</strong>
+                    </Money>
+                  </Card>
+                  <Card>
+                    <Image>
+                      <img src={card} alt="seila" />
+                    </Image>
+                    <Utils>
+                      <strong>front end dev</strong>
+                      <span>Weekly</span>
+                    </Utils>
+                    <Money>
+                      <span>Expected</span>
+                      <strong>$500.00</strong>
+                    </Money>
+                  </Card>
+                  <Card>
+                    <Image>
+                      <img src={card} alt="seila" />
+                    </Image>
+                    <Utils>
+                      <strong>front end dev</strong>
+                      <span>Weekly</span>
+                    </Utils>
+                    <Money>
+                      <span>Expected</span>
+                      <strong>$500.00</strong>
+                    </Money>
+                  </Card>
+                  <Card>
+                    <Image>
+                      <img src={card} alt="seila" />
+                    </Image>
+                    <Utils>
+                      <strong>front end dev</strong>
+                      <span>Weekly</span>
+                    </Utils>
+                    <Money>
+                      <span>Expected</span>
+                      <strong>$500.00</strong>
+                    </Money>
+                  </Card>
+                  <Card>
+                    <Image>
+                      <img src={card} alt="seila" />
+                    </Image>
+                    <Utils>
+                      <strong>front end dev</strong>
+                      <span>Weekly</span>
+                    </Utils>
+                    <Money>
+                      <span>Expected</span>
+                      <strong>$500.00</strong>
+                    </Money>
+                  </Card>
+                  <Card>
+                    <Image>
+                      <img src={card} alt="seila" />
+                    </Image>
+                    <Utils>
+                      <strong>front end dev</strong>
+                      <span>Weekly</span>
+                    </Utils>
+                    <Money>
+                      <span>Expected</span>
+                      <strong>$500.00</strong>
+                    </Money>
+                  </Card>
+                  <Card>
+                    <Image>
+                      <img src={card} alt="seila" />
+                    </Image>
+                    <Utils>
+                      <strong>front end dev</strong>
+                      <span>Weekly</span>
+                    </Utils>
+                    <Money>
+                      <span>Expected</span>
+                      <strong>$500.00</strong>
+                    </Money>
+                  </Card>
+                </PaycheckItems>
+              </PaycheckList>
             </Form>
-            <PaycheckList>
-              <h2>Paychecks added</h2>
-              <PaycheckItems>
-                <Card>
-                  <Image>
-                    <img src={card} alt="seila" />
-                  </Image>
-                  <Utils>
-                    <strong>front end dev</strong>
-                    <span>Weekly</span>
-                  </Utils>
-                  <Money>
-                    <span>Expected</span>
-                    <strong>$500.00</strong>
-                  </Money>
-                </Card>
-                <Card>
-                  <Image>
-                    <img src={card} alt="seila" />
-                  </Image>
-                  <Utils>
-                    <strong>front end dev</strong>
-                    <span>Weekly</span>
-                  </Utils>
-                  <Money>
-                    <span>Expected</span>
-                    <strong>$500.00</strong>
-                  </Money>
-                </Card>
-                <Card>
-                  <Image>
-                    <img src={card} alt="seila" />
-                  </Image>
-                  <Utils>
-                    <strong>front end dev</strong>
-                    <span>Weekly</span>
-                  </Utils>
-                  <Money>
-                    <span>Expected</span>
-                    <strong>$500.00</strong>
-                  </Money>
-                </Card>
-                <Card>
-                  <Image>
-                    <img src={card} alt="seila" />
-                  </Image>
-                  <Utils>
-                    <strong>front end dev</strong>
-                    <span>Weekly</span>
-                  </Utils>
-                  <Money>
-                    <span>Expected</span>
-                    <strong>$500.00</strong>
-                  </Money>
-                </Card>
-                <Card>
-                  <Image>
-                    <img src={card} alt="seila" />
-                  </Image>
-                  <Utils>
-                    <strong>front end dev</strong>
-                    <span>Weekly</span>
-                  </Utils>
-                  <Money>
-                    <span>Expected</span>
-                    <strong>$500.00</strong>
-                  </Money>
-                </Card>
-                <Card>
-                  <Image>
-                    <img src={card} alt="seila" />
-                  </Image>
-                  <Utils>
-                    <strong>front end dev</strong>
-                    <span>Weekly</span>
-                  </Utils>
-                  <Money>
-                    <span>Expected</span>
-                    <strong>$500.00</strong>
-                  </Money>
-                </Card>
-                <Card>
-                  <Image>
-                    <img src={card} alt="seila" />
-                  </Image>
-                  <Utils>
-                    <strong>front end dev</strong>
-                    <span>Weekly</span>
-                  </Utils>
-                  <Money>
-                    <span>Expected</span>
-                    <strong>$500.00</strong>
-                  </Money>
-                </Card>
-                <Card>
-                  <Image>
-                    <img src={card} alt="seila" />
-                  </Image>
-                  <Utils>
-                    <strong>front end dev</strong>
-                    <span>Weekly</span>
-                  </Utils>
-                  <Money>
-                    <span>Expected</span>
-                    <strong>$500.00</strong>
-                  </Money>
-                </Card>
-                <Card>
-                  <Image>
-                    <img src={card} alt="seila" />
-                  </Image>
-                  <Utils>
-                    <strong>front end dev</strong>
-                    <span>Weekly</span>
-                  </Utils>
-                  <Money>
-                    <span>Expected</span>
-                    <strong>$500.00</strong>
-                  </Money>
-                </Card>
-                <Card>
-                  <Image>
-                    <img src={card} alt="seila" />
-                  </Image>
-                  <Utils>
-                    <strong>front end dev</strong>
-                    <span>Weekly</span>
-                  </Utils>
-                  <Money>
-                    <span>Expected</span>
-                    <strong>$500.00</strong>
-                  </Money>
-                </Card>
-                <Card>
-                  <Image>
-                    <img src={card} alt="seila" />
-                  </Image>
-                  <Utils>
-                    <strong>front end dev</strong>
-                    <span>Weekly</span>
-                  </Utils>
-                  <Money>
-                    <span>Expected</span>
-                    <strong>$500.00</strong>
-                  </Money>
-                </Card>
-                <Card>
-                  <Image>
-                    <img src={card} alt="seila" />
-                  </Image>
-                  <Utils>
-                    <strong>front end dev</strong>
-                    <span>Weekly</span>
-                  </Utils>
-                  <Money>
-                    <span>Expected</span>
-                    <strong>$500.00</strong>
-                  </Money>
-                </Card>
-                <Card>
-                  <Image>
-                    <img src={card} alt="seila" />
-                  </Image>
-                  <Utils>
-                    <strong>front end dev</strong>
-                    <span>Weekly</span>
-                  </Utils>
-                  <Money>
-                    <span>Expected</span>
-                    <strong>$500.00</strong>
-                  </Money>
-                </Card>
-              </PaycheckItems>
-            </PaycheckList>
           </Content>
         </Col>
       </Row>
