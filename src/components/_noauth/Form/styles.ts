@@ -10,7 +10,7 @@ export const Container = styled.form`
   @media screen and (min-width: 1024px) {
     position: relative;
     top: 0;
-    margin-top: 140px;
+    margin-top: 40px;
   }
 
   .description {

@@ -5,6 +5,12 @@ export const PaycheckForm = styled.div`
   z-index: 1000;
   position: sticky;
   top: 0;
+  padding: 15px 0;
+
+  @media screen and (min-width: 1024px) {
+    top: -40px;
+    padding: 20px 0;
+  }
 
   > div + div {
     margin-top: 20px;
