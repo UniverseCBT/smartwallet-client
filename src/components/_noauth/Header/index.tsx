@@ -10,9 +10,9 @@ const Header = ({ children }: Props) => {
   const [page, setPage] = useState<string>('');
 
   useEffect(() => {
-    const [, urlName] = window.location.pathname.split('/');
+    const [, , pageName] = window.location.pathname.split('/');
 
-    setPage(urlName);
+    setPage(pageName);
   }, [setPage]);
 
   return <Container page={page}>{children}</Container>;

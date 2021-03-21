@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import {
   PaycheckForm,
   PaycheckList,
   PaycheckItems,
+  PaycheckFooter,
   Card,
   Image,
   Utils,
@@ -17,14 +18,46 @@ import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
 
 import Header from '../../components/_noauth/Header';
-import Content from '../../components/_noauth/Content';
+import Content, { Ref } from '../../components/_noauth/Content';
 import Form from '../../components/_noauth/Form';
 import SideNavigation from '../../components/_noauth/SideNavigation';
 
 import card from '../../assets/icons/card.svg';
 import more from '../../assets/icons/more.svg';
 
+type PaycheckItems = {
+  id: string;
+  name: string;
+};
+
 const Income = () => {
+  const [paycheckItems, setPaycheckItems] = useState([]);
+  const [showActionButtons, setShowActionsButtons] = useState(false);
+
+  const mobileContentRef = React.createRef<Ref>();
+
+  useEffect(() => {
+    function activeCallButons() {
+      const windowTop = window.pageYOffset;
+
+      if (mobileContentRef.current) {
+        const contentTopDiff = windowTop - mobileContentRef.current?.offsetTop;
+
+        if (contentTopDiff > -10) {
+          setShowActionsButtons(true);
+        } else {
+          setShowActionsButtons(false);
+        }
+      }
+    }
+
+    window.addEventListener('scroll', activeCallButons);
+
+    return () => {
+      window.removeEventListener('scroll', activeCallButons);
+    };
+  }, [mobileContentRef, setShowActionsButtons]);
+
   return (
     <Wrapper>
       <Row>
@@ -32,7 +65,7 @@ const Income = () => {
           <SideNavigation />
         </Col>
         <Col column={3}>
-          <Content>
+          <Content ref={mobileContentRef}>
             <Header>
               <p>
                 {`Having trouble ? `}
@@ -69,6 +102,10 @@ const Income = () => {
                   </Col>
                   <Col column={1}>
                     <div className="right-button">
+                      <div className="total">
+                        <span>Expected</span>
+                        <h4>$1500.00</h4>
+                      </div>
                       <button type="button">
                         <img src={more} alt="more paycheck" />
                       </button>
@@ -131,125 +168,18 @@ const Income = () => {
                       <strong>$500.00</strong>
                     </Money>
                   </Card>
-                  <Card>
-                    <Image>
-                      <img src={card} alt="seila" />
-                    </Image>
-                    <Utils>
-                      <strong>front end dev</strong>
-                      <span>Weekly</span>
-                    </Utils>
-                    <Money>
-                      <span>Expected</span>
-                      <strong>$500.00</strong>
-                    </Money>
-                  </Card>
-                  <Card>
-                    <Image>
-                      <img src={card} alt="seila" />
-                    </Image>
-                    <Utils>
-                      <strong>front end dev</strong>
-                      <span>Weekly</span>
-                    </Utils>
-                    <Money>
-                      <span>Expected</span>
-                      <strong>$500.00</strong>
-                    </Money>
-                  </Card>
-                  <Card>
-                    <Image>
-                      <img src={card} alt="seila" />
-                    </Image>
-                    <Utils>
-                      <strong>front end dev</strong>
-                      <span>Weekly</span>
-                    </Utils>
-                    <Money>
-                      <span>Expected</span>
-                      <strong>$500.00</strong>
-                    </Money>
-                  </Card>
-                  <Card>
-                    <Image>
-                      <img src={card} alt="seila" />
-                    </Image>
-                    <Utils>
-                      <strong>front end dev</strong>
-                      <span>Weekly</span>
-                    </Utils>
-                    <Money>
-                      <span>Expected</span>
-                      <strong>$500.00</strong>
-                    </Money>
-                  </Card>
-                  <Card>
-                    <Image>
-                      <img src={card} alt="seila" />
-                    </Image>
-                    <Utils>
-                      <strong>front end dev</strong>
-                      <span>Weekly</span>
-                    </Utils>
-                    <Money>
-                      <span>Expected</span>
-                      <strong>$500.00</strong>
-                    </Money>
-                  </Card>
-                  <Card>
-                    <Image>
-                      <img src={card} alt="seila" />
-                    </Image>
-                    <Utils>
-                      <strong>front end dev</strong>
-                      <span>Weekly</span>
-                    </Utils>
-                    <Money>
-                      <span>Expected</span>
-                      <strong>$500.00</strong>
-                    </Money>
-                  </Card>
-                  <Card>
-                    <Image>
-                      <img src={card} alt="seila" />
-                    </Image>
-                    <Utils>
-                      <strong>front end dev</strong>
-                      <span>Weekly</span>
-                    </Utils>
-                    <Money>
-                      <span>Expected</span>
-                      <strong>$500.00</strong>
-                    </Money>
-                  </Card>
-                  <Card>
-                    <Image>
-                      <img src={card} alt="seila" />
-                    </Image>
-                    <Utils>
-                      <strong>front end dev</strong>
-                      <span>Weekly</span>
-                    </Utils>
-                    <Money>
-                      <span>Expected</span>
-                      <strong>$500.00</strong>
-                    </Money>
-                  </Card>
-                  <Card>
-                    <Image>
-                      <img src={card} alt="seila" />
-                    </Image>
-                    <Utils>
-                      <strong>front end dev</strong>
-                      <span>Weekly</span>
-                    </Utils>
-                    <Money>
-                      <span>Expected</span>
-                      <strong>$500.00</strong>
-                    </Money>
-                  </Card>
                 </PaycheckItems>
               </PaycheckList>
+              <PaycheckFooter showActionButtons={showActionButtons}>
+                <div className="money">
+                  <span>Total Expected</span>
+                  <h4>$ 1500.00</h4>
+                </div>
+                <div className="actions">
+                  <button type="button">Back</button>
+                  <button type="button">Next</button>
+                </div>
+              </PaycheckFooter>
             </Form>
           </Content>
         </Col>

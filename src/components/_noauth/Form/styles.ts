@@ -40,7 +40,6 @@ export const Container = styled.form`
 
   > div {
     height: auto;
-    margin: 20px 0;
 
     > a {
       display: inline-block;
