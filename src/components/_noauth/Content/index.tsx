@@ -6,12 +6,16 @@ type ContentProps = {
   children: React.ReactNode;
 };
 
-const Content = ({ children }: ContentProps) => {
-  return (
-    <Background>
-      <Container>{children}</Container>
-    </Background>
-  );
-};
+export type Ref = HTMLDivElement;
+
+const Content = React.forwardRef<Ref, ContentProps>(
+  (props: ContentProps, ref: React.Ref<Ref>) => {
+    return (
+      <Background ref={ref}>
+        <Container>{props.children}</Container>
+      </Background>
+    );
+  }
+);
 
 export default Content;

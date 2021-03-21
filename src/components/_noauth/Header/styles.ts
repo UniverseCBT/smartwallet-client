@@ -44,7 +44,7 @@ export const Container = styled.div<Props>`
 
   p {
     color: #4c616b;
-    display: ${props => (props.page !== 'register' ? 'unset' : 'none')};
+    display: ${props => (props.page !== 'perfil' ? 'unset' : 'none')};
 
     @media screen and (min-width: 468px) {
       display: block;

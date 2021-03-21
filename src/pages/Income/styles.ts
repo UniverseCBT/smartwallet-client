@@ -5,7 +5,7 @@ export const PaycheckForm = styled.div`
   z-index: 1000;
   position: sticky;
   top: 0;
-  padding: 15px 0;
+  padding: 20px 0 15px;
 
   @media screen and (min-width: 1024px) {
     top: -40px;
@@ -57,10 +57,31 @@ export const PaycheckForm = styled.div`
 
   .right-button {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 100%;
+
+    @media screen and (min-width: 1024px) {
+      justify-content: center;
+
+      .total {
+        display: none;
+      }
+    }
+
+    .total {
+      span {
+        color: #c9c9c9;
+        font-weight: bold;
+        font-size: 0.8rem;
+      }
+
+      h4 {
+        font-size: 1.6rem;
+        color: #646464;
+      }
+    }
 
     button {
       border: none;
@@ -81,6 +102,8 @@ export const PaycheckForm = styled.div`
 `;
 
 export const PaycheckList = styled.div`
+  padding-bottom: 60px;
+
   h2 {
     color: #646464;
     font-size: 1.2rem;
@@ -95,6 +118,82 @@ export const PaycheckItems = styled.div`
   @media screen and (min-width: 1024px) {
     height: 100%;
     overflow-y: auto;
+  }
+`;
+
+type PaycheckFooterProps = {
+  showActionButtons: boolean;
+};
+
+export const PaycheckFooter = styled.div<PaycheckFooterProps>`
+  position: fixed;
+  bottom: ${props => (props.showActionButtons ? '0' : '-100%')};
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 2000;
+  padding: 20px 10px;
+  transition: all 0.8s;
+
+  @media screen and (min-width: 1024px) {
+    background-color: transparent;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .money {
+    display: none;
+
+    @media screen and (min-width: 1024px) {
+      display: initial;
+      span {
+        color: #c9c9c9;
+        font-weight: bold;
+        font-size: 0.8rem;
+      }
+
+      h4 {
+        font-size: 2rem;
+        color: #646464;
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (min-width: 1024px) {
+      justify-content: flex-end;
+    }
+
+    button:first-child {
+      background-color: #c9c9c9;
+
+      @media screen and (min-width: 1024px) {
+        margin-right: 10px;
+      }
+    }
+
+    button {
+      border: none;
+      padding: 10px 35px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #06ba9e;
+      font-size: 1rem;
+      border-radius: 4px;
+
+      @media screen and (min-width: 1024px) {
+        padding: 10px 50px;
+      }
+    }
   }
 `;
 
