@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { v4 } from 'uuid';
 
 import {
   PaycheckForm,
@@ -28,13 +29,29 @@ import more from '../../assets/icons/more.svg';
 type PaycheckItems = {
   id: string;
   name: string;
+  date: string;
+  expected_money: number;
 };
 
 const Income = () => {
-  const [paycheckItems, setPaycheckItems] = useState([]);
+  const [paycheckItems, setPaycheckItems] = useState<PaycheckItems[]>([
+    {
+      id: v4(),
+      name: 'Front end engineer',
+      date: 'Monthly',
+      expected_money: 3500
+    },
+    {
+      id: v4(),
+      name: 'Back end engineer',
+      date: 'Weekly',
+      expected_money: 500
+    }
+  ]);
   const [showActionButtons, setShowActionsButtons] = useState(false);
 
   const mobileContentRef = React.createRef<Ref>();
+  const paycheckListRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function activeCallButons() {
@@ -57,6 +74,14 @@ const Income = () => {
       window.removeEventListener('scroll', activeCallButons);
     };
   }, [mobileContentRef, setShowActionsButtons]);
+
+  useEffect(() => {
+    mobileContentRef.current?.scrollTo({
+      top: 2000
+    });
+
+    // console.log(mobileContentRef.current?.scrollHeight);
+  }, [mobileContentRef, paycheckListRef]);
 
   return (
     <Wrapper>
@@ -113,62 +138,26 @@ const Income = () => {
                   </Col>
                 </Row>
               </PaycheckForm>
-              <PaycheckList>
-                <h2>Paychecks added</h2>
-                <PaycheckItems>
-                  <Card>
-                    <Image>
-                      <img src={card} alt="seila" />
-                    </Image>
-                    <Utils>
-                      <strong>front end dev</strong>
-                      <span>Weekly</span>
-                    </Utils>
-                    <Money>
-                      <span>Expected</span>
-                      <strong>$500.00</strong>
-                    </Money>
-                  </Card>
-                  <Card>
-                    <Image>
-                      <img src={card} alt="seila" />
-                    </Image>
-                    <Utils>
-                      <strong>front end dev</strong>
-                      <span>Weekly</span>
-                    </Utils>
-                    <Money>
-                      <span>Expected</span>
-                      <strong>$500.00</strong>
-                    </Money>
-                  </Card>
-                  <Card>
-                    <Image>
-                      <img src={card} alt="seila" />
-                    </Image>
-                    <Utils>
-                      <strong>front end dev</strong>
-                      <span>Weekly</span>
-                    </Utils>
-                    <Money>
-                      <span>Expected</span>
-                      <strong>$500.00</strong>
-                    </Money>
-                  </Card>
-                  <Card>
-                    <Image>
-                      <img src={card} alt="seila" />
-                    </Image>
-                    <Utils>
-                      <strong>front end dev</strong>
-                      <span>Weekly</span>
-                    </Utils>
-                    <Money>
-                      <span>Expected</span>
-                      <strong>$500.00</strong>
-                    </Money>
-                  </Card>
-                </PaycheckItems>
+              <PaycheckList ref={paycheckListRef}>
+                {paycheckItems.length > 0 && <h2>Paychecks added</h2>}
+                {paycheckItems.length > 0 &&
+                  paycheckItems.map(paycheck => (
+                    <PaycheckItems key={paycheck.id}>
+                      <Card>
+                        <Image>
+                          <img src={card} alt="checked icon" />
+                        </Image>
+                        <Utils>
+                          <strong>{paycheck.name}</strong>
+                          <span>{paycheck.date}</span>
+                        </Utils>
+                        <Money>
+                          <span>Expected</span>
+                          <strong>{paycheck.expected_money}</strong>
+                        </Money>
+                      </Card>
+                    </PaycheckItems>
+                  ))}
               </PaycheckList>
               <PaycheckFooter showActionButtons={showActionButtons}>
                 <div className="money">
