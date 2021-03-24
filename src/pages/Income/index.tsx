@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { v4 } from 'uuid';
 
+import { transformCurrency } from '../../shared/currency';
+
 import {
   PaycheckForm,
   PaycheckList,
@@ -46,12 +48,78 @@ const Income = () => {
       name: 'Back end engineer',
       date: 'Weekly',
       expected_money: 500
+    },
+    {
+      id: v4(),
+      name: 'Back end engineer',
+      date: 'Weekly',
+      expected_money: 500
+    },
+    {
+      id: v4(),
+      name: 'Back end engineer',
+      date: 'Weekly',
+      expected_money: 500
+    },
+    {
+      id: v4(),
+      name: 'Back end engineer',
+      date: 'Weekly',
+      expected_money: 500
+    },
+    {
+      id: v4(),
+      name: 'Back end engineer',
+      date: 'Weekly',
+      expected_money: 500
+    },
+    {
+      id: v4(),
+      name: 'Back end engineer',
+      date: 'Weekly',
+      expected_money: 500
+    },
+    {
+      id: v4(),
+      name: 'Back end engineer',
+      date: 'Weekly',
+      expected_money: 500
+    },
+    {
+      id: v4(),
+      name: 'Back end engineer',
+      date: 'Weekly',
+      expected_money: 500
+    },
+    {
+      id: v4(),
+      name: 'Back end engineer',
+      date: 'Weekly',
+      expected_money: 500
+    },
+    {
+      id: v4(),
+      name: 'Back end engineer',
+      date: 'Weekly',
+      expected_money: 500
+    },
+    {
+      id: v4(),
+      name: 'Back end engineer',
+      date: 'Weekly',
+      expected_money: 500
+    },
+    {
+      id: v4(),
+      name: 'Back end engineer',
+      date: 'Weekly',
+      expected_money: 500
     }
   ]);
   const [showActionButtons, setShowActionsButtons] = useState(false);
 
   const mobileContentRef = React.createRef<Ref>();
-  const paycheckListRef = useRef<HTMLDivElement>(null);
+  const paycheckFooterRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function activeCallButons() {
@@ -76,12 +144,13 @@ const Income = () => {
   }, [mobileContentRef, setShowActionsButtons]);
 
   useEffect(() => {
-    mobileContentRef.current?.scrollTo({
-      top: 2000
-    });
-
-    // console.log(mobileContentRef.current?.scrollHeight);
-  }, [mobileContentRef, paycheckListRef]);
+    if (mobileContentRef.current) {
+      mobileContentRef.current.scrollTo({
+        top: mobileContentRef.current.clientHeight,
+        behavior: 'smooth'
+      });
+    }
+  }, [mobileContentRef]);
 
   return (
     <Wrapper>
@@ -138,7 +207,7 @@ const Income = () => {
                   </Col>
                 </Row>
               </PaycheckForm>
-              <PaycheckList ref={paycheckListRef}>
+              <PaycheckList>
                 {paycheckItems.length > 0 && <h2>Paychecks added</h2>}
                 {paycheckItems.length > 0 &&
                   paycheckItems.map(paycheck => (
@@ -153,13 +222,18 @@ const Income = () => {
                         </Utils>
                         <Money>
                           <span>Expected</span>
-                          <strong>{paycheck.expected_money}</strong>
+                          <strong>
+                            {transformCurrency(paycheck.expected_money)}
+                          </strong>
                         </Money>
                       </Card>
                     </PaycheckItems>
                   ))}
               </PaycheckList>
-              <PaycheckFooter showActionButtons={showActionButtons}>
+              <PaycheckFooter
+                ref={paycheckFooterRef}
+                showActionButtons={showActionButtons}
+              >
                 <div className="money">
                   <span>Total Expected</span>
                   <h4>$ 1500.00</h4>

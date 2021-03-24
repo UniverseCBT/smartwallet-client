@@ -102,7 +102,7 @@ export const PaycheckForm = styled.div`
 `;
 
 export const PaycheckList = styled.div`
-  padding-bottom: 60px;
+  margin-bottom: 60px;
 
   h2 {
     color: #646464;
@@ -145,6 +145,7 @@ export const PaycheckFooter = styled.div<PaycheckFooterProps>`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-bottom: 20px;
   }
 
   .money {
