@@ -102,7 +102,7 @@ export const PaycheckForm = styled.div`
 `;
 
 export const PaycheckList = styled.div`
-  margin-bottom: 60px;
+  margin-bottom: 100px;
 
   h2 {
     color: #646464;
