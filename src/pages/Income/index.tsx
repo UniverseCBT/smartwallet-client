@@ -24,6 +24,7 @@ import Col from '../../components/Grid/Col';
 import Header from '../../components/_noauth/Header';
 import Content, { Ref } from '../../components/_noauth/Content';
 import Form from '../../components/_noauth/Form';
+import Select from '../../components/Select';
 import SideNavigation from '../../components/_noauth/SideNavigation';
 
 import card from '../../assets/icons/card.svg';
@@ -128,10 +129,7 @@ const Income = () => {
                     </label>
                   </Col>
                   <Col>
-                    <label htmlFor="payment">
-                      <span>Your paycheck is</span>
-                      <input type="text" id="payment" />
-                    </label>
+                    <Select label="alguma coisa" />
                   </Col>
                   <Col>
                     <label htmlFor="expectedMoney">

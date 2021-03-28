@@ -38,6 +38,7 @@ export const PaycheckForm = styled.div`
     cursor: text;
     width: 100%;
     border-radius: 8px;
+    user-select: none;
 
     span {
       display: block;
