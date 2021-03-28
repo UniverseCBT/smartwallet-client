@@ -1,5 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { v4 } from 'uuid';
+
+import { transformCurrency } from '../../shared/currency';
+import { detectPhone } from '../../shared/detectPhone';
 
 import {
   PaycheckForm,
@@ -28,20 +32,24 @@ import more from '../../assets/icons/more.svg';
 type PaycheckItems = {
   id: string;
   name: string;
+  date: string;
+  expected_money: number;
 };
 
 const Income = () => {
-  const [paycheckItems, setPaycheckItems] = useState([]);
+  const [paycheckItems, setPaycheckItems] = useState<PaycheckItems[]>([]);
   const [showActionButtons, setShowActionsButtons] = useState(false);
 
-  const mobileContentRef = React.createRef<Ref>();
+  const contentRef = React.createRef<Ref>();
+  const paycheckFooterRef = useRef<HTMLDivElement>(null);
+  const paycheckListRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function activeCallButons() {
       const windowTop = window.pageYOffset;
 
-      if (mobileContentRef.current) {
-        const contentTopDiff = windowTop - mobileContentRef.current?.offsetTop;
+      if (contentRef.current) {
+        const contentTopDiff = windowTop - contentRef.current?.offsetTop;
 
         if (contentTopDiff > -10) {
           setShowActionsButtons(true);
@@ -56,7 +64,38 @@ const Income = () => {
     return () => {
       window.removeEventListener('scroll', activeCallButons);
     };
-  }, [mobileContentRef, setShowActionsButtons]);
+  }, [contentRef, setShowActionsButtons]);
+
+  useEffect(() => {
+    if (contentRef.current && paycheckListRef.current) {
+      contentRef.current.scrollTo({
+        top: paycheckListRef.current.clientHeight,
+        behavior: 'smooth'
+      });
+
+      const detectMobilePhone = detectPhone();
+      if (detectMobilePhone) {
+        if (paycheckItems.length > 5) {
+          window.scrollTo({
+            top: paycheckListRef.current.clientHeight + 100,
+            behavior: 'smooth'
+          });
+        }
+      }
+    }
+  }, [contentRef, paycheckItems, paycheckListRef]);
+
+  const handleAddPaycheckList = () => {
+    setPaycheckItems([
+      ...paycheckItems,
+      {
+        id: v4(),
+        name: 'Back end engineer',
+        date: 'Weekly',
+        expected_money: 500
+      }
+    ]);
+  };
 
   return (
     <Wrapper>
@@ -65,7 +104,7 @@ const Income = () => {
           <SideNavigation />
         </Col>
         <Col column={3}>
-          <Content ref={mobileContentRef}>
+          <Content ref={contentRef}>
             <Header>
               <p>
                 {`Having trouble ? `}
@@ -106,71 +145,40 @@ const Income = () => {
                         <span>Expected</span>
                         <h4>$1500.00</h4>
                       </div>
-                      <button type="button">
+                      <button type="button" onClick={handleAddPaycheckList}>
                         <img src={more} alt="more paycheck" />
                       </button>
                     </div>
                   </Col>
                 </Row>
               </PaycheckForm>
-              <PaycheckList>
-                <h2>Paychecks added</h2>
-                <PaycheckItems>
-                  <Card>
-                    <Image>
-                      <img src={card} alt="seila" />
-                    </Image>
-                    <Utils>
-                      <strong>front end dev</strong>
-                      <span>Weekly</span>
-                    </Utils>
-                    <Money>
-                      <span>Expected</span>
-                      <strong>$500.00</strong>
-                    </Money>
-                  </Card>
-                  <Card>
-                    <Image>
-                      <img src={card} alt="seila" />
-                    </Image>
-                    <Utils>
-                      <strong>front end dev</strong>
-                      <span>Weekly</span>
-                    </Utils>
-                    <Money>
-                      <span>Expected</span>
-                      <strong>$500.00</strong>
-                    </Money>
-                  </Card>
-                  <Card>
-                    <Image>
-                      <img src={card} alt="seila" />
-                    </Image>
-                    <Utils>
-                      <strong>front end dev</strong>
-                      <span>Weekly</span>
-                    </Utils>
-                    <Money>
-                      <span>Expected</span>
-                      <strong>$500.00</strong>
-                    </Money>
-                  </Card>
-                  <Card>
-                    <Image>
-                      <img src={card} alt="seila" />
-                    </Image>
-                    <Utils>
-                      <strong>front end dev</strong>
-                      <span>Weekly</span>
-                    </Utils>
-                    <Money>
-                      <span>Expected</span>
-                      <strong>$500.00</strong>
-                    </Money>
-                  </Card>
-                </PaycheckItems>
+              <PaycheckList ref={paycheckListRef}>
+                {paycheckItems.length > 0 && <h2>Paychecks added</h2>}
+                {paycheckItems.length > 0 &&
+                  paycheckItems.map(paycheck => (
+                    <PaycheckItems key={paycheck.id}>
+                      <Card>
+                        <Image>
+                          <img src={card} alt="checked icon" />
+                        </Image>
+                        <Utils>
+                          <strong>{paycheck.name}</strong>
+                          <span>{paycheck.date}</span>
+                        </Utils>
+                        <Money>
+                          <span>Expected</span>
+                          <strong>
+                            {transformCurrency(paycheck.expected_money)}
+                          </strong>
+                        </Money>
+                      </Card>
+                    </PaycheckItems>
+                  ))}
               </PaycheckList>
-              <PaycheckFooter showActionButtons={showActionButtons}>
+              <PaycheckFooter
+                ref={paycheckFooterRef}
+                showActionButtons={showActionButtons}
+              >
                 <div className="money">
                   <span>Total Expected</span>
                   <h4>$ 1500.00</h4>
