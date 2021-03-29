@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { v4 } from 'uuid';
 
-import { Container, Label, Options } from './styles';
+import { Container, Label, LabelValue, LabelArrow, Options } from './styles';
 
-type OptionsProps = {
+import arrowDown from '../../assets/icons/arrow-down.svg';
+
+export type OptionsProps = {
   value: string | number;
   label: string;
-  defaultValue?: boolean;
 };
 
 type SelectProps = {
@@ -25,13 +26,18 @@ const Select = ({ options, label, description }: SelectProps) => {
   return (
     <Container>
       <Label>
-        <span>{description || 'select'}</span>
-        <input type="text" readOnly value={inputLabel} />
+        <LabelValue>
+          <span>{description || 'select'}</span>
+          <input type="text" spellCheck="false" value={inputLabel} />
+        </LabelValue>
+        <LabelArrow>
+          <img src={arrowDown} alt="select arrow" />
+        </LabelArrow>
       </Label>
       <Options>
         {options &&
           options.length > 0 &&
-          options.map(optionItem => <li key={v4()}>{optionItem}</li>)}
+          options.map(optionItem => <li key={v4()}>{optionItem.label}</li>)}
       </Options>
     </Container>
   );
