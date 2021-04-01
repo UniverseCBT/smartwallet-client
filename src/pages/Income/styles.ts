@@ -30,31 +30,6 @@ export const PaycheckForm = styled.div`
     }
   }
 
-  label {
-    display: block;
-    position: relative;
-    background: #fff;
-    padding: 8px 2px 8px 8px;
-    cursor: text;
-    width: 100%;
-    border-radius: 8px;
-
-    span {
-      display: block;
-      color: #646464;
-      font-weight: bold;
-      font-size: 10px;
-    }
-
-    input {
-      border: none;
-      font-size: 16px;
-      margin-top: 5px;
-      font-weight: bold;
-      color: #c9c9c9;
-    }
-  }
-
   .right-button {
     display: flex;
     justify-content: space-between;
@@ -101,6 +76,32 @@ export const PaycheckForm = styled.div`
   }
 `;
 
+export const PaycheckLabel = styled.label`
+  display: block;
+  position: relative;
+  background: #fff;
+  padding: 8px 2px 8px 8px;
+  cursor: text;
+  width: 100%;
+  border-radius: 8px;
+  user-select: none;
+
+  span {
+    display: block;
+    color: #646464;
+    font-weight: bold;
+    font-size: 10px;
+  }
+
+  input {
+    border: none;
+    font-size: 16px;
+    margin-top: 5px;
+    font-weight: bold;
+    color: #c9c9c9;
+  }
+`;
+
 export const PaycheckList = styled.div`
   margin-bottom: 100px;
 
@@ -131,7 +132,7 @@ export const PaycheckFooter = styled.div<PaycheckFooterProps>`
   left: 0;
   width: 100%;
   background-color: #fff;
-  z-index: 2000;
+  z-index: 900;
   padding: 20px 10px;
   transition: all 0.8s;
 

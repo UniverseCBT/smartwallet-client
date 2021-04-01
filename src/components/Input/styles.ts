@@ -27,14 +27,14 @@ export const Container = styled.div`
       margin-right: 8px;
 
       &::after {
-        content: "";
+        content: '';
         position: relative;
         left: 0;
         top: 0;
         display: block;
         width: 2px;
         height: 100%;
-        border-right: 1px solid #EEEEEE;
+        border-right: 1px solid #eeeeee;
         margin-left: 15px;
       }
 
@@ -44,20 +44,19 @@ export const Container = styled.div`
       }
     }
 
-
     input {
       border: none;
       position: relative;
       margin-left: 20px;
       margin-right: 45px;
       font-size: 1.1em;
-      color: #C9C9C9;
+      color: #c9c9c9;
       font-weight: 300;
       width: 100%;
 
       &::placeholder {
         font-size: 0.9em;
-        color: #C9C9C9;
+        color: #c9c9c9;
         font-weight: 300;
       }
     }

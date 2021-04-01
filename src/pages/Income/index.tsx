@@ -7,6 +7,7 @@ import { detectPhone } from '../../shared/detectPhone';
 
 import {
   PaycheckForm,
+  PaycheckLabel,
   PaycheckList,
   PaycheckItems,
   PaycheckFooter,
@@ -24,6 +25,7 @@ import Col from '../../components/Grid/Col';
 import Header from '../../components/_noauth/Header';
 import Content, { Ref } from '../../components/_noauth/Content';
 import Form from '../../components/_noauth/Form';
+import Select, { OptionsProps } from '../../components/Select';
 import SideNavigation from '../../components/_noauth/SideNavigation';
 
 import card from '../../assets/icons/card.svg';
@@ -97,6 +99,17 @@ const Income = () => {
     ]);
   };
 
+  const selectOptions: OptionsProps[] = [
+    {
+      label: 'Weekly',
+      value: 'weekly'
+    },
+    {
+      label: 'Monthly',
+      value: 'monthly'
+    }
+  ];
+
   return (
     <Wrapper>
       <Row>
@@ -122,22 +135,19 @@ const Income = () => {
               <PaycheckForm>
                 <Row>
                   <Col>
-                    <label htmlFor="paycheck">
+                    <PaycheckLabel htmlFor="paycheck">
                       <span>Paycheck</span>
                       <input type="text" id="paycheck" />
-                    </label>
+                    </PaycheckLabel>
                   </Col>
                   <Col>
-                    <label htmlFor="payment">
-                      <span>Your paycheck is</span>
-                      <input type="text" id="payment" />
-                    </label>
+                    <Select label="Timeframe" options={selectOptions} />
                   </Col>
                   <Col>
-                    <label htmlFor="expectedMoney">
+                    <PaycheckLabel htmlFor="expectedMoney">
                       <span>Expected money</span>
                       <input type="text" id="expectedMoney" />
-                    </label>
+                    </PaycheckLabel>
                   </Col>
                   <Col column={1}>
                     <div className="right-button">
