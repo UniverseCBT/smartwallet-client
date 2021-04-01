@@ -5,7 +5,7 @@ export const Container = styled.div`
   position: relative;
 `;
 
-export const Label = styled.label`
+export const Label = styled.div`
   user-select: none;
   display: flex;
   align-items: center;
@@ -48,6 +48,7 @@ export const LabelArrow = styled.div`
   display: flex;
   align-items: center;
   position: relative;
+  margin-top: 0 !important;
 
   &::before {
     content: '';
@@ -64,24 +65,37 @@ export const LabelArrow = styled.div`
   }
 `;
 
-export const Options = styled.ul`
+type OptionsProps = {
+  optionShow: boolean;
+};
+
+export const Options = styled.ul<OptionsProps>`
+  display: ${props => (props.optionShow ? 'initial' : 'none')};
   position: absolute;
   top: 60px;
   background: #fff;
-  border-radius: 8px;
+  border-radius: 4px;
   width: 100%;
   max-height: 250px;
   z-index: 1000;
   overflow-y: auto;
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.03);
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.07);
 
   li {
-    list-style: none;
-    padding: 10px;
-    cursor: pointer;
+    button {
+      list-style: none;
+      padding: 15px 10px;
+      cursor: pointer;
+      color: #c9c9c9;
+      background: transparent;
+      border: none;
+      width: 100%;
+      text-align: left;
 
-    &:hover {
-      background: blue;
+      &:hover {
+        background: #06ba9e;
+        color: #fff;
+      }
     }
   }
 `;
