@@ -66,26 +66,35 @@ const Select = ({ options, label, description }: SelectProps) => {
       <Label onClick={() => setOptionShow(!optionShow)} ref={labelRef}>
         <LabelValue>
           <span>{description || 'select'}</span>
-          <input type="text" readOnly spellCheck="false" value={inputLabel} />
+          <input
+            type="text"
+            readOnly
+            spellCheck="false"
+            value={inputLabel}
+            name={description || 'select'}
+          />
         </LabelValue>
         <LabelArrow>
           <img src={arrowDown} alt="select arrow" />
         </LabelArrow>
       </Label>
-      <Options optionShow={optionShow} ref={optionsRef}>
-        {options &&
-          options.length > 0 &&
-          options.map(optionItem => (
-            <li key={optionItem.value}>
-              <button
-                type="button"
-                onClick={() => handleChangeLabel(optionItem.value)}
-              >
-                {optionItem.label}
-              </button>
-            </li>
-          ))}
-      </Options>
+      {optionShow && (
+        <Options ref={optionsRef}>
+          {options &&
+            options.length > 0 &&
+            options.map(optionItem => (
+              <li key={optionItem.value}>
+                <button
+                  type="button"
+                  onClick={() => handleChangeLabel(optionItem.value)}
+                  className={optionItem.label === inputLabel ? 'active' : ''}
+                >
+                  {optionItem.label}
+                </button>
+              </li>
+            ))}
+        </Options>
+      )}
     </Container>
   );
 };
