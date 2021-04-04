@@ -88,7 +88,7 @@ export const Options = styled.ul`
 
     button {
       list-style: none;
-      padding: 15px 10px;
+      padding: 10px;
       cursor: pointer;
       color: #c9c9c9;
       background: transparent;

@@ -99,6 +99,10 @@ export const PaycheckLabel = styled.label`
     margin-top: 5px;
     font-weight: bold;
     color: #c9c9c9;
+
+    &::placeholder {
+      color: #c9c9c9;
+    }
   }
 `;
 
