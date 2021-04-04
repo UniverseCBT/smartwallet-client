@@ -1,5 +1,11 @@
 /* eslint-disable no-shadow */
-import React, { useState, useEffect, useRef } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  Dispatch,
+  SetStateAction
+} from 'react';
 
 import { Container, Label, LabelValue, LabelArrow, Options } from './styles';
 
@@ -14,9 +20,10 @@ type SelectProps = {
   options: OptionsProps[];
   label: string;
   description?: string;
+  setValue?: Dispatch<SetStateAction<string | number>>;
 };
 
-const Select = ({ options, label, description }: SelectProps) => {
+const Select = ({ options, label, description, setValue }: SelectProps) => {
   const labelRef = useRef<HTMLDivElement | null>(null);
   const optionsRef = useRef<HTMLUListElement | null>(null);
 
@@ -54,8 +61,9 @@ const Select = ({ options, label, description }: SelectProps) => {
     if (options.length > 0) {
       const findLabel = options.find(findLabel => findLabel.value === value);
 
-      if (findLabel) {
+      if (findLabel && setValue) {
         setInputLabel(findLabel.label);
+        setValue(value);
         setOptionShow(false);
       }
     }
@@ -66,26 +74,35 @@ const Select = ({ options, label, description }: SelectProps) => {
       <Label onClick={() => setOptionShow(!optionShow)} ref={labelRef}>
         <LabelValue>
           <span>{description || 'select'}</span>
-          <input type="text" readOnly spellCheck="false" value={inputLabel} />
+          <input
+            type="text"
+            readOnly
+            spellCheck="false"
+            value={inputLabel}
+            name={description || 'select'}
+          />
         </LabelValue>
         <LabelArrow>
           <img src={arrowDown} alt="select arrow" />
         </LabelArrow>
       </Label>
-      <Options optionShow={optionShow} ref={optionsRef}>
-        {options &&
-          options.length > 0 &&
-          options.map(optionItem => (
-            <li key={optionItem.value}>
-              <button
-                type="button"
-                onClick={() => handleChangeLabel(optionItem.value)}
-              >
-                {optionItem.label}
-              </button>
-            </li>
-          ))}
-      </Options>
+      {optionShow && (
+        <Options ref={optionsRef}>
+          {options &&
+            options.length > 0 &&
+            options.map(optionItem => (
+              <li key={optionItem.value}>
+                <button
+                  type="button"
+                  onClick={() => handleChangeLabel(optionItem.value)}
+                  className={optionItem.label === inputLabel ? 'active' : ''}
+                >
+                  {optionItem.label}
+                </button>
+              </li>
+            ))}
+        </Options>
+      )}
     </Container>
   );
 };

@@ -65,12 +65,7 @@ export const LabelArrow = styled.div`
   }
 `;
 
-type OptionsProps = {
-  optionShow: boolean;
-};
-
-export const Options = styled.ul<OptionsProps>`
-  display: ${props => (props.optionShow ? 'initial' : 'none')};
+export const Options = styled.ul`
   position: absolute;
   top: 60px;
   background: #fff;
@@ -82,19 +77,29 @@ export const Options = styled.ul<OptionsProps>`
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.07);
 
   li {
+    .active {
+      background: #174c64;
+      color: #f3f4f8;
+
+      &:hover {
+        color: #f3f4f8;
+      }
+    }
+
     button {
       list-style: none;
-      padding: 15px 10px;
+      padding: 10px;
       cursor: pointer;
       color: #c9c9c9;
       background: transparent;
       border: none;
       width: 100%;
       text-align: left;
+      font-size: 0.9rem;
+      font-weight: bold;
 
       &:hover {
-        background: #06ba9e;
-        color: #fff;
+        color: #174c64;
       }
     }
   }
