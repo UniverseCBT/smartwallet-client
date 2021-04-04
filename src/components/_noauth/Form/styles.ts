@@ -45,6 +45,7 @@ export const Container = styled.form`
       display: inline-block;
       color: #a2a2a2;
       text-align: right;
+      margin: 10px 5px;
     }
   }
 `;

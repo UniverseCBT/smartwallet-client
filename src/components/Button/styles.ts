@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.button`
   width: 100%;
-  background: #2DCDA3;
+  background: #2dcda3;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -16,6 +16,6 @@ export const Container = styled.button`
     width: unset;
     display: block;
     margin-left: auto;
-    margin-top: 5px;
+    margin-top: 20px;
   }
 `;
