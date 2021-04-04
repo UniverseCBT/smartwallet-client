@@ -41,6 +41,9 @@ type PaycheckItems = {
 const Income = () => {
   const [paycheckItems, setPaycheckItems] = useState<PaycheckItems[]>([]);
   const [showActionButtons, setShowActionsButtons] = useState(false);
+  const [selectValue, setSelectValue] = useState<string | number>('' || 0);
+
+  console.log(selectValue);
 
   const contentRef = React.createRef<Ref>();
   const paycheckFooterRef = useRef<HTMLDivElement>(null);
@@ -141,7 +144,11 @@ const Income = () => {
                     </PaycheckLabel>
                   </Col>
                   <Col>
-                    <Select label="Timeframe" options={selectOptions} />
+                    <Select
+                      label="Timeframe"
+                      options={selectOptions}
+                      setValue={setSelectValue}
+                    />
                   </Col>
                   <Col>
                     <PaycheckLabel htmlFor="expectedMoney">

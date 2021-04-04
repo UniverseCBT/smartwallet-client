@@ -1,5 +1,11 @@
 /* eslint-disable no-shadow */
-import React, { useState, useEffect, useRef } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  Dispatch,
+  SetStateAction
+} from 'react';
 
 import { Container, Label, LabelValue, LabelArrow, Options } from './styles';
 
@@ -14,9 +20,10 @@ type SelectProps = {
   options: OptionsProps[];
   label: string;
   description?: string;
+  setValue?: Dispatch<SetStateAction<string | number>>;
 };
 
-const Select = ({ options, label, description }: SelectProps) => {
+const Select = ({ options, label, description, setValue }: SelectProps) => {
   const labelRef = useRef<HTMLDivElement | null>(null);
   const optionsRef = useRef<HTMLUListElement | null>(null);
 
@@ -54,8 +61,9 @@ const Select = ({ options, label, description }: SelectProps) => {
     if (options.length > 0) {
       const findLabel = options.find(findLabel => findLabel.value === value);
 
-      if (findLabel) {
+      if (findLabel && setValue) {
         setInputLabel(findLabel.label);
+        setValue(value);
         setOptionShow(false);
       }
     }

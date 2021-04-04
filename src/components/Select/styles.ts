@@ -78,8 +78,12 @@ export const Options = styled.ul`
 
   li {
     .active {
-      background: #06ba9ecc;
-      color: #fff;
+      background: #174c64;
+      color: #f3f4f8;
+
+      &:hover {
+        color: #f3f4f8;
+      }
     }
 
     button {
@@ -92,10 +96,10 @@ export const Options = styled.ul`
       width: 100%;
       text-align: left;
       font-size: 0.9rem;
+      font-weight: bold;
 
       &:hover {
-        background: #06ba9e;
-        color: #fff;
+        color: #174c64;
       }
     }
   }
