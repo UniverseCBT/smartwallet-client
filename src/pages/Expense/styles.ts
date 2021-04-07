@@ -16,7 +16,7 @@ export const ExpenseForm = styled.div`
     margin-top: 20px;
   }
 
-  div {
+  > div {
     > div + div {
       margin-top: 20px;
     }
@@ -163,5 +163,99 @@ export const LabelArrow = styled.div`
   img {
     height: 15px;
     width: 15px;
+  }
+`;
+
+export const ExpenseOptions = styled.ul`
+  position: absolute;
+  background: #fff;
+  width: 100%;
+  top: 70px;
+  left: 0;
+  list-style: none;
+  border-radius: 8px;
+  z-index: 1000;
+  overflow: hidden;
+
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    align-items: center;
+  }
+
+  li {
+    button {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 10px;
+      transition: all 0.2s;
+
+      &:hover {
+        background: #1ae5bd;
+        border-radius: 8px;
+
+        p {
+          color: #fff;
+        }
+      }
+    }
+
+    @media screen and (min-width: 1024px) {
+      flex: 1;
+    }
+  }
+`;
+
+export const OptionsMain = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media screen and (min-width: 1024px) {
+    > div + div {
+      flex: 5;
+    }
+  }
+`;
+
+export const OptionImage = styled.div`
+  background: #f3f4f8;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 35px;
+  }
+`;
+
+export const OptionsContent = styled.div`
+  margin-left: 20px;
+
+  @media screen and (min-width: 1024px) {
+    margin-left: 10px;
+  }
+
+  h4 {
+    color: #174c64;
+    font-size: 1rem;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 0.9rem;
+    }
+  }
+
+  p {
+    color: #cad3e0;
+    font-size: 0.8rem;
+    margin-top: 5px;
+
+    @media screen and (min-width: 1024px) {
+    font-size: 0.7rem;
+
   }
 `;

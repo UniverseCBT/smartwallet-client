@@ -55,7 +55,7 @@ const Select = ({ options, label, description, setValue }: SelectProps) => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutSide);
     };
-  }, [optionsRef]);
+  }, [optionsRef, setOptionShow]);
 
   function handleChangeLabel(value: string | number) {
     if (options.length > 0) {
