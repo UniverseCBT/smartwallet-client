@@ -1,4 +1,3 @@
-/* eslint-disable no-shadow */
 import React, {
   useState,
   useEffect,
@@ -7,13 +6,25 @@ import React, {
   SetStateAction
 } from 'react';
 
-import { Container, Label, LabelValue, LabelArrow, Options } from './styles';
+import {
+  Container,
+  Label,
+  LabelValue,
+  LabelArrow,
+  Options,
+  OptionsMain,
+  OptionImage,
+  OptionsContent
+} from './styles';
 
 import arrowDown from '../../assets/icons/arrow-down.svg';
 
 export type OptionsProps = {
   value: string | number;
   label: string;
+  description?: string;
+  icon?: string;
+  iconText?: string;
 };
 
 type SelectProps = {
@@ -21,9 +32,16 @@ type SelectProps = {
   label: string;
   description?: string;
   setValue?: Dispatch<SetStateAction<string | number>>;
+  type?: string;
 };
 
-const Select = ({ options, label, description, setValue }: SelectProps) => {
+const Select = ({
+  options,
+  label,
+  description,
+  setValue,
+  type = 'default'
+}: SelectProps) => {
   const labelRef = useRef<HTMLDivElement | null>(null);
   const optionsRef = useRef<HTMLUListElement | null>(null);
 
@@ -59,7 +77,9 @@ const Select = ({ options, label, description, setValue }: SelectProps) => {
 
   function handleChangeLabel(value: string | number) {
     if (options.length > 0) {
-      const findLabel = options.find(findLabel => findLabel.value === value);
+      const findLabel = options.find(
+        optionLabel => optionLabel.value === value
+      );
 
       if (findLabel && setValue) {
         setInputLabel(findLabel.label);
@@ -70,16 +90,16 @@ const Select = ({ options, label, description, setValue }: SelectProps) => {
   }
 
   return (
-    <Container>
+    <Container type={type}>
       <Label onClick={() => setOptionShow(!optionShow)} ref={labelRef}>
         <LabelValue>
-          <span>{description || 'select'}</span>
+          <span>{description || 'Select'}</span>
           <input
             type="text"
             readOnly
             spellCheck="false"
             value={inputLabel}
-            name={description || 'select'}
+            name={description || 'Select'}
           />
         </LabelValue>
         <LabelArrow>
@@ -87,18 +107,36 @@ const Select = ({ options, label, description, setValue }: SelectProps) => {
         </LabelArrow>
       </Label>
       {optionShow && (
-        <Options ref={optionsRef}>
+        <Options ref={optionsRef} type={type}>
           {options &&
             options.length > 0 &&
             options.map(optionItem => (
               <li key={optionItem.value}>
-                <button
-                  type="button"
-                  onClick={() => handleChangeLabel(optionItem.value)}
-                  className={optionItem.label === inputLabel ? 'active' : ''}
-                >
-                  {optionItem.label}
-                </button>
+                {type === 'default' ? (
+                  <button
+                    type="button"
+                    onClick={() => handleChangeLabel(optionItem.value)}
+                    className={optionItem.label === inputLabel ? 'active' : ''}
+                  >
+                    {optionItem.label}
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => handleChangeLabel(optionItem.value)}
+                    className={optionItem.label === inputLabel ? 'active' : ''}
+                  >
+                    <OptionsMain>
+                      <OptionImage>
+                        <img src={optionItem.icon} alt={optionItem.iconText} />
+                      </OptionImage>
+                      <OptionsContent>
+                        <h4>{optionItem.label}</h4>
+                        <p>{optionItem.description}</p>
+                      </OptionsContent>
+                    </OptionsMain>
+                  </button>
+                )}
               </li>
             ))}
         </Options>

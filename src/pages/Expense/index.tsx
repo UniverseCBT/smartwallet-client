@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Wrapper from '../../components/_noauth/Wrapper';
@@ -6,56 +6,43 @@ import SideNavigation from '../../components/_noauth/SideNavigation';
 import Content from '../../components/_noauth/Content';
 import Header from '../../components/_noauth/Header';
 import Form from '../../components/_noauth/Form';
+import Select, { OptionsProps } from '../../components/Select';
 
 import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
 
-import {
-  ExpenseForm,
-  ExpenseLabel,
-  ExpenseSelect,
-  LabelValue,
-  LabelArrow,
-  ExpenseOptions,
-  OptionsMain,
-  OptionImage,
-  OptionsContent
-} from './styles';
-
-import arrowDown from '../../assets/icons/arrow-down.svg';
+import { ExpenseForm, ExpenseLabel } from './styles';
 
 import investmentIcon from '../../assets/icons/investment.svg';
 import funIcon from '../../assets/icons/fun.svg';
 import billsIcon from '../../assets/icons/bills.svg';
 
 const Expense = () => {
-  const optionRef = useRef<HTMLUListElement | null>(null);
-  const selectRef = useRef<HTMLDivElement | null>(null);
+  const [selectValue, setSelectValue] = useState<string | number>('' || 0);
 
-  const [showOptionSelect, setShowOptionSelect] = useState(false);
-
-  useEffect(() => {
-    function handleClickOutSide(event: MouseEvent) {
-      if (
-        optionRef.current &&
-        selectRef.current &&
-        !optionRef.current.contains(event.target as Node) &&
-        !selectRef.current.contains(event.target as Node)
-      ) {
-        setShowOptionSelect(false);
-      }
-
-      if (event.button !== 0) {
-        setShowOptionSelect(false);
-      }
+  const selectOption: OptionsProps[] = [
+    {
+      label: 'Investment',
+      value: 'investment',
+      description: 'From saving accounts to things you expect financial return',
+      icon: investmentIcon,
+      iconText: 'currency in up'
+    },
+    {
+      label: 'Fun money',
+      value: 'funmoney',
+      description: `You don't really need it but it makes your life better`,
+      icon: funIcon,
+      iconText: 'market'
+    },
+    {
+      label: 'Bills',
+      value: 'bills',
+      description: 'Everything you have to pay',
+      icon: billsIcon,
+      iconText: 'Dolar in paper'
     }
-
-    document.addEventListener('mousedown', handleClickOutSide);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutSide);
-    };
-  }, [optionRef, selectRef, setShowOptionSelect]);
+  ];
 
   return (
     <Wrapper>
@@ -92,75 +79,12 @@ const Expense = () => {
                     </ExpenseLabel>
                   </Col>
                   <Col>
-                    <ExpenseSelect
-                      onClick={() => setShowOptionSelect(!showOptionSelect)}
-                      ref={selectRef}
-                    >
-                      <LabelValue>
-                        <span>Category</span>
-                        <input
-                          type="text"
-                          readOnly
-                          spellCheck="false"
-                          value="Select"
-                        />
-                      </LabelValue>
-                      <LabelArrow>
-                        <img src={arrowDown} alt="select arrow" />
-                      </LabelArrow>
-                    </ExpenseSelect>
-                    {showOptionSelect && (
-                      <ExpenseOptions ref={optionRef}>
-                        <li>
-                          <button type="button">
-                            <OptionsMain>
-                              <OptionImage>
-                                <img
-                                  src={investmentIcon}
-                                  alt="currency with up"
-                                />
-                              </OptionImage>
-                              <OptionsContent>
-                                <h4>Investment</h4>
-                                <p>
-                                  From saving accounts to things you expect
-                                  financial return
-                                </p>
-                              </OptionsContent>
-                            </OptionsMain>
-                          </button>
-                        </li>
-                        <li>
-                          <button type="button">
-                            <OptionsMain>
-                              <OptionImage>
-                                <img src={funIcon} alt="market" />
-                              </OptionImage>
-                              <OptionsContent>
-                                <h4>Fun money</h4>
-                                <p>
-                                  You don`t really need it but it makes your
-                                  life better
-                                </p>
-                              </OptionsContent>
-                            </OptionsMain>
-                          </button>
-                        </li>
-                        <li>
-                          <button type="button">
-                            <OptionsMain>
-                              <OptionImage>
-                                <img src={billsIcon} alt="paper in dollar" />
-                              </OptionImage>
-                              <OptionsContent>
-                                <h4>Bills</h4>
-                                <p>Everything you have to pay</p>
-                              </OptionsContent>
-                            </OptionsMain>
-                          </button>
-                        </li>
-                      </ExpenseOptions>
-                    )}
+                    <Select
+                      options={selectOption}
+                      label="Category"
+                      type="lg"
+                      setValue={setSelectValue}
+                    />
                   </Col>
                   <Col>
                     <ExpenseLabel>
