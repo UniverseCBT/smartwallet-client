@@ -1,8 +1,20 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+type SelectProps = {
+  type?: string;
+};
+
+export const Container = styled.div<SelectProps>`
   user-select: none;
-  position: relative;
+
+  ${props =>
+    props.type === 'default'
+      ? css`
+          position: relative;
+        `
+      : css`
+          position: initial;
+        `}
 `;
 
 export const Label = styled.div`
@@ -65,42 +77,153 @@ export const LabelArrow = styled.div`
   }
 `;
 
-export const Options = styled.ul`
-  position: absolute;
-  top: 60px;
-  background: #fff;
-  border-radius: 4px;
-  width: 100%;
-  max-height: 250px;
-  z-index: 1000;
-  overflow-y: auto;
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.07);
-
-  li {
-    .active {
-      background: #174c64;
-      color: #f3f4f8;
-
-      &:hover {
-        color: #f3f4f8;
-      }
-    }
-
-    button {
-      list-style: none;
-      padding: 10px;
-      cursor: pointer;
-      color: #c9c9c9;
-      background: transparent;
-      border: none;
+export const Options = styled.ul<SelectProps>`
+  ${props =>
+    props.type === 'default' &&
+    css`
+      position: absolute;
+      top: 60px;
+      background: #fff;
+      border-radius: 4px;
       width: 100%;
-      text-align: left;
-      font-size: 0.9rem;
-      font-weight: bold;
+      max-height: 250px;
+      z-index: 1000;
+      overflow-y: auto;
+      box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.07);
 
-      &:hover {
-        color: #174c64;
+      li {
+        .active {
+          background: #174c64;
+          color: #f3f4f8;
+
+          &:hover {
+            color: #f3f4f8;
+          }
+        }
+
+        button {
+          list-style: none;
+          padding: 10px;
+          cursor: pointer;
+          color: #c9c9c9;
+          background: transparent;
+          border: none;
+          width: 100%;
+          text-align: left;
+          font-size: 0.9rem;
+          font-weight: bold;
+
+          &:hover {
+            color: #174c64;
+          }
+        }
       }
+    `}
+
+  ${props =>
+    props.type !== 'default' &&
+    css`
+      position: absolute;
+      background: #fff;
+      width: 100%;
+      max-height: 80px;
+      top: 70px;
+      left: 0;
+      list-style: none;
+      border-radius: 8px;
+      z-index: 1000;
+      overflow: hidden;
+
+      @media screen and (min-width: 1024px) {
+        display: flex;
+        align-items: center;
+      }
+
+      li {
+        button {
+          display: block;
+          width: 100%;
+          height: 100vh;
+          background: none;
+          border: none;
+          text-align: left;
+          padding: 10px;
+          transition: all 0.2s;
+          overflow: hidden;
+
+          &.active {
+            background: #1ae5bd;
+            border-radius: 8px;
+
+            p {
+              color: #fff;
+            }
+          }
+
+          &:hover {
+            background: #1ae5bd;
+            border-radius: 8px;
+
+            p {
+              color: #fff;
+            }
+          }
+        }
+
+        @media screen and (min-width: 1024px) {
+          flex: 1;
+        }
+      }
+    `}
+`;
+
+export const OptionsMain = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media screen and (min-width: 1024px) {
+    > div + div {
+      flex: 5;
+    }
+  }
+`;
+
+export const OptionImage = styled.div`
+  background: #f3f4f8;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 35px;
+  }
+`;
+
+export const OptionsContent = styled.div`
+  margin-left: 20px;
+
+  @media screen and (min-width: 1024px) {
+    margin-left: 10px;
+  }
+
+  h4 {
+    color: #174c64;
+    font-size: 1rem;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 0.9rem;
+    }
+  }
+
+  p {
+    color: #cad3e0;
+    font-size: 0.8rem;
+    margin-top: 5px;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 0.7rem;
     }
   }
 `;
