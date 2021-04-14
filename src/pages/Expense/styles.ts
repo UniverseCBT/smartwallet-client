@@ -105,3 +105,129 @@ export const ExpenseLabel = styled.div`
     }
   }
 `;
+
+export const ExpenseList = styled.div`
+  position: relative;
+`;
+
+export const ListHeader = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  h5 {
+    color: #646464;
+    font-size: 1.5rem;
+  }
+`;
+
+export const HeaderFilter = styled.div`
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    align-items: center;
+  }
+
+  .filter-item-mobile button {
+    border: 2px solid #1ae5bd;
+    border-radius: 4px;
+    background: none;
+    padding: 6px 15px;
+    display: flex;
+    align-items: center;
+
+    @media screen and (min-width: 1024px) {
+      display: none;
+    }
+
+    img {
+      width: 20px;
+    }
+
+    span {
+      color: #1ae5bd;
+      font-size: 1rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+
+      &:before {
+        content: '';
+        display: block;
+        position: relative;
+        right: 0;
+        height: 20px;
+        width: 2px;
+        background: #1ae5bd;
+        margin: 0 12px 0 8px;
+      }
+    }
+  }
+`;
+
+export const LabelFilter = styled.div`
+  display: none;
+
+  @media screen and (min-width: 1024px) {
+    display: initial;
+    position: relative;
+
+    > label {
+      background: #fff;
+      border-radius: 4px;
+      padding: 10px 12px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+
+      span,
+      img {
+        z-index: 10;
+        position: relative;
+      }
+
+      span {
+        color: #1ae5bd;
+        padding: 0 20px;
+      }
+
+      img {
+        width: 20px;
+      }
+
+      input[type='radio'] {
+        all: unset;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+
+        &:checked {
+          background: #1ae5bd;
+        }
+      }
+
+      input[type='radio']:checked + span {
+        color: #fff;
+      }
+    }
+
+    & + div label {
+      margin-left: 10px;
+    }
+  }
+`;
+
+export const ExpensesCreated = styled.div``;
+
+export const Description = styled.div``;
+
+export const Utils = styled.div``;
+
+export const Action = styled.div``;

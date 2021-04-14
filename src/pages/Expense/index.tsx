@@ -11,11 +11,23 @@ import Select, { OptionsProps } from '../../components/Select';
 import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
 
-import { ExpenseForm, ExpenseLabel } from './styles';
+import {
+  ExpenseForm,
+  ExpenseLabel,
+  ExpenseList,
+  ListHeader,
+  HeaderFilter,
+  LabelFilter,
+  ExpensesCreated,
+  Description,
+  Utils,
+  Action
+} from './styles';
 
 import investmentIcon from '../../assets/icons/investment.svg';
 import funIcon from '../../assets/icons/fun.svg';
 import billsIcon from '../../assets/icons/bills.svg';
+import moreVerticalIcon from '../../assets/icons/more-vertical.svg';
 
 const Expense = () => {
   const [selectValue, setSelectValue] = useState<string | number>('' || 0);
@@ -98,80 +110,79 @@ const Expense = () => {
                   </Col>
                 </Row>
               </ExpenseForm>
-              {/* <PaycheckForm>
-                <Row>
-                  <Col>
-                    <PaycheckLabel htmlFor="paycheck">
-                      <span>Paycheck</span>
-                      <input
-                        type="text"
-                        id="paycheck"
-                        placeholder="Paycheck name"
-                      />
-                    </PaycheckLabel>
-                  </Col>
-                  <Col>
-                    <Select
-                      label="Timeframe"
-                      options={selectOptions}
-                      setValue={setSelectValue}
-                    />
-                  </Col>
-                  <Col>
-                    <PaycheckLabel htmlFor="expectedMoney">
-                      <span>Expected money</span>
-                      <input type="text" id="expectedMoney" />
-                    </PaycheckLabel>
-                  </Col>
-                  <Col column={1}>
-                    <div className="right-button">
-                      <div className="total">
-                        <span>Expected</span>
-                        <h4>$1500.00</h4>
-                      </div>
-                      <button type="button" onClick={handleAddPaycheckList}>
-                        <img src={more} alt="more paycheck" />
+              <ExpenseList>
+                <ListHeader>
+                  <h5>Expenses created</h5>
+                  <HeaderFilter>
+                    <LabelFilter>
+                      <label htmlFor="all">
+                        <input
+                          type="radio"
+                          id="all"
+                          value="all"
+                          name="expenses"
+                          defaultChecked
+                        />
+                        <span>All</span>
+                      </label>
+                      <span className="size">30</span>
+                    </LabelFilter>
+                    <LabelFilter>
+                      <label htmlFor="investment">
+                        <img src={investmentIcon} alt="currency in up" />
+                        <input
+                          type="radio"
+                          id="investment"
+                          value="investment"
+                          name="expenses"
+                        />
+                      </label>
+                      <span className="size">10</span>
+                    </LabelFilter>
+                    <LabelFilter>
+                      <label htmlFor="funmoney">
+                        <img src={funIcon} alt="market" />
+                        <input
+                          type="radio"
+                          id="funmoney"
+                          value="funmoney"
+                          name="expenses"
+                        />
+                      </label>
+                      <span className="size">10</span>
+                    </LabelFilter>
+                    <LabelFilter>
+                      <label htmlFor="bills">
+                        <img src={billsIcon} alt="Dolar in paper" />
+                        <input
+                          type="radio"
+                          id="bills"
+                          value="bills"
+                          name="expenses"
+                        />
+                      </label>
+                      <span className="size">10</span>
+                    </LabelFilter>
+                    <div className="filter-item-mobile">
+                      <button type="button">
+                        <img src={moreVerticalIcon} alt="Dolar in paper" />
+                        <span>Filter</span>
                       </button>
                     </div>
-                  </Col>
-                </Row>
-              </PaycheckForm>
-              <PaycheckList ref={paycheckListRef}>
-                {paycheckItems.length > 0 && <h2>Paychecks added</h2>}
-                {paycheckItems.length > 0 &&
-                  paycheckItems.map(paycheck => (
-                    <PaycheckItems key={paycheck.id}>
-                      <Card>
-                        <Image>
-                          <img src={card} alt="checked icon" />
-                        </Image>
-                        <Utils>
-                          <strong>{paycheck.name}</strong>
-                          <span>{paycheck.date}</span>
-                        </Utils>
-                        <Money>
-                          <span>Expected</span>
-                          <strong>
-                            {transformCurrency(paycheck.expected_money)}
-                          </strong>
-                        </Money>
-                      </Card>
-                    </PaycheckItems>
-                  ))}
-              </PaycheckList>
-              <PaycheckFooter
-                ref={paycheckFooterRef}
-                showActionButtons={showActionButtons}
-              >
-                <div className="money">
-                  <span>Total Expected</span>
-                  <h4>$ 1500.00</h4>
-                </div>
-                <div className="actions">
-                  <button type="button">Back</button>
-                  <button type="button">Next</button>
-                </div>
-              </PaycheckFooter> */}
+                  </HeaderFilter>
+                </ListHeader>
+                <ExpensesCreated>
+                  <Description>
+                    <h6>Star Bucks</h6>
+                    <span>2 days in week</span>
+                  </Description>
+                  <Utils>
+                    <strong>$10.00</strong>
+                    <span>Fun Money</span>
+                  </Utils>
+                  <Action>edit delete</Action>
+                </ExpensesCreated>
+              </ExpenseList>
             </Form>
           </Content>
         </Col>
