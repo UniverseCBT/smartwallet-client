@@ -125,7 +125,7 @@ const Expense = () => {
                         />
                         <span>All</span>
                       </label>
-                      <span className="size">30</span>
+                      <span className="size">0</span>
                     </LabelFilter>
                     <LabelFilter>
                       <label htmlFor="investment">
@@ -137,7 +137,7 @@ const Expense = () => {
                           name="expenses"
                         />
                       </label>
-                      <span className="size">10</span>
+                      <span className="size">0</span>
                     </LabelFilter>
                     <LabelFilter>
                       <label htmlFor="funmoney">
@@ -149,7 +149,7 @@ const Expense = () => {
                           name="expenses"
                         />
                       </label>
-                      <span className="size">10</span>
+                      <span className="size">0</span>
                     </LabelFilter>
                     <LabelFilter>
                       <label htmlFor="bills">
@@ -161,7 +161,7 @@ const Expense = () => {
                           name="expenses"
                         />
                       </label>
-                      <span className="size">10</span>
+                      <span className="size">0</span>
                     </LabelFilter>
                     <div className="filter-item-mobile">
                       <button type="button">

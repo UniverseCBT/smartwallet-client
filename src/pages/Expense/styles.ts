@@ -221,10 +221,29 @@ export const LabelFilter = styled.div`
     & + div label {
       margin-left: 10px;
     }
+
+    > span {
+      position: absolute;
+      bottom: -15px;
+      right: -10px;
+      background: #fff;
+      color: #646464;
+      padding: 5px;
+      width: 30px;
+      height: 30px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 1000px;
+      font-size: 0.8rem;
+    }
   }
 `;
 
-export const ExpensesCreated = styled.div``;
+export const ExpensesCreated = styled.div`
+  margin-top: 40px;
+`;
 
 export const Description = styled.div``;
 
