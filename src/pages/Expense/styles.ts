@@ -115,7 +115,7 @@ export const ListHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 20px;
+  margin: 20px 0 60px;
 
   h5 {
     color: #646464;
@@ -242,11 +242,74 @@ export const LabelFilter = styled.div`
 `;
 
 export const ExpensesCreated = styled.div`
-  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+
+  & + div {
+    border-top: 1px solid #ececec;
+  }
 `;
 
-export const Description = styled.div``;
+export const Description = styled.div`
+  h6 {
+    color: #878787;
+    font-size: 1.2rem;
+  }
 
-export const Utils = styled.div``;
+  span {
+    display: block;
+    font-size: 0.9rem;
+    color: #c9c9c9;
+  }
+`;
 
-export const Action = styled.div``;
+export const Utils = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const Features = styled.div`
+  margin-right: 10px;
+
+  strong,
+  span {
+    display: block;
+    text-align: right;
+  }
+
+  strong {
+    font-size: 1.4rem;
+    color: #878787;
+  }
+
+  span {
+    display: block;
+    font-size: 0.9rem;
+    color: #c9c9c9;
+  }
+`;
+
+export const Actions = styled.div`
+  margin-left: 10px;
+
+  button {
+    background: #fff;
+    border: none;
+    padding: 8px;
+    width: 30px;
+    height: 30px;
+    border-radius: 1000px;
+
+    & + button {
+      margin-left: 5px;
+    }
+
+    img {
+      width: 14px;
+      height: 14px;
+    }
+  }
+`;

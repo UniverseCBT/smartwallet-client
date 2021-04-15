@@ -21,13 +21,16 @@ import {
   ExpensesCreated,
   Description,
   Utils,
-  Action
+  Features,
+  Actions
 } from './styles';
 
 import investmentIcon from '../../assets/icons/investment.svg';
 import funIcon from '../../assets/icons/fun.svg';
 import billsIcon from '../../assets/icons/bills.svg';
 import moreVerticalIcon from '../../assets/icons/more-vertical.svg';
+import trashIcon from '../../assets/icons/trash.svg';
+import penIcon from '../../assets/icons/pen.svg';
 
 const Expense = () => {
   const [selectValue, setSelectValue] = useState<string | number>('' || 0);
@@ -177,10 +180,19 @@ const Expense = () => {
                     <span>2 days in week</span>
                   </Description>
                   <Utils>
-                    <strong>$10.00</strong>
-                    <span>Fun Money</span>
+                    <Features>
+                      <strong>$10.00</strong>
+                      <span>Fun Money</span>
+                    </Features>
+                    <Actions>
+                      <button type="button">
+                        <img src={penIcon} alt="brush tool" />
+                      </button>
+                      <button type="button">
+                        <img src={trashIcon} alt="trash" />
+                      </button>
+                    </Actions>
                   </Utils>
-                  <Action>edit delete</Action>
                 </ExpensesCreated>
               </ExpenseList>
             </Form>
