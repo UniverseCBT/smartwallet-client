@@ -7,6 +7,7 @@ import Content from '../../components/_noauth/Content';
 import Header from '../../components/_noauth/Header';
 import Form from '../../components/_noauth/Form';
 import Select, { OptionsProps } from '../../components/Select';
+import Filter from '../../components/Register/Filter';
 
 import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
@@ -15,9 +16,6 @@ import {
   ExpenseForm,
   ExpenseLabel,
   ExpenseList,
-  ListHeader,
-  HeaderFilter,
-  LabelFilter,
   ExpensesCreated,
   Description,
   Utils,
@@ -38,6 +36,7 @@ import arrowRightIcon from '../../assets/icons/arrowRight.svg';
 
 const Expense = () => {
   const [selectValue, setSelectValue] = useState<string | number>('' || 0);
+  const [filterValue, setFilterValue] = useState<string>('all');
 
   const selectOption: OptionsProps[] = [
     {
@@ -118,66 +117,50 @@ const Expense = () => {
                 </Row>
               </ExpenseForm>
               <ExpenseList>
-                <ListHeader>
-                  <h5>Expenses created</h5>
-                  <HeaderFilter>
-                    <LabelFilter>
-                      <label htmlFor="all">
-                        <input
-                          type="radio"
-                          id="all"
-                          value="all"
-                          name="expenses"
-                          defaultChecked
-                        />
-                        <span>All</span>
-                      </label>
-                      <span className="size">0</span>
-                    </LabelFilter>
-                    <LabelFilter>
-                      <label htmlFor="investment">
-                        <img src={investmentIcon} alt="currency in up" />
-                        <input
-                          type="radio"
-                          id="investment"
-                          value="investment"
-                          name="expenses"
-                        />
-                      </label>
-                      <span className="size">0</span>
-                    </LabelFilter>
-                    <LabelFilter>
-                      <label htmlFor="funmoney">
-                        <img src={funIcon} alt="market" />
-                        <input
-                          type="radio"
-                          id="funmoney"
-                          value="funmoney"
-                          name="expenses"
-                        />
-                      </label>
-                      <span className="size">0</span>
-                    </LabelFilter>
-                    <LabelFilter>
-                      <label htmlFor="bills">
-                        <img src={billsIcon} alt="Dolar in paper" />
-                        <input
-                          type="radio"
-                          id="bills"
-                          value="bills"
-                          name="expenses"
-                        />
-                      </label>
-                      <span className="size">0</span>
-                    </LabelFilter>
-                    <div className="filter-item-mobile">
-                      <button type="button">
-                        <img src={moreVerticalIcon} alt="Dolar in paper" />
-                        <span>Filter</span>
-                      </button>
-                    </div>
-                  </HeaderFilter>
-                </ListHeader>
+                <Filter
+                  title="Expense Created"
+                  setFilterValue={setFilterValue}
+                  itemsFilter={[
+                    {
+                      id: 'all',
+                      name: 'expenses',
+                      value: 'all',
+                      default: true,
+                      text: 'All',
+                      size: 0
+                    },
+                    {
+                      id: 'investment',
+                      name: 'expenses',
+                      value: 'investment',
+                      image: {
+                        alt: 'currency in up',
+                        url: investmentIcon
+                      },
+                      size: 0
+                    },
+                    {
+                      id: 'funmoney',
+                      name: 'expenses',
+                      value: 'funmoney',
+                      image: {
+                        alt: 'market',
+                        url: funIcon
+                      },
+                      size: 0
+                    },
+                    {
+                      id: 'bills',
+                      name: 'expenses',
+                      value: 'bills',
+                      image: {
+                        alt: 'Dolar in paper',
+                        url: billsIcon
+                      },
+                      size: 0
+                    }
+                  ]}
+                />
                 <ExpensesCreated>
                   <Description>
                     <h6>Star Bucks</h6>
