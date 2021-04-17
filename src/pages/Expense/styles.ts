@@ -295,21 +295,83 @@ export const Features = styled.div`
 export const Actions = styled.div`
   margin-left: 10px;
 
-  button {
-    background: #fff;
+  > button {
+    background: none;
     border: none;
-    padding: 8px;
-    width: 30px;
-    height: 30px;
     border-radius: 1000px;
 
     & + button {
-      margin-left: 5px;
+      margin-left: 10px;
     }
 
     img {
-      width: 14px;
-      height: 14px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+`;
+
+export const ExpenseFooter = styled.div`
+  margin-top: 60px;
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    button:first-of-type {
+      color: #1ae5bd;
+    }
+
+    button {
+      border: none;
+      background: none;
+      padding: 10px 10px 10px 25px;
+      color: #1ae5bd;
+      font-size: 1rem;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: padding 0.2s;
+
+      img {
+        margin: 0 15px;
+        width: 10px;
+      }
+
+      & + button {
+        box-shadow: rgb(26 229 189) 0px 4px 14px 0px;
+        margin-left: 20px;
+        background: #1ae5bd;
+        color: #fff;
+
+        &:hover {
+          padding: 12px 12px 12px 27px;
+        }
+      }
+    }
+  }
+
+  .money {
+    padding-top: 10px;
+    border-top: 1px solid #ececec;
+    margin: 20px 0 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+
+    h4 {
+      font-size: 0.8rem;
+      color: #c9c9c9;
+      font-weight: normal;
+    }
+
+    span {
+      font-size: 1.6rem;
+      color: #878787;
+      font-weight: bold;
     }
   }
 `;

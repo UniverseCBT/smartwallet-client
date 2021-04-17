@@ -22,15 +22,19 @@ import {
   Description,
   Utils,
   Features,
-  Actions
+  Actions,
+  ExpenseFooter
 } from './styles';
 
 import investmentIcon from '../../assets/icons/investment.svg';
 import funIcon from '../../assets/icons/fun.svg';
 import billsIcon from '../../assets/icons/bills.svg';
 import moreVerticalIcon from '../../assets/icons/more-vertical.svg';
+import moreIcon from '../../assets/icons/more.svg';
 import trashIcon from '../../assets/icons/trash.svg';
 import penIcon from '../../assets/icons/pen.svg';
+import arrowLeftIcon from '../../assets/icons/arrowLeft.svg';
+import arrowRightIcon from '../../assets/icons/arrowRight.svg';
 
 const Expense = () => {
   const [selectValue, setSelectValue] = useState<string | number>('' || 0);
@@ -186,15 +190,80 @@ const Expense = () => {
                     </Features>
                     <Actions>
                       <button type="button">
-                        <img src={penIcon} alt="brush tool" />
+                        <img src={moreIcon} alt="three points" />
                       </button>
+                    </Actions>
+                  </Utils>
+                </ExpensesCreated>
+                <ExpensesCreated>
+                  <Description>
+                    <h6>Star Bucks</h6>
+                    <span>2 days in week</span>
+                  </Description>
+                  <Utils>
+                    <Features>
+                      <strong>$10.00</strong>
+                      <span>Fun Money</span>
+                    </Features>
+                    <Actions>
                       <button type="button">
-                        <img src={trashIcon} alt="trash" />
+                        <img src={moreIcon} alt="three points" />
+                      </button>
+                    </Actions>
+                  </Utils>
+                </ExpensesCreated>
+                <ExpensesCreated>
+                  <Description>
+                    <h6>Star Bucks</h6>
+                    <span>2 days in week</span>
+                  </Description>
+                  <Utils>
+                    <Features>
+                      <strong>$10.00</strong>
+                      <span>Fun Money</span>
+                    </Features>
+                    <Actions>
+                      <button type="button">
+                        <img src={moreIcon} alt="three points" />
+                      </button>
+                    </Actions>
+                  </Utils>
+                </ExpensesCreated>
+                <ExpensesCreated>
+                  <Description>
+                    <h6>Star Bucks</h6>
+                    <span>2 days in week</span>
+                  </Description>
+                  <Utils>
+                    <Features>
+                      <strong>$10.00</strong>
+                      <span>Fun Money</span>
+                    </Features>
+                    <Actions>
+                      <button type="button">
+                        <img src={moreIcon} alt="three points" />
                       </button>
                     </Actions>
                   </Utils>
                 </ExpensesCreated>
               </ExpenseList>
+              <ExpenseFooter>
+                <div className="actions">
+                  <button type="button">
+                    <img src={arrowLeftIcon} alt="arrow left" />
+                    Back
+                  </button>
+                  <button type="button">
+                    Next
+                    <img src={arrowRightIcon} alt="arrow right" />
+                  </button>
+                </div>
+
+                <div className="money">
+                  <h4>Total Expected</h4>
+                  <span>$0</span>
+                </div>
+              </ExpenseFooter>
             </Form>
           </Content>
         </Col>
