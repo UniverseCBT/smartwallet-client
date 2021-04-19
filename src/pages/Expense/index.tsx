@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { v4 } from 'uuid';
 
 import Wrapper from '../../components/_noauth/Wrapper';
 import SideNavigation from '../../components/_noauth/SideNavigation';
@@ -8,6 +9,7 @@ import Header from '../../components/_noauth/Header';
 import Form from '../../components/_noauth/Form';
 import Select, { OptionsProps } from '../../components/Select';
 import Filter from '../../components/Register/Filter';
+import List from '../../components/Register/List';
 
 import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
@@ -161,7 +163,25 @@ const Expense = () => {
                     }
                   ]}
                 />
-                <ExpensesCreated>
+                <List
+                  data={[
+                    {
+                      id: v4(),
+                      title: 'Star Bucks',
+                      description: '2 days in week',
+                      money: 10.0,
+                      category: 'Fun Money'
+                    },
+                    {
+                      id: v4(),
+                      title: 'Star Bucks',
+                      description: '2 days in week',
+                      money: 10.0,
+                      category: 'Fun Money'
+                    }
+                  ]}
+                />
+                {/* <ExpensesCreated>
                   <Description>
                     <h6>Star Bucks</h6>
                     <span>2 days in week</span>
@@ -211,24 +231,7 @@ const Expense = () => {
                       </button>
                     </Actions>
                   </Utils>
-                </ExpensesCreated>
-                <ExpensesCreated>
-                  <Description>
-                    <h6>Star Bucks</h6>
-                    <span>2 days in week</span>
-                  </Description>
-                  <Utils>
-                    <Features>
-                      <strong>$10.00</strong>
-                      <span>Fun Money</span>
-                    </Features>
-                    <Actions>
-                      <button type="button">
-                        <img src={moreIcon} alt="three points" />
-                      </button>
-                    </Actions>
-                  </Utils>
-                </ExpensesCreated>
+                </ExpensesCreated> */}
               </ExpenseList>
               <ExpenseFooter>
                 <div className="actions">
