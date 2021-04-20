@@ -3,13 +3,15 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   margin: 20px 0 60px;
+  padding-bottom: 25px;
 
   h5 {
+    position: relative;
     color: #646464;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 `;
 
