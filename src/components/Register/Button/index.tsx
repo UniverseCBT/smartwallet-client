@@ -3,20 +3,31 @@ import React from 'react';
 import { Container } from './styles';
 
 export type Props = {
-  type: string;
+  theme?: string;
   text: string;
   icon?: {
     url: string;
     altText?: string;
+    side?: string;
   };
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const Button = ({ type, text, icon, onClick }: Props) => {
+const Button = ({ theme, text, icon, onClick }: Props) => {
   return (
-    <Container onClick={onClick} type="button">
-      {icon && <img src={icon.url} alt={icon.altText} />}
+    <Container
+      onClick={onClick}
+      type="button"
+      theme={theme}
+      themeExist={!!theme}
+    >
+      {icon && (!icon.side || icon.side === 'left') && (
+        <img src={icon.url} alt={icon.altText} />
+      )}
       {text}
+      {icon && icon.side === 'right' && (
+        <img src={icon.url} alt={icon.altText} />
+      )}
     </Container>
   );
 };
