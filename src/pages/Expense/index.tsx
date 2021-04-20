@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { v4 } from 'uuid';
 
 import Wrapper from '../../components/_noauth/Wrapper';
 import SideNavigation from '../../components/_noauth/SideNavigation';
@@ -8,6 +9,8 @@ import Header from '../../components/_noauth/Header';
 import Form from '../../components/_noauth/Form';
 import Select, { OptionsProps } from '../../components/Select';
 import Filter from '../../components/Register/Filter';
+import List from '../../components/Register/List';
+import Button from '../../components/Register/Button';
 
 import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
@@ -161,85 +164,41 @@ const Expense = () => {
                     }
                   ]}
                 />
-                <ExpensesCreated>
-                  <Description>
-                    <h6>Star Bucks</h6>
-                    <span>2 days in week</span>
-                  </Description>
-                  <Utils>
-                    <Features>
-                      <strong>$10.00</strong>
-                      <span>Fun Money</span>
-                    </Features>
-                    <Actions>
-                      <button type="button">
-                        <img src={moreIcon} alt="three points" />
-                      </button>
-                    </Actions>
-                  </Utils>
-                </ExpensesCreated>
-                <ExpensesCreated>
-                  <Description>
-                    <h6>Star Bucks</h6>
-                    <span>2 days in week</span>
-                  </Description>
-                  <Utils>
-                    <Features>
-                      <strong>$10.00</strong>
-                      <span>Fun Money</span>
-                    </Features>
-                    <Actions>
-                      <button type="button">
-                        <img src={moreIcon} alt="three points" />
-                      </button>
-                    </Actions>
-                  </Utils>
-                </ExpensesCreated>
-                <ExpensesCreated>
-                  <Description>
-                    <h6>Star Bucks</h6>
-                    <span>2 days in week</span>
-                  </Description>
-                  <Utils>
-                    <Features>
-                      <strong>$10.00</strong>
-                      <span>Fun Money</span>
-                    </Features>
-                    <Actions>
-                      <button type="button">
-                        <img src={moreIcon} alt="three points" />
-                      </button>
-                    </Actions>
-                  </Utils>
-                </ExpensesCreated>
-                <ExpensesCreated>
-                  <Description>
-                    <h6>Star Bucks</h6>
-                    <span>2 days in week</span>
-                  </Description>
-                  <Utils>
-                    <Features>
-                      <strong>$10.00</strong>
-                      <span>Fun Money</span>
-                    </Features>
-                    <Actions>
-                      <button type="button">
-                        <img src={moreIcon} alt="three points" />
-                      </button>
-                    </Actions>
-                  </Utils>
-                </ExpensesCreated>
+                <List
+                  data={[
+                    {
+                      id: v4(),
+                      title: 'Star Bucks',
+                      description: '2 days in week',
+                      money: 10.0,
+                      category: 'Fun Money'
+                    },
+                    {
+                      id: v4(),
+                      title: 'Star Bucks',
+                      description: '2 days in week',
+                      money: 10.0,
+                      category: 'Fun Money'
+                    }
+                  ]}
+                />
               </ExpenseList>
               <ExpenseFooter>
+                {/* <Button /> */}
                 <div className="actions">
-                  <button type="button">
-                    <img src={arrowLeftIcon} alt="arrow left" />
-                    Back
-                  </button>
-                  <button type="button">
-                    Next
-                    <img src={arrowRightIcon} alt="arrow right" />
-                  </button>
+                  <Button
+                    text="Back"
+                    theme="back"
+                    icon={{ url: arrowLeftIcon, altText: 'arrow left' }}
+                  />
+                  <Button
+                    text="Next"
+                    icon={{
+                      url: arrowRightIcon,
+                      altText: 'arrow right',
+                      side: 'right'
+                    }}
+                  />
                 </div>
 
                 <div className="money">

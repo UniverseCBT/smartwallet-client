@@ -188,11 +188,11 @@ export const ExpenseFooter = styled.div`
     justify-content: flex-end;
     align-items: center;
 
-    button:first-of-type {
+    /* button:first-of-type {
       color: #1ae5bd;
-    }
+    } */
 
-    button {
+    /* button {
       border: none;
       background: none;
       padding: 10px 10px 10px 25px;
@@ -219,7 +219,7 @@ export const ExpenseFooter = styled.div`
           padding: 12px 12px 12px 27px;
         }
       }
-    }
+    } */
   }
 
   .money {
