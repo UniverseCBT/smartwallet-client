@@ -121,7 +121,7 @@ const Expense = () => {
               </ExpenseForm>
               <ExpenseList>
                 <Filter
-                  title="Expense Created"
+                  title="Expenses"
                   setFilterValue={setFilterValue}
                   itemsFilter={[
                     {
