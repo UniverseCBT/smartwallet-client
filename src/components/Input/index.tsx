@@ -42,7 +42,7 @@ const Input: React.FC<InputProps> = ({ icon, text, type }) => {
 
   return (
     <Container>
-      <label>
+      <label htmlFor="input">
         <div>
           <img src={icon} alt={text} />
         </div>

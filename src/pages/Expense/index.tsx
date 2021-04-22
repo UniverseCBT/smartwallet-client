@@ -19,21 +19,12 @@ import {
   ExpenseForm,
   ExpenseLabel,
   ExpenseList,
-  ExpensesCreated,
-  Description,
-  Utils,
-  Features,
-  Actions,
   ExpenseFooter
 } from './styles';
 
 import investmentIcon from '../../assets/icons/investment.svg';
 import funIcon from '../../assets/icons/fun.svg';
 import billsIcon from '../../assets/icons/bills.svg';
-import moreVerticalIcon from '../../assets/icons/more-vertical.svg';
-import moreIcon from '../../assets/icons/more.svg';
-import trashIcon from '../../assets/icons/trash.svg';
-import penIcon from '../../assets/icons/pen.svg';
 import arrowLeftIcon from '../../assets/icons/arrowLeft.svg';
 import arrowRightIcon from '../../assets/icons/arrowRight.svg';
 
@@ -184,7 +175,6 @@ const Expense = () => {
                 />
               </ExpenseList>
               <ExpenseFooter>
-                {/* <Button /> */}
                 <div className="actions">
                   <Button
                     text="Back"

@@ -1,15 +1,18 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+type SelectProps = {
+  showSelect: boolean;
+};
+
+export const Container = styled.div``;
+
+export const Itens = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 15px 0;
-
-  & + div {
-    border-top: 1px solid #ececec;
-  }
+  border-top: 1px solid #ececec;
 `;
 
 export const Description = styled.div`
@@ -30,8 +33,15 @@ export const Utils = styled.div`
   align-items: center;
 `;
 
-export const Features = styled.div`
+export const WrapperUtils = styled.div`
+  position: relative;
+`;
+
+type FeatureProps = SelectProps;
+
+export const Features = styled.div<FeatureProps>`
   margin-right: 10px;
+  opacity: ${props => (props.showSelect ? '0' : '1')};
 
   strong,
   span {
@@ -51,21 +61,95 @@ export const Features = styled.div`
   }
 `;
 
-export const Actions = styled.div`
-  margin-left: 10px;
+export const Select = styled.div<SelectProps>`
+  background: #fff;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 4px;
+  display: ${props => (props.showSelect ? 'flex' : 'none')};
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 
-  > button {
-    background: none;
+  button {
     border: none;
-    border-radius: 1000px;
+    background: none;
+    position: relative;
+    padding: 10px 15px;
 
-    & + button {
-      margin-left: 10px;
+    svg path {
+      fill: #878787;
     }
 
-    img {
-      width: 20px;
-      height: 20px;
+    &:hover {
+      background: #174c64;
+
+      svg path {
+        fill: #fff;
+      }
+    }
+
+    & + button {
+      &:before {
+        content: '';
+        width: 1px;
+        height: 20px;
+        background: #ececec;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate3d(0, -50%, 0);
+      }
+
+      &:hover {
+        background: #f95151;
+
+        &:before {
+          content: '';
+          display: none;
+        }
+
+        svg path {
+          fill: #fff;
+        }
+      }
+    }
+  }
+`;
+
+type ActionsProps = SelectProps;
+
+export const Actions = styled.div<ActionsProps>`
+  margin-left: 10px;
+  display: flex;
+  justify-content: flex-end;
+
+  > button {
+    background: ${props => (props.showSelect ? '#1AE5BD' : '#fff')};
+    color: ${props => (props.showSelect ? '#fff' : '#1AE5BD')};
+    border: none;
+    border-radius: 4px;
+    padding: 5px 5px 5px 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    div {
+      height: 30px;
+      width: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        margin-left: 10px;
+
+        path {
+          fill: ${props => (props.showSelect ? '#fff' : '#1AE5BD')};
+        }
+      }
     }
   }
 `;

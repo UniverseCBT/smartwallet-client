@@ -89,6 +89,41 @@ const Select = ({
     }
   }
 
+  const teste = (optionItem: any) => {
+    switch (type) {
+      case 'teste2': {
+        return (
+          <button
+            type="button"
+            onClick={() => handleChangeLabel(optionItem.value)}
+            className={optionItem.label === inputLabel ? 'active' : ''}
+          >
+            <OptionsMain>
+              <OptionImage>
+                <img src={optionItem.icon} alt={optionItem.iconText} />
+              </OptionImage>
+              <OptionsContent>
+                <h4>{optionItem.label}</h4>
+                <p>{optionItem.description}</p>
+              </OptionsContent>
+            </OptionsMain>
+          </button>
+        );
+      }
+      default: {
+        return (
+          <button
+            type="button"
+            onClick={() => handleChangeLabel(optionItem.value)}
+            className={optionItem.label === inputLabel ? 'active' : ''}
+          >
+            {optionItem.label}
+          </button>
+        );
+      }
+    }
+  };
+
   return (
     <Container type={type}>
       <Label onClick={() => setOptionShow(!optionShow)} ref={labelRef}>
