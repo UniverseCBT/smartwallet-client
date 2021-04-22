@@ -127,7 +127,7 @@ export const Actions = styled.div<ActionsProps>`
 
   > button {
     background: ${props => (props.showSelect ? '#1AE5BD' : '#fff')};
-    color: ${props => (props.showSelect ? '#fff' : '#174c64')};
+    color: ${props => (props.showSelect ? '#fff' : '#1AE5BD')};
     border: none;
     border-radius: 4px;
     padding: 5px 5px 5px 10px;
@@ -147,7 +147,7 @@ export const Actions = styled.div<ActionsProps>`
         margin-left: 10px;
 
         path {
-          fill: ${props => (props.showSelect ? '#fff' : '#174c64')};
+          fill: ${props => (props.showSelect ? '#fff' : '#1AE5BD')};
         }
       }
     }
