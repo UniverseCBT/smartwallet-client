@@ -8,6 +8,11 @@ export default createGlobalStyle`
     outline: none;
   }
 
+  *::selection {
+    background: #174c64;
+    color: #F3F4F8;
+  }
+
   body {
     -webkit-font-smoothing: antialiased;
     background: #F3F4F8;
