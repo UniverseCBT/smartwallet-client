@@ -89,7 +89,7 @@ const Select = ({
     }
   }
 
-  const teste = (optionItem: any) => {
+  const size = (optionItem: any) => {
     switch (type) {
       case 'teste2': {
         return (

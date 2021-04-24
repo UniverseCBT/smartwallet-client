@@ -125,47 +125,53 @@ export const Options = styled.ul<SelectProps>`
     css`
       position: absolute;
       background: #fff;
+      display: block;
       width: 100%;
-      max-height: 80px;
       top: 70px;
       left: 0;
       list-style: none;
       border-radius: 8px;
       z-index: 1000;
-      overflow: hidden;
 
       @media screen and (min-width: 1024px) {
         display: flex;
         align-items: center;
+        overflow: hidden;
+        max-height: 80px;
       }
 
       li {
         button {
-          display: block;
           width: 100%;
-          height: 100vh;
-          background: none;
-          border: none;
-          text-align: left;
-          padding: 10px;
-          transition: all 0.2s;
-          overflow: hidden;
+          height: 100%;
 
-          &.active {
-            background: #1ae5bd;
-            border-radius: 8px;
+          @media screen and (min-width: 1024px) {
+            display: block;
+            width: 100%;
+            height: 100vh;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 10px;
+            transition: all 0.2s;
+            overflow: hidden;
 
-            p {
-              color: #fff;
+            &.active {
+              background: #1ae5bd;
+              border-radius: 8px;
+
+              p {
+                color: #fff;
+              }
             }
-          }
 
-          &:hover {
-            background: #1ae5bd;
-            border-radius: 8px;
+            &:hover {
+              background: #1ae5bd;
+              border-radius: 8px;
 
-            p {
-              color: #fff;
+              p {
+                color: #fff;
+              }
             }
           }
         }
