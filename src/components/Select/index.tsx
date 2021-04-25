@@ -23,8 +23,10 @@ export type OptionsProps = {
   value: string | number;
   label: string;
   description?: string;
-  icon?: string;
-  iconText?: string;
+  icon?: {
+    path: string;
+    text?: string;
+  };
 };
 
 type SelectProps = {
@@ -32,7 +34,7 @@ type SelectProps = {
   label: string;
   description?: string;
   setValue?: Dispatch<SetStateAction<string | number>>;
-  type?: string;
+  type?: 'simple' | 'medium' | 'complex';
 };
 
 const Select = ({
@@ -40,7 +42,7 @@ const Select = ({
   label,
   description,
   setValue,
-  type = 'default'
+  type = 'simple'
 }: SelectProps) => {
   const labelRef = useRef<HTMLDivElement | null>(null);
   const optionsRef = useRef<HTMLUListElement | null>(null);
@@ -89,28 +91,9 @@ const Select = ({
     }
   }
 
-  const size = (optionItem: any) => {
+  const selectType = (optionItem: OptionsProps) => {
     switch (type) {
-      case 'teste2': {
-        return (
-          <button
-            type="button"
-            onClick={() => handleChangeLabel(optionItem.value)}
-            className={optionItem.label === inputLabel ? 'active' : ''}
-          >
-            <OptionsMain>
-              <OptionImage>
-                <img src={optionItem.icon} alt={optionItem.iconText} />
-              </OptionImage>
-              <OptionsContent>
-                <h4>{optionItem.label}</h4>
-                <p>{optionItem.description}</p>
-              </OptionsContent>
-            </OptionsMain>
-          </button>
-        );
-      }
-      default: {
+      case 'simple':
         return (
           <button
             type="button"
@@ -120,7 +103,37 @@ const Select = ({
             {optionItem.label}
           </button>
         );
-      }
+        break;
+      case 'complex':
+        return (
+          <button
+            type="button"
+            onClick={() => handleChangeLabel(optionItem.value)}
+            className={optionItem.label === inputLabel ? 'active' : ''}
+          >
+            <OptionsMain>
+              <OptionImage>
+                <img src={optionItem.icon?.path} alt={optionItem.icon?.text} />
+              </OptionImage>
+              <OptionsContent>
+                <h4>{optionItem.label}</h4>
+                <p>{optionItem.description}</p>
+              </OptionsContent>
+            </OptionsMain>
+          </button>
+        );
+        break;
+      default:
+        return (
+          <button
+            type="button"
+            onClick={() => handleChangeLabel(optionItem.value)}
+            className={optionItem.label === inputLabel ? 'active' : ''}
+          >
+            {optionItem.label}
+          </button>
+        );
+        break;
     }
   };
 
@@ -146,33 +159,7 @@ const Select = ({
           {options &&
             options.length > 0 &&
             options.map(optionItem => (
-              <li key={optionItem.value}>
-                {type === 'default' ? (
-                  <button
-                    type="button"
-                    onClick={() => handleChangeLabel(optionItem.value)}
-                    className={optionItem.label === inputLabel ? 'active' : ''}
-                  >
-                    {optionItem.label}
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() => handleChangeLabel(optionItem.value)}
-                    className={optionItem.label === inputLabel ? 'active' : ''}
-                  >
-                    <OptionsMain>
-                      <OptionImage>
-                        <img src={optionItem.icon} alt={optionItem.iconText} />
-                      </OptionImage>
-                      <OptionsContent>
-                        <h4>{optionItem.label}</h4>
-                        <p>{optionItem.description}</p>
-                      </OptionsContent>
-                    </OptionsMain>
-                  </button>
-                )}
-              </li>
+              <li key={optionItem.value}>{selectType(optionItem)}</li>
             ))}
         </Options>
       )}
