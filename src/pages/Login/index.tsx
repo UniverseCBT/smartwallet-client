@@ -18,9 +18,6 @@ import Button from '../../components/Button';
 
 import LoginArt from '../../components/icons/LoginArt';
 
-import cardAcessIcon from '../../assets/icons/card.svg';
-import lockIcon from '../../assets/icons/lock.svg';
-
 const Login = () => {
   return (
     <Wrapper>
@@ -48,8 +45,8 @@ const Login = () => {
                   <h1>Welcome Back!</h1>
                   <p>Let`s sign you in</p>
                 </div>
-                <Input icon={cardAcessIcon} text="Username/Email" />
-                <Input icon={lockIcon} type="password" text="Password" />
+                <Input inputName="usernameOrEmail" text="Username/Email" />
+                <Input inputName="password" type="password" text="Password" />
                 <div>
                   <Link to="/">Forgot your password?</Link>
                 </div>

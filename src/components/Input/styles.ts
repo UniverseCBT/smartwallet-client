@@ -1,81 +1,83 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  user-select: none;
+  position: relative;
   width: 100%;
 
   & + div {
     margin-top: 10px;
   }
+`;
 
-  label {
-    position: relative;
-    display: flex;
-    align-items: center;
-    cursor: text;
-    background: #fff;
-    border-radius: 8px;
-    padding: 10px 5px 10px 20px;
-    height: 50px;
-    /* overflow: hidden; */
+export const Label = styled.label`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    > div {
-      position: relative;
-      height: 100%;
-      width: 35px;
-      display: flex;
-      align-items: center;
-      margin-right: 8px;
+  padding: 0 10px;
+  width: 100%;
+  height: 50px;
+  background: #fff;
+  border-radius: 4px;
+  cursor: text;
+  overflow: hidden;
+`;
 
-      &::after {
-        content: '';
-        position: relative;
-        left: 0;
-        top: 0;
-        display: block;
-        width: 2px;
-        height: 100%;
-        border-right: 1px solid #eeeeee;
-        margin-left: 15px;
-      }
+export const LabelValue = styled.div`
+  display: block;
+  position: relative;
+  padding: 8px 0;
+  width: 100%;
+  height: 100%;
 
-      img {
-        width: 40px;
-        height: 40px;
-      }
-    }
+  span {
+    display: block;
+    color: #646464;
+    font-weight: bold;
+    font-size: 10px;
+  }
 
-    input {
-      border: none;
-      position: relative;
-      margin-left: 20px;
-      margin-right: 45px;
-      font-size: 1.1em;
+  input {
+    display: block;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    margin-top: 5px;
+    padding-right: 55px;
+    font-weight: bold;
+    color: #c9c9c9;
+
+    &::placeholder {
       color: #c9c9c9;
-      font-weight: 300;
-      width: 100%;
-
-      &::placeholder {
-        font-size: 0.9em;
-        color: #c9c9c9;
-        font-weight: 300;
-      }
     }
+  }
+`;
 
-    > button {
-      border: none;
-      background: none;
-      position: absolute;
-      top: 50%;
-      right: 0;
-      transform: translate3d(0, -50%, 0);
-      background: #fff;
-      width: 40px;
-      height: 100%;
+export const VisiblePassword = styled.button`
+  position: absolute;
+  top: 50%;
+  right: 0;
+  border: none;
+  background: none;
+  transform: translate3d(0, -50%, 0);
+  background: #fff;
+  width: 50px;
+  height: 100%;
 
-      img {
-        height: 20px;
-        width: 20px;
-      }
-    }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate3d(0, -50%, 0);
+    background: #c9c9c9;
+    width: 2px;
+    height: 25px;
+  }
+
+  img {
+    height: 20px;
+    width: 20px;
   }
 `;

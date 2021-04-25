@@ -7,6 +7,7 @@ import SideNavigation from '../../components/_noauth/SideNavigation';
 import Content from '../../components/_noauth/Content';
 import Header from '../../components/_noauth/Header';
 import Form from '../../components/_noauth/Form';
+import Input from '../../components/Input';
 import Select, { OptionsProps } from '../../components/Select';
 import Filter from '../../components/Register/Filter';
 import List from '../../components/Register/List';
@@ -86,6 +87,9 @@ const Expense = () => {
               </div>
               <ExpenseForm>
                 <Row>
+                  <Col>
+                    <Input inputName="paycheck" text="text" />
+                  </Col>
                   <Col>
                     <ExpenseLabel>
                       <span>Paycheck</span>

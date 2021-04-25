@@ -51,11 +51,15 @@ const Register = () => {
                     month
                   </p>
                 </div>
-                <Input icon={nameIcon} type="text" text="Name" />
-                <Input icon={cardAcessIcon} type="text" text="Username" />
-                <Input icon={emailIcon} type="text" text="Email" />
-                <Input icon={lockIcon} type="password" text="Password" />
-                <Input icon={lockIcon} type="password" text="Repeat password" />
+                <Input inputName="name" type="text" text="Name" />
+                <Input inputName="username" type="text" text="Username" />
+                <Input inputName="email" type="text" text="Email" />
+                <Input inputName="password" type="password" text="Password" />
+                <Input
+                  inputName="confirmPassword"
+                  type="password"
+                  text="Repeat password"
+                />
                 <Button text="Next" />
               </Form>
             </Content>
