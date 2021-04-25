@@ -37,22 +37,28 @@ const Expense = () => {
       label: 'Investment',
       value: 'investment',
       description: 'From saving accounts to things you expect financial return',
-      icon: investmentIcon,
-      iconText: 'currency in up'
+      icon: {
+        path: investmentIcon,
+        text: 'currency in up'
+      }
     },
     {
       label: 'Fun money',
       value: 'funmoney',
       description: `You don't really need it but it makes your life better`,
-      icon: funIcon,
-      iconText: 'market'
+      icon: {
+        path: funIcon,
+        text: 'market'
+      }
     },
     {
       label: 'Bills',
       value: 'bills',
       description: 'Everything you have to pay',
-      icon: billsIcon,
-      iconText: 'Dolar in paper'
+      icon: {
+        path: billsIcon,
+        text: 'Dolar in paper'
+      }
     }
   ];
 
@@ -94,8 +100,8 @@ const Expense = () => {
                     <Select
                       options={selectOption}
                       label="Category"
-                      type="lg"
                       setValue={setSelectValue}
+                      type="complex"
                     />
                   </Col>
                   <Col>
