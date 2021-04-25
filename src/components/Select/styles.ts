@@ -129,13 +129,13 @@ export const Options = styled.ul<SelectProps>`
       padding: 10px 5px;
       list-style: none;
       z-index: 1000;
-      overflow: hidden;
 
       @media screen and (min-width: 1024px) {
         display: flex;
         align-items: center;
         max-height: 90px;
         padding: 0;
+        overflow: hidden;
       }
 
       li {
@@ -144,7 +144,6 @@ export const Options = styled.ul<SelectProps>`
         }
 
         button {
-          display: block;
           width: 100%;
           border: none;
           background: none;
@@ -161,8 +160,9 @@ export const Options = styled.ul<SelectProps>`
             background: #1ae5bd;
             border-radius: 8px;
 
-            p {
-              color: #fff;
+              p {
+                color: #fff;
+              }
             }
           }
         }
