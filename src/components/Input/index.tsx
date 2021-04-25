@@ -1,17 +1,18 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
-import { Container } from './styles';
+import { Container, Label, LabelValue, VisiblePassword } from './styles';
 
 import closeEyesIcon from '../../assets/icons/close_eyes.svg';
 import openEyesIcon from '../../assets/icons/open_eyes.svg';
 
 type InputProps = {
-  icon?: string;
+  inputName: string;
   text?: string;
+  placeholder?: string;
   type?: string;
 };
 
-const Input: React.FC<InputProps> = ({ icon, text, type }) => {
+const Input: React.FC<InputProps> = ({ inputName, text, type }) => {
   const [isPassword, setIsPassword] = useState(false);
   const [visible, setVisible] = useState(false);
   const [defaultType, setDefaultType] = useState('');
@@ -42,21 +43,26 @@ const Input: React.FC<InputProps> = ({ icon, text, type }) => {
 
   return (
     <Container>
-      <label htmlFor="input">
-        <div>
-          <img src={icon} alt={text} />
-        </div>
-
-        <input type={isPassword ? defaultType : type} placeholder={text} />
+      <Label htmlFor={inputName}>
+        <LabelValue>
+          <span>{text}</span>
+          <input
+            type={isPassword ? defaultType : type}
+            spellCheck="false"
+            autoComplete={type === 'email' ? 'true' : 'false'}
+            name={inputName}
+            id={inputName}
+          />
+        </LabelValue>
         {isPassword && (
-          <button type="button" onClick={() => visiblePasswordType()}>
+          <VisiblePassword type="button" onClick={() => visiblePasswordType()}>
             <img
               src={visible ? openEyesIcon : closeEyesIcon}
               alt={visible ? 'Visible' : 'Hidden'}
             />
-          </button>
+          </VisiblePassword>
         )}
-      </label>
+      </Label>
     </Container>
   );
 };

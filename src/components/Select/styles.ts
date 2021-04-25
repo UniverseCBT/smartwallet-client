@@ -60,7 +60,6 @@ export const LabelArrow = styled.div`
   display: flex;
   align-items: center;
   position: relative;
-  margin-top: 0 !important;
 
   &::before {
     content: '';
