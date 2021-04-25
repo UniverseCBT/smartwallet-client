@@ -8,7 +8,7 @@ export const Container = styled.div<SelectProps>`
   user-select: none;
 
   ${props =>
-    props.type === 'default'
+    props.type === 'simple'
       ? css`
           position: relative;
         `
@@ -79,7 +79,7 @@ export const LabelArrow = styled.div`
 
 export const Options = styled.ul<SelectProps>`
   ${props =>
-    props.type === 'default' &&
+    props.type === 'simple' &&
     css`
       position: absolute;
       top: 60px;
@@ -87,79 +87,76 @@ export const Options = styled.ul<SelectProps>`
       border-radius: 4px;
       width: 100%;
       max-height: 250px;
-      z-index: 1000;
       overflow-y: auto;
-      box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.07);
+      z-index: 1000;
+      padding: 5px;
 
-      li {
-        .active {
-          background: #174c64;
-          color: #f3f4f8;
+      li button {
+        display: block;
+        width: 100%;
+        background: none;
+        border: none;
+        padding: 10px;
+        text-align: left;
+        color: #1ae5bd;
+        font-size: 0.8rem;
+        font-weight: 500;
+        transition: all 0.2s;
 
-          &:hover {
-            color: #f3f4f8;
-          }
+        &.active,
+        &:hover {
+          background: #1ae5bd;
+          color: #fff;
+          border-radius: 4px;
         }
+      }
 
-        button {
-          list-style: none;
-          padding: 10px;
-          cursor: pointer;
-          color: #c9c9c9;
-          background: transparent;
-          border: none;
-          width: 100%;
-          text-align: left;
-          font-size: 0.9rem;
-          font-weight: bold;
-
-          &:hover {
-            color: #174c64;
-          }
-        }
+      li + li button {
+        margin-top: 5px;
       }
     `}
 
   ${props =>
-    props.type !== 'default' &&
+    props.type === 'complex' &&
     css`
       position: absolute;
-      background: #fff;
-      width: 100%;
-      max-height: 80px;
-      top: 70px;
+      top: 60px;
       left: 0;
-      list-style: none;
+      display: block;
+      width: 100%;
+      background: #fff;
       border-radius: 8px;
+      padding: 10px 5px;
+      list-style: none;
       z-index: 1000;
       overflow: hidden;
 
       @media screen and (min-width: 1024px) {
         display: flex;
         align-items: center;
+        max-height: 90px;
+        padding: 0;
       }
 
       li {
+        @media screen and (min-width: 1024px) {
+          flex: 1;
+        }
+
         button {
           display: block;
           width: 100%;
-          height: 100vh;
-          background: none;
           border: none;
+          background: none;
           text-align: left;
-          padding: 10px;
           transition: all 0.2s;
-          overflow: hidden;
+          padding: 10px;
 
-          &.active {
-            background: #1ae5bd;
-            border-radius: 8px;
-
-            p {
-              color: #fff;
-            }
+          @media screen and (min-width: 1024px) {
+            height: 100vh;
           }
 
+          &.active,
           &:hover {
             background: #1ae5bd;
             border-radius: 8px;
@@ -169,9 +166,13 @@ export const Options = styled.ul<SelectProps>`
             }
           }
         }
+      }
+
+      li + li button {
+        margin-top: 10px;
 
         @media screen and (min-width: 1024px) {
-          flex: 1;
+          margin-top: 0;
         }
       }
     `}
@@ -181,10 +182,8 @@ export const OptionsMain = styled.div`
   display: flex;
   align-items: center;
 
-  @media screen and (min-width: 1024px) {
-    > div + div {
-      flex: 5;
-    }
+  > div + div {
+    flex: 5;
   }
 `;
 
