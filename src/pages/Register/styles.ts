@@ -57,3 +57,10 @@ export const Container = styled.div`
     }
   }
 `;
+
+export const Footer = styled.div`
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  justify-content: flex-end;
+`;

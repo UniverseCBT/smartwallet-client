@@ -6,7 +6,7 @@ export const Container = styled.div`
   width: 100%;
 
   & + div {
-    margin-top: 10px;
+    margin-top: 20px;
   }
 `;
 
@@ -47,6 +47,14 @@ export const LabelValue = styled.div`
     padding-right: 55px;
     font-weight: bold;
     color: #c9c9c9;
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: #c9c9c9;
+    }
 
     &::placeholder {
       color: #c9c9c9;

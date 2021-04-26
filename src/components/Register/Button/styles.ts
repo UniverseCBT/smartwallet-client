@@ -3,32 +3,28 @@ import styled, { css } from 'styled-components';
 type ButtonProps = {
   theme: string;
   themeExist: boolean;
+  icon: boolean;
 };
 
 export const Container = styled.button<ButtonProps>`
   & + button {
-    margin-left: 10px;
+    margin-left: 20px;
   }
 
   ${props =>
     (!props.themeExist || props.theme === 'primary') &&
     css`
       box-shadow: rgb(26 229 189) 0px 4px 14px 0px;
-      margin-left: 20px;
       background: #1ae5bd;
       color: #fff;
       border: none;
-      padding: 10px 10px 10px 25px;
+      padding: ${props.icon ? '10px 10px 10px 25px' : '10px 30px'};
       font-size: 1rem;
       border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: padding 0.2s;
-
-      &:hover {
-        padding: 12px 12px 12px 27px;
-      }
     `}
 
   ${props =>

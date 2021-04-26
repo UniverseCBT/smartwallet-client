@@ -7,22 +7,21 @@ import SideNavigation from '../../components/_noauth/SideNavigation';
 import Content from '../../components/_noauth/Content';
 import Header from '../../components/_noauth/Header';
 import Form from '../../components/_noauth/Form';
+
 import Input from '../../components/Input';
 import Select, { OptionsProps } from '../../components/Select';
 import Filter from '../../components/Register/Filter';
 import List from '../../components/Register/List';
-import Button from '../../components/Register/Button';
+import RegisterFooter from '../../components/Register/Footer';
 
 import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
 
-import { ExpenseForm, ButtonForm, ExpenseList, ExpenseFooter } from './styles';
+import { ExpenseForm, ButtonForm, ExpenseList } from './styles';
 
 import investmentIcon from '../../assets/icons/investment.svg';
 import funIcon from '../../assets/icons/fun.svg';
 import billsIcon from '../../assets/icons/bills.svg';
-import arrowLeftIcon from '../../assets/icons/arrowLeft.svg';
-import arrowRightIcon from '../../assets/icons/arrowRight.svg';
 
 const Expense = () => {
   const [selectValue, setSelectValue] = useState<string | number>('' || 0);
@@ -170,28 +169,7 @@ const Expense = () => {
                   ]}
                 />
               </ExpenseList>
-              <ExpenseFooter>
-                <div className="actions">
-                  <Button
-                    text="Back"
-                    theme="back"
-                    icon={{ url: arrowLeftIcon, altText: 'arrow left' }}
-                  />
-                  <Button
-                    text="Next"
-                    icon={{
-                      url: arrowRightIcon,
-                      altText: 'arrow right',
-                      side: 'right'
-                    }}
-                  />
-                </div>
-
-                <div className="money">
-                  <h4>Total Expected</h4>
-                  <span>$0</span>
-                </div>
-              </ExpenseFooter>
+              <RegisterFooter totalMoney={0} />
             </Form>
           </Content>
         </Col>

@@ -49,7 +49,7 @@ const Input: React.FC<InputProps> = ({ inputName, text, type }) => {
           <input
             type={isPassword ? defaultType : type}
             spellCheck="false"
-            autoComplete={type === 'email' ? 'true' : 'false'}
+            autoComplete={type === 'email' ? 'on' : 'off'}
             name={inputName}
             id={inputName}
           />

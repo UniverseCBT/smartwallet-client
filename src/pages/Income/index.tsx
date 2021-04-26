@@ -2,20 +2,9 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { v4 } from 'uuid';
 
-import { transformCurrency } from '../../shared/currency';
 import { detectPhone } from '../../shared/detectPhone';
 
-import {
-  PaycheckForm,
-  PaycheckLabel,
-  PaycheckList,
-  PaycheckItems,
-  PaycheckFooter,
-  Card,
-  Image,
-  Utils,
-  Money
-} from './styles';
+import { PaycheckForm, ButtonForm, PaycheckLabel } from './styles';
 
 import Wrapper from '../../components/_noauth/Wrapper';
 
@@ -26,16 +15,18 @@ import Header from '../../components/_noauth/Header';
 import Content, { Ref } from '../../components/_noauth/Content';
 import Form from '../../components/_noauth/Form';
 import Select, { OptionsProps } from '../../components/Select';
+import Input from '../../components/Input';
 import SideNavigation from '../../components/_noauth/SideNavigation';
 
-import card from '../../assets/icons/card.svg';
-import more from '../../assets/icons/more.svg';
+import RegisterList from '../../components/Register/List';
+import RegisterFooter from '../../components/Register/Footer';
 
 type PaycheckItems = {
   id: string;
-  name: string;
-  date: string;
-  expected_money: number;
+  title: string;
+  description: string;
+  money: number;
+  category?: string;
 };
 
 const Income = () => {
@@ -94,9 +85,9 @@ const Income = () => {
       ...paycheckItems,
       {
         id: v4(),
-        name: 'Back end engineer',
-        date: 'Weekly',
-        expected_money: 500
+        title: 'Back end engineer',
+        description: 'Weekly',
+        money: 500
       }
     ]);
   };
@@ -137,14 +128,7 @@ const Income = () => {
               <PaycheckForm>
                 <Row>
                   <Col>
-                    <PaycheckLabel htmlFor="paycheck">
-                      <span>Paycheck</span>
-                      <input
-                        type="text"
-                        id="paycheck"
-                        placeholder="Paycheck name"
-                      />
-                    </PaycheckLabel>
+                    <Input inputName="name" text="Income Name" />
                   </Col>
                   <Col>
                     <Select
@@ -154,25 +138,17 @@ const Income = () => {
                     />
                   </Col>
                   <Col>
-                    <PaycheckLabel htmlFor="expectedMoney">
-                      <span>Expected money</span>
-                      <input type="text" id="expectedMoney" />
-                    </PaycheckLabel>
+                    <Input inputName="expectedMoney" text="Expected Money" />
                   </Col>
-                  <Col column={1}>
-                    <div className="right-button">
-                      <div className="total">
-                        <span>Expected</span>
-                        <h4>$1500.00</h4>
-                      </div>
-                      <button type="button" onClick={handleAddPaycheckList}>
-                        <img src={more} alt="more paycheck" />
-                      </button>
-                    </div>
+                  <Col column={1} align="center">
+                    <ButtonForm type="button" onClick={handleAddPaycheckList}>
+                      +
+                    </ButtonForm>
                   </Col>
                 </Row>
               </PaycheckForm>
-              <PaycheckList ref={paycheckListRef}>
+              <RegisterList data={paycheckItems} />
+              {/* <PaycheckList ref={paycheckListRef}>
                 {paycheckItems.length > 0 && <h2>Paychecks added</h2>}
                 {paycheckItems.length > 0 &&
                   paycheckItems.map(paycheck => (
@@ -194,20 +170,8 @@ const Income = () => {
                       </Card>
                     </PaycheckItems>
                   ))}
-              </PaycheckList>
-              <PaycheckFooter
-                ref={paycheckFooterRef}
-                showActionButtons={showActionButtons}
-              >
-                <div className="money">
-                  <span>Total Expected</span>
-                  <h4>$ 1500.00</h4>
-                </div>
-                <div className="actions">
-                  <button type="button">Back</button>
-                  <button type="button">Next</button>
-                </div>
-              </PaycheckFooter>
+              </PaycheckList> */}
+              <RegisterFooter totalMoney={0} />
             </Form>
           </Content>
         </Col>
