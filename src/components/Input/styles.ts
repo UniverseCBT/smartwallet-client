@@ -48,6 +48,14 @@ export const LabelValue = styled.div`
     font-weight: bold;
     color: #c9c9c9;
 
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: #c9c9c9;
+    }
+
     &::placeholder {
       color: #c9c9c9;
     }
