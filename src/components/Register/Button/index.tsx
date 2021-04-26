@@ -20,6 +20,7 @@ const Button = ({ theme, text, icon, onClick }: Props) => {
       type="button"
       theme={theme}
       themeExist={!!theme}
+      icon={!!icon}
     >
       {icon && (!icon.side || icon.side === 'left') && (
         <img src={icon.url} alt={icon.altText} />

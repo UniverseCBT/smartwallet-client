@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 type ButtonProps = {
   theme: string;
   themeExist: boolean;
+  icon: boolean;
 };
 
 export const Container = styled.button<ButtonProps>`
@@ -17,7 +18,7 @@ export const Container = styled.button<ButtonProps>`
       background: #1ae5bd;
       color: #fff;
       border: none;
-      padding: 10px 10px 10px 25px;
+      padding: ${props.icon ? '10px 10px 10px 25px' : '10px 30px'};
       font-size: 1rem;
       border-radius: 4px;
       display: flex;
