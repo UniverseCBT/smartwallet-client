@@ -76,34 +76,16 @@ export const ExpenseForm = styled.div`
   }
 `;
 
-export const ExpenseLabel = styled.div`
-  display: block;
-  position: relative;
-  background: #fff;
-  padding: 8px 2px 8px 8px;
-  cursor: text;
-  width: 100%;
-  border-radius: 8px;
-  user-select: none;
-
-  span {
-    display: block;
-    color: #646464;
-    font-weight: bold;
-    font-size: 10px;
-  }
-
-  input {
-    border: none;
-    font-size: 16px;
-    margin-top: 5px;
-    font-weight: bold;
-    color: #c9c9c9;
-
-    &::placeholder {
-      color: #c9c9c9;
-    }
-  }
+export const ButtonForm = styled.button`
+  border: none;
+  background: #1ae5bd;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px 15px;
+  border-radius: 1000px;
+  width: 40px;
+  height: 40px;
 `;
 
 export const ExpenseList = styled.div`
@@ -187,39 +169,6 @@ export const ExpenseFooter = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-
-    /* button:first-of-type {
-      color: #1ae5bd;
-    } */
-
-    /* button {
-      border: none;
-      background: none;
-      padding: 10px 10px 10px 25px;
-      color: #1ae5bd;
-      font-size: 1rem;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: padding 0.2s;
-
-      img {
-        margin: 0 15px;
-        width: 10px;
-      }
-
-      & + button {
-        box-shadow: rgb(26 229 189) 0px 4px 14px 0px;
-        margin-left: 20px;
-        background: #1ae5bd;
-        color: #fff;
-
-        &:hover {
-          padding: 12px 12px 12px 27px;
-        }
-      }
-    } */
   }
 
   .money {

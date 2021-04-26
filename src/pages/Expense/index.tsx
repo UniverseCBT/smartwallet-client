@@ -16,12 +16,7 @@ import Button from '../../components/Register/Button';
 import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
 
-import {
-  ExpenseForm,
-  ExpenseLabel,
-  ExpenseList,
-  ExpenseFooter
-} from './styles';
+import { ExpenseForm, ButtonForm, ExpenseList, ExpenseFooter } from './styles';
 
 import investmentIcon from '../../assets/icons/investment.svg';
 import funIcon from '../../assets/icons/fun.svg';
@@ -88,17 +83,10 @@ const Expense = () => {
               <ExpenseForm>
                 <Row>
                   <Col>
-                    <Input inputName="paycheck" text="text" />
+                    <Input inputName="name" text="Habit Name" />
                   </Col>
                   <Col>
-                    <ExpenseLabel>
-                      <span>Paycheck</span>
-                      <input
-                        type="text"
-                        id="paycheck"
-                        placeholder="Paycheck name"
-                      />
-                    </ExpenseLabel>
+                    <Input inputName="spent" text="Expected spent" />
                   </Col>
                   <Col>
                     <Select
@@ -108,15 +96,13 @@ const Expense = () => {
                       type="complex"
                     />
                   </Col>
-                  <Col>
-                    <ExpenseLabel>
-                      <span>Paycheck</span>
-                      <input
-                        type="text"
-                        id="paycheck"
-                        placeholder="Paycheck name"
-                      />
-                    </ExpenseLabel>
+                  <Col column={1} align="center">
+                    <ButtonForm
+                      type="button"
+                      // onClick={handleAddPaycheckList}
+                    >
+                      +
+                    </ButtonForm>
                   </Col>
                 </Row>
               </ExpenseForm>
