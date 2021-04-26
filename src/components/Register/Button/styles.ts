@@ -7,14 +7,13 @@ type ButtonProps = {
 
 export const Container = styled.button<ButtonProps>`
   & + button {
-    margin-left: 10px;
+    margin-left: 20px;
   }
 
   ${props =>
     (!props.themeExist || props.theme === 'primary') &&
     css`
       box-shadow: rgb(26 229 189) 0px 4px 14px 0px;
-      margin-left: 20px;
       background: #1ae5bd;
       color: #fff;
       border: none;
@@ -25,10 +24,6 @@ export const Container = styled.button<ButtonProps>`
       align-items: center;
       justify-content: center;
       transition: padding 0.2s;
-
-      &:hover {
-        padding: 12px 12px 12px 27px;
-      }
     `}
 
   ${props =>

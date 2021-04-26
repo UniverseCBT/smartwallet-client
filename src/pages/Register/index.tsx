@@ -48,15 +48,17 @@ const Register = () => {
                     month
                   </p>
                 </div>
-                <Input inputName="name" type="text" text="Name" />
-                <Input inputName="username" type="text" text="Username" />
-                <Input inputName="email" type="text" text="Email" />
-                <Input inputName="password" type="password" text="Password" />
-                <Input
-                  inputName="confirmPassword"
-                  type="password"
-                  text="Repeat password"
-                />
+                <div>
+                  <Input inputName="name" type="text" text="Name" />
+                  <Input inputName="username" type="text" text="Username" />
+                  <Input inputName="email" type="text" text="Email" />
+                  <Input inputName="password" type="password" text="Password" />
+                  <Input
+                    inputName="confirmPassword"
+                    type="password"
+                    text="Repeat password"
+                  />
+                </div>
                 <Footer>
                   <RegisterButton
                     text="Next"
