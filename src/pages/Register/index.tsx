@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Wrapper from '../../components/_noauth/Wrapper';
 
-import { Container } from './styles';
+import { Container, Footer } from './styles';
 
 import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
@@ -14,12 +14,9 @@ import Form from '../../components/_noauth/Form';
 import SideNavigation from '../../components/_noauth/SideNavigation';
 
 import Input from '../../components/Input';
-import Button from '../../components/Button';
+import RegisterButton from '../../components/Register/Button';
 
-import nameIcon from '../../assets/icons/name.svg';
-import emailIcon from '../../assets/icons/email.svg';
-import cardAcessIcon from '../../assets/icons/card.svg';
-import lockIcon from '../../assets/icons/lock.svg';
+import arrowRightIcon from '../../assets/icons/arrowRight.svg';
 
 const Register = () => {
   return (
@@ -60,7 +57,16 @@ const Register = () => {
                   type="password"
                   text="Repeat password"
                 />
-                <Button text="Next" />
+                <Footer>
+                  <RegisterButton
+                    text="Next"
+                    icon={{
+                      url: arrowRightIcon,
+                      altText: 'Arrow Right',
+                      side: 'right'
+                    }}
+                  />
+                </Footer>
               </Form>
             </Content>
           </Col>

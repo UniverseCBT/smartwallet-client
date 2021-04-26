@@ -92,57 +92,6 @@ export const ExpenseList = styled.div`
   position: relative;
 `;
 
-export const ExpensesCreated = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 0;
-
-  & + div {
-    border-top: 1px solid #ececec;
-  }
-`;
-
-export const Description = styled.div`
-  h6 {
-    color: #878787;
-    font-size: 1.2rem;
-  }
-
-  span {
-    display: block;
-    font-size: 0.9rem;
-    color: #c9c9c9;
-  }
-`;
-
-export const Utils = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-export const Features = styled.div`
-  margin-right: 10px;
-
-  strong,
-  span {
-    display: block;
-    text-align: right;
-  }
-
-  strong {
-    font-size: 1.4rem;
-    color: #878787;
-  }
-
-  span {
-    display: block;
-    font-size: 0.9rem;
-    color: #c9c9c9;
-  }
-`;
-
 export const Actions = styled.div`
   margin-left: 10px;
 
@@ -158,38 +107,6 @@ export const Actions = styled.div`
     img {
       width: 20px;
       height: 20px;
-    }
-  }
-`;
-
-export const ExpenseFooter = styled.div`
-  margin-top: 60px;
-
-  .actions {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-
-  .money {
-    padding-top: 10px;
-    border-top: 1px solid #ececec;
-    margin: 20px 0 0;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 100%;
-
-    h4 {
-      font-size: 0.8rem;
-      color: #c9c9c9;
-      font-weight: normal;
-    }
-
-    span {
-      font-size: 1.6rem;
-      color: #878787;
-      font-weight: bold;
     }
   }
 `;
