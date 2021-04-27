@@ -22,7 +22,7 @@ const Routes = () => {
         <Route path="/register/expense" component={Expense} isPrivate />
         <Route path="/register/overview" component={Overview} isPrivate />
 
-        <Route path="/" component={Dashboard} isPrivate />
+        <Route path="/" exact component={Dashboard} isPrivate />
       </Switch>
     </BrowserRouter>
   );
