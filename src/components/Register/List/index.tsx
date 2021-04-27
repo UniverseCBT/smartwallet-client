@@ -28,14 +28,15 @@ type DataProps = {
 
 type Props = {
   data: DataProps[];
+  actionButton?: boolean;
 };
 
-const List = ({ data }: Props) => {
+const List = ({ data, actionButton = true }: Props) => {
   const [showSelect, setShowSelect] = useState(false);
 
   return (
     <Container>
-      {data.length > 0 && (
+      {data.length > 0 && actionButton && (
         <Actions showSelect={showSelect}>
           <button type="button" onClick={() => setShowSelect(!showSelect)}>
             Edit / Delete
@@ -44,7 +45,7 @@ const List = ({ data }: Props) => {
         </Actions>
       )}
       {data.map(dataItem => (
-        <Itens key={dataItem.id}>
+        <Itens key={dataItem.id} border={actionButton}>
           <Description>
             <h6>{dataItem.title}</h6>
             <span>{dataItem.description}</span>
