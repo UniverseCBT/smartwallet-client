@@ -7,6 +7,7 @@ import Register from '../pages/Register';
 // Private routes
 import Income from '../pages/Income';
 import Expense from '../pages/Expense';
+import Overview from '../pages/Overview';
 
 const Routes = () => {
   return (
@@ -19,6 +20,7 @@ const Routes = () => {
         <Route path="/register/perfil" component={Register} />
         <Route path="/register/income" component={Income} isPrivate />
         <Route path="/register/expense" component={Expense} isPrivate />
+        <Route path="/register/overview" component={Overview} isPrivate />
       </Switch>
     </BrowserRouter>
   );
