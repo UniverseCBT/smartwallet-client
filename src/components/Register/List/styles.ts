@@ -6,20 +6,15 @@ type SelectProps = {
 
 export const Container = styled.div``;
 
-type ItensProps = {
-  border?: boolean;
-};
-
-export const Itens = styled.div<ItensProps>`
+export const Itens = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 15px 0;
-  border-top: ${props => (props.border ? '1px solid #ececec' : 'none')};
 
   & + div {
-    border-top: ${props => (props.border ? 'none' : '1px solid #ececec')};
+    border-top: 1px solid #ececec;
   }
 `;
 

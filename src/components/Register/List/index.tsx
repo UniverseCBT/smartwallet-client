@@ -31,45 +31,49 @@ type Props = {
   actionButton?: boolean;
 };
 
-const List = ({ data, actionButton = true }: Props) => {
-  const [showSelect, setShowSelect] = useState(false);
+const List = React.forwardRef(
+  (props: Props, ref?: React.Ref<HTMLDivElement>) => {
+    const { data, actionButton = true } = props;
 
-  return (
-    <Container>
-      {data.length > 0 && actionButton && (
-        <Actions showSelect={showSelect}>
-          <button type="button" onClick={() => setShowSelect(!showSelect)}>
-            Edit / Delete
-            <div>{showSelect ? <Close /> : <Menu />}</div>
-          </button>
-        </Actions>
-      )}
-      {data.map(dataItem => (
-        <Itens key={dataItem.id} border={actionButton}>
-          <Description>
-            <h6>{dataItem.title}</h6>
-            <span>{dataItem.description}</span>
-          </Description>
-          <Utils>
-            <WrapperUtils>
-              <Features showSelect={showSelect}>
-                <strong>{transformMoney(dataItem.money)}</strong>
-                {dataItem.category && <span>{dataItem.category}</span>}
-              </Features>
-              <Select showSelect={showSelect}>
-                <button type="button">
-                  <Pen width={15} height={15} />
-                </button>
-                <button type="button">
-                  <Trash width={15} height={15} />
-                </button>
-              </Select>
-            </WrapperUtils>
-          </Utils>
-        </Itens>
-      ))}
-    </Container>
-  );
-};
+    const [showSelect, setShowSelect] = useState(false);
+
+    return (
+      <Container ref={ref}>
+        {data.length > 0 && actionButton && (
+          <Actions showSelect={showSelect}>
+            <button type="button" onClick={() => setShowSelect(!showSelect)}>
+              Edit / Delete
+              <div>{showSelect ? <Close /> : <Menu />}</div>
+            </button>
+          </Actions>
+        )}
+        {data.map(dataItem => (
+          <Itens key={dataItem.id}>
+            <Description>
+              <h6>{dataItem.title}</h6>
+              <span>{dataItem.description}</span>
+            </Description>
+            <Utils>
+              <WrapperUtils>
+                <Features showSelect={showSelect}>
+                  <strong>{transformMoney(dataItem.money)}</strong>
+                  {dataItem.category && <span>{dataItem.category}</span>}
+                </Features>
+                <Select showSelect={showSelect}>
+                  <button type="button">
+                    <Pen width={15} height={15} />
+                  </button>
+                  <button type="button">
+                    <Trash width={15} height={15} />
+                  </button>
+                </Select>
+              </WrapperUtils>
+            </Utils>
+          </Itens>
+        ))}
+      </Container>
+    );
+  }
+);
 
 export default List;

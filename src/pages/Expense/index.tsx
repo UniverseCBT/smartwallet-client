@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { v4 } from 'uuid';
 
 import Wrapper from '../../components/_noauth/Wrapper';
 import SideNavigation from '../../components/_noauth/SideNavigation';
-import Content from '../../components/_noauth/Content';
+import Content, { Ref } from '../../components/_noauth/Content';
 import Header from '../../components/_noauth/Header';
 import Form from '../../components/_noauth/Form';
 
@@ -17,15 +17,46 @@ import RegisterFooter from '../../components/Register/Footer';
 import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
 
+import { detectPhone } from '../../shared/detectPhone';
+
 import { ExpenseForm, ButtonForm, ExpenseList } from './styles';
 
 import investmentIcon from '../../assets/icons/investment.svg';
 import funIcon from '../../assets/icons/fun.svg';
 import billsIcon from '../../assets/icons/bills.svg';
 
+type ExpenseItems = {
+  id: string;
+  title: string;
+  description: string;
+  money: number;
+  category?: string;
+};
+
 const Expense = () => {
+  const [habitsItems, setHabitsItems] = useState<ExpenseItems[]>([]);
   const [selectValue, setSelectValue] = useState<string | number>('' || 0);
   const [filterValue, setFilterValue] = useState<string>('all');
+
+  const contentRef = useRef<Ref | null>(null);
+  const habitListRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (contentRef.current && habitListRef.current) {
+      contentRef.current.scrollTo({
+        top: habitListRef.current.clientHeight,
+        behavior: 'smooth'
+      });
+
+      const detectMobilePhone = detectPhone();
+      if (detectMobilePhone && habitsItems.length > 5) {
+        window.scrollTo({
+          top: habitListRef.current.clientHeight + 100,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }, [contentRef, habitsItems, habitListRef]);
 
   const selectOption: OptionsProps[] = [
     {
@@ -57,6 +88,19 @@ const Expense = () => {
     }
   ];
 
+  const handleAddPaycheckList = () => {
+    setHabitsItems([
+      ...habitsItems,
+      {
+        id: v4(),
+        title: 'Star Bucks',
+        description: '2 days in week',
+        money: 10.0,
+        category: 'Fun Money'
+      }
+    ]);
+  };
+
   return (
     <Wrapper>
       <Row>
@@ -64,7 +108,7 @@ const Expense = () => {
           <SideNavigation />
         </Col>
         <Col column={3}>
-          <Content>
+          <Content ref={contentRef}>
             <Header>
               <p>
                 {`Having trouble ? `}
@@ -96,10 +140,7 @@ const Expense = () => {
                     />
                   </Col>
                   <Col column={1} align="center">
-                    <ButtonForm
-                      type="button"
-                      // onClick={handleAddPaycheckList}
-                    >
+                    <ButtonForm type="button" onClick={handleAddPaycheckList}>
                       +
                     </ButtonForm>
                   </Col>
@@ -150,24 +191,7 @@ const Expense = () => {
                     }
                   ]}
                 />
-                <List
-                  data={[
-                    {
-                      id: v4(),
-                      title: 'Star Bucks',
-                      description: '2 days in week',
-                      money: 10.0,
-                      category: 'Fun Money'
-                    },
-                    {
-                      id: v4(),
-                      title: 'Star Bucks',
-                      description: '2 days in week',
-                      money: 10.0,
-                      category: 'Fun Money'
-                    }
-                  ]}
-                />
+                <List data={habitsItems} ref={habitListRef} />
               </ExpenseList>
               <RegisterFooter totalMoney={0} />
             </Form>
