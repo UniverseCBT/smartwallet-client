@@ -8,14 +8,12 @@ type ContentProps = {
 
 export type Ref = HTMLDivElement;
 
-const Content = React.forwardRef<Ref, ContentProps>(
-  (props: ContentProps, ref: React.Ref<Ref>) => {
-    return (
-      <Background ref={ref}>
-        <Container>{props.children}</Container>
-      </Background>
-    );
-  }
-);
+const Content = React.forwardRef((props: ContentProps, ref: React.Ref<Ref>) => {
+  return (
+    <Background ref={ref}>
+      <Container>{props.children}</Container>
+    </Background>
+  );
+});
 
 export default Content;

@@ -87,33 +87,3 @@ export const ButtonForm = styled.button`
   width: 40px;
   height: 40px;
 `;
-
-export const PaycheckLabel = styled.label`
-  display: block;
-  position: relative;
-  background: #fff;
-  padding: 8px 2px 8px 8px;
-  cursor: text;
-  width: 100%;
-  border-radius: 8px;
-  user-select: none;
-
-  span {
-    display: block;
-    color: #646464;
-    font-weight: bold;
-    font-size: 10px;
-  }
-
-  input {
-    border: none;
-    font-size: 16px;
-    margin-top: 5px;
-    font-weight: bold;
-    color: #c9c9c9;
-
-    &::placeholder {
-      color: #c9c9c9;
-    }
-  }
-`;

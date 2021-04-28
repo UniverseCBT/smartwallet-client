@@ -4,7 +4,7 @@ import { v4 } from 'uuid';
 
 import { detectPhone } from '../../shared/detectPhone';
 
-import { PaycheckForm, ButtonForm, PaycheckLabel } from './styles';
+import { PaycheckForm, ButtonForm } from './styles';
 
 import Wrapper from '../../components/_noauth/Wrapper';
 
@@ -31,35 +31,11 @@ type PaycheckItems = {
 
 const Income = () => {
   const [paycheckItems, setPaycheckItems] = useState<PaycheckItems[]>([]);
-  const [showActionButtons, setShowActionsButtons] = useState(false);
 
   const [selectValue, setSelectValue] = useState<string | number>('' || 0);
 
-  const contentRef = React.createRef<Ref>();
-  const paycheckFooterRef = useRef<HTMLDivElement>(null);
-  const paycheckListRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function activeCallButons() {
-      const windowTop = window.pageYOffset;
-
-      if (contentRef.current) {
-        const contentTopDiff = windowTop - contentRef.current?.offsetTop;
-
-        if (contentTopDiff > -10) {
-          setShowActionsButtons(true);
-        } else {
-          setShowActionsButtons(false);
-        }
-      }
-    }
-
-    window.addEventListener('scroll', activeCallButons);
-
-    return () => {
-      window.removeEventListener('scroll', activeCallButons);
-    };
-  }, [contentRef, setShowActionsButtons]);
+  const contentRef = useRef<Ref | null>(null);
+  const paycheckListRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (contentRef.current && paycheckListRef.current) {
@@ -69,13 +45,11 @@ const Income = () => {
       });
 
       const detectMobilePhone = detectPhone();
-      if (detectMobilePhone) {
-        if (paycheckItems.length > 5) {
-          window.scrollTo({
-            top: paycheckListRef.current.clientHeight + 100,
-            behavior: 'smooth'
-          });
-        }
+      if (detectMobilePhone && paycheckItems.length > 5) {
+        window.scrollTo({
+          top: paycheckListRef.current.clientHeight + 100,
+          behavior: 'smooth'
+        });
       }
     }
   }, [contentRef, paycheckItems, paycheckListRef]);
@@ -147,30 +121,7 @@ const Income = () => {
                   </Col>
                 </Row>
               </PaycheckForm>
-              <RegisterList data={paycheckItems} />
-              {/* <PaycheckList ref={paycheckListRef}>
-                {paycheckItems.length > 0 && <h2>Paychecks added</h2>}
-                {paycheckItems.length > 0 &&
-                  paycheckItems.map(paycheck => (
-                    <PaycheckItems key={paycheck.id}>
-                      <Card>
-                        <Image>
-                          <img src={card} alt="checked icon" />
-                        </Image>
-                        <Utils>
-                          <strong>{paycheck.name}</strong>
-                          <span>{paycheck.date}</span>
-                        </Utils>
-                        <Money>
-                          <span>Expected</span>
-                          <strong>
-                            {transformCurrency(paycheck.expected_money)}
-                          </strong>
-                        </Money>
-                      </Card>
-                    </PaycheckItems>
-                  ))}
-              </PaycheckList> */}
+              <RegisterList data={paycheckItems} ref={paycheckListRef} />
               <RegisterFooter totalMoney={0} />
             </Form>
           </Content>
