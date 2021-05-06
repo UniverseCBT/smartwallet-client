@@ -2,8 +2,14 @@ import React from 'react';
 
 // import { Container } from './styles';
 
+import Navigation from '../../components/Navigation';
+
 const Dashboard = () => {
-  return <h1>Dashboard</h1>;
+  return (
+    <>
+      <Navigation />
+    </>
+  );
 };
 
 export default Dashboard;
