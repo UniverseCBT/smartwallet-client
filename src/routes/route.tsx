@@ -1,5 +1,12 @@
 import React from 'react';
-import { Route, Redirect, RouteProps } from 'react-router-dom';
+import {
+  Route,
+  Redirect,
+  RouteProps,
+  RouteComponentProps
+} from 'react-router-dom';
+
+import Auth from '../components/_auth/Auth';
 
 type Props = {
   isPrivate?: boolean;
@@ -23,7 +30,17 @@ const RouteWrapper = ({
     return <Redirect to="/login" />;
   }
 
-  return <Route {...rest} render={props => <Component {...props} />} />;
+  const PrivateComponent = (props: RouteComponentProps) => {
+    return signed ? (
+      <Auth registerStep={registerStep}>
+        <Component {...props} />
+      </Auth>
+    ) : (
+      <Component {...props} />
+    );
+  };
+
+  return <Route {...rest} render={props => <PrivateComponent {...props} />} />;
 };
 
 export default RouteWrapper;

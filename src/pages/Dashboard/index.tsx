@@ -5,11 +5,7 @@ import React from 'react';
 import Navigation from '../../components/Navigation';
 
 const Dashboard = () => {
-  return (
-    <>
-      <Navigation />
-    </>
-  );
+  return <></>;
 };
 
 export default Dashboard;
