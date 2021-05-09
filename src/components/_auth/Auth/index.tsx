@@ -10,7 +10,9 @@ type Props = {
 };
 
 const Auth = ({ children, registerStep }: Props) => {
-  return (
+  return registerStep ? (
+    <>{children}</>
+  ) : (
     <Container>
       <Navigation />
       {children}
