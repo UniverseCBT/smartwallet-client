@@ -1,13 +1,46 @@
 import React from 'react';
 
-// import { Container } from './styles';
-
-import Navigation from '../../components/Navigation';
+import { Container } from './styles';
 
 const Dashboard = () => {
   return (
     <>
-      <Navigation />
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
+      <h1>iljcdsvildsjf</h1>
     </>
   );
 };
