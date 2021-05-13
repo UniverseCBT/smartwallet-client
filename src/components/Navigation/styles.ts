@@ -5,6 +5,10 @@ export const NavigationWrapper = styled.nav`
   background-color: #fff;
   width: 100%;
   padding: 15px 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 
   @media screen and (min-width: 575px) {
     padding: 0;
