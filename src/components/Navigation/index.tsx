@@ -14,6 +14,13 @@ import dashboardIcon from '../../assets/icons/dashboard.svg';
 import historicIcon from '../../assets/icons/historic.svg';
 import exitIcon from '../../assets/icons/exit.svg';
 
+type NavigationProps = {
+  image: {
+    path: string;
+    altText: string;
+  };
+};
+
 const Navigation = () => {
   return (
     <NavigationWrapper>
