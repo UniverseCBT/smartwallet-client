@@ -4,7 +4,7 @@ import Row from '../../Grid/Row';
 import Col from '../../Grid/Col';
 
 import Navigation from '../../Navigation';
-import NavigationPerfil from '../../NavigationPerfil';
+import UserPerfilNav from '../../UserPerfilNav';
 
 import { Wrapper, Container, Main, Content } from './styles';
 
@@ -22,7 +22,7 @@ const Auth = ({ children, registerStep }: Props) => {
         <Navigation />
         <Container>
           <Row>
-            <NavigationPerfil />
+            <UserPerfilNav />
             <Col column="auto">
               <Main>
                 <Content>{children}</Content>
