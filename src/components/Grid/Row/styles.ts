@@ -5,9 +5,8 @@ type ContainerProps = {
 };
 
 export const Container = styled.div<ContainerProps>`
-  position: relative;
-
-  @media screen and (min-width: ${props => (props.auth ? '575px' : '1024px')}) {
+  @media screen and (min-width: 1024px) {
+    position: relative;
     display: flex;
     width: 100%;
   }

@@ -4,8 +4,9 @@ import Row from '../../Grid/Row';
 import Col from '../../Grid/Col';
 
 import Navigation from '../../Navigation';
+import UserPerfilNav from '../../UserPerfilNav';
 
-import { Container, Main, Content } from './styles';
+import { Wrapper, Container, Main, Content } from './styles';
 
 type Props = {
   children: React.ReactNode;
@@ -16,16 +17,21 @@ const Auth = ({ children, registerStep }: Props) => {
   return registerStep ? (
     <>{children}</>
   ) : (
-    <Container>
+    <Wrapper>
       <Row auth>
         <Navigation />
-        <Col>
-          <Main>
-            <Content>{children}</Content>
-          </Main>
-        </Col>
+        <Container>
+          <Row>
+            <UserPerfilNav />
+            <Col column="auto">
+              <Main>
+                <Content>{children}</Content>
+              </Main>
+            </Col>
+          </Row>
+        </Container>
       </Row>
-    </Container>
+    </Wrapper>
   );
 };
 

@@ -1,9 +1,19 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  margin-top: 60px;
+export const Wrapper = styled.div`
+  @media screen and (min-width: 1024px) {
+    height: 100vh;
+    overflow-y: hidden;
+    margin-top: 0;
+  }
+`;
 
-  @media screen and (min-width: 575px) {
+export const Container = styled.div`
+  padding: 20px 20px 20px 75px;
+  width: 100%;
+
+  @media screen and (min-width: 1024px) {
+    padding: 0;
     height: 100vh;
     overflow-y: hidden;
     margin-top: 0;
@@ -11,18 +21,20 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.div`
-  padding: 20px 40px;
   position: relative;
+  display: flex;
+  flex-direction: column;
 
-  @media screen and (min-width: 575px) {
+  @media screen and (min-width: 1024px) {
     height: 100vh;
     overflow-y: hidden;
+    margin-left: 0;
+    padding: 20px 40px;
   }
 `;
 
 export const Content = styled.div`
   position: relative;
   height: 100%;
-  margin: 0 0 20px;
   overflow: hidden;
 `;
