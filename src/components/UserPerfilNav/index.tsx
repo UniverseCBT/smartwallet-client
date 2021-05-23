@@ -9,12 +9,18 @@ import {
   UserNavigation,
   Perfil,
   User,
-  UserMoney
+  UserMoney,
+  PerfilExpense,
+  Categories,
+  SelectCategory
 } from './styles';
 
 import Bell from '../icons/Bell';
 
 import herIcon from '../../assets/icons/her.svg';
+import billsIcon from '../../assets/icons/bills.svg';
+import investmentsIcon from '../../assets/icons/investment.svg';
+import funIcon from '../../assets/icons/fun.svg';
 
 const UserPerfilNav = () => {
   return (
@@ -47,6 +53,26 @@ const UserPerfilNav = () => {
             <strong>$1000</strong>
           </UserMoney>
         </Perfil>
+
+        <PerfilExpense>
+          <h4>Expense</h4>
+          <p>Choose a category to spent</p>
+
+          <Categories>
+            <SelectCategory>
+              <img src={billsIcon} alt="paper with dollar" />
+              <p>Bills</p>
+            </SelectCategory>
+            <SelectCategory>
+              <img src={investmentsIcon} alt="Dolar cent in up" />
+              <p>Investiments</p>
+            </SelectCategory>
+            <SelectCategory>
+              <img src={funIcon} alt="market" />
+              <p>Bills</p>
+            </SelectCategory>
+          </Categories>
+        </PerfilExpense>
       </UserNavigation>
     </Container>
   );

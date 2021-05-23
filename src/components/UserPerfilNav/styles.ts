@@ -192,3 +192,31 @@ export const UserMoney = styled.div`
     }
   }
 `;
+
+export const PerfilExpense = styled.div`
+  margin-top: 20px;
+
+  h4 {
+    color: #646464;
+    font-size: 1.6rem;
+  }
+
+  > p {
+    color: #dfdfdf;
+    font-size: 1rem;
+    padding-right: 10px;
+    margin-top: 5px;
+  }
+`;
+
+export const Categories = styled.div`
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+`;
+
+export const SelectCategory = styled.div`
+  flex: 1;
+  width: 100%;
+  background: #f3f4f8;
+`;
