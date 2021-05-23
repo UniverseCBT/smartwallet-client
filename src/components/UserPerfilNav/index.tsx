@@ -12,8 +12,9 @@ import {
   UserMoney
 } from './styles';
 
+import Bell from '../icons/Bell';
+
 import herIcon from '../../assets/icons/her.svg';
-import bellIcon from '../../assets/icons/bell.svg';
 
 const UserPerfilNav = () => {
   return (
@@ -23,10 +24,12 @@ const UserPerfilNav = () => {
         <Notification type="button">
           <span>Notifications</span>
           <NotificationIcon>
-            <img src={bellIcon} alt="bell" />
+            <Bell />
+            <span>100+</span>
           </NotificationIcon>
         </Notification>
       </Header>
+
       <UserNavigation>
         <Perfil>
           <User>

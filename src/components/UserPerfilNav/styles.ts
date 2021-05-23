@@ -44,6 +44,7 @@ export const Notification = styled.button`
 
   @media screen and (min-width: 1024px) {
     margin-left: auto;
+    flex-direction: row;
   }
 
   > span {
@@ -56,28 +57,52 @@ export const Notification = styled.button`
     @media screen and (min-width: 575px) {
       display: inline-block;
     }
+
+    @media screen and (min-width: 1024px) {
+      order: 0;
+      margin-right: 10px;
+      margin-top: 0;
+    }
   }
 `;
 
 export const NotificationIcon = styled.div`
+  position: relative;
   background: #fff;
   width: 40px;
   height: 40px;
-  padding: 5px;
+  padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 1000px;
+
+  span {
+    position: absolute;
+    top: 5px;
+    left: 18px;
+    padding: 2px 4px;
+    background: #2fdf84;
+    border: 2px solid #174c64;
+    border-radius: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.5rem;
+    color: #174c64;
+  }
 `;
 
 export const UserNavigation = styled.div`
   background: #fff;
-  padding: 10px;
+  padding: 20px 15px;
   border-radius: 6px;
 
   @media screen and (min-width: 1024px) {
     width: 100%;
     height: 90%;
+    margin-top: 40px;
   }
 `;
 
@@ -85,6 +110,12 @@ export const Perfil = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f6f6f6;
+
+  @media screen and (min-width: 1024px) {
+    border-bottom: 2px solid #f6f6f6;
+  }
 `;
 
 export const User = styled.div`
@@ -102,8 +133,8 @@ export const User = styled.div`
     justify-content: center;
 
     @media screen and (min-width: 575px) {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       padding: 10px;
     }
   }
