@@ -59,7 +59,7 @@ const UserPerfilNav = () => {
           <p>Choose a category to spent</p>
 
           <Categories>
-            <SelectCategory>
+            <SelectCategory active>
               <img src={billsIcon} alt="paper with dollar" />
               <p>Bills</p>
             </SelectCategory>
@@ -69,7 +69,7 @@ const UserPerfilNav = () => {
             </SelectCategory>
             <SelectCategory>
               <img src={funIcon} alt="market" />
-              <p>Bills</p>
+              <p>Fun Money</p>
             </SelectCategory>
           </Categories>
         </PerfilExpense>

@@ -91,6 +91,11 @@ export const NotificationIcon = styled.div`
     font-weight: bold;
     font-size: 0.5rem;
     color: #174c64;
+    z-index: 100;
+  }
+
+  svg {
+    height: 20px;
   }
 `;
 
@@ -211,12 +216,54 @@ export const PerfilExpense = styled.div`
 
 export const Categories = styled.div`
   margin-top: 20px;
+  padding-bottom: 20px;
   display: flex;
   align-items: center;
+  width: 100%;
+  overflow-y: auto;
 `;
 
-export const SelectCategory = styled.div`
-  flex: 1;
-  width: 100%;
+type SelectCategoryProps = {
+  active?: boolean;
+};
+
+export const SelectCategory = styled.div<SelectCategoryProps>`
   background: #f3f4f8;
+  width: 100%;
+  height: 80px;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: ${props => (props.active ? '2px solid #174c64' : 'none')};
+  user-select: none;
+  cursor: pointer;
+
+  &:hover {
+    border: 2px solid #174c64;
+
+    p {
+      color: #174c64;
+    }
+  }
+
+  & + div {
+    margin-left: 10px;
+  }
+
+  img {
+    max-width: 30px;
+  }
+
+  p {
+    font-size: 0.5rem;
+    margin-top: 10px;
+    color: ${props => (props.active ? '#174c64' : '#646464')};
+
+    @media screen and (min-width: 575px) {
+      font-size: 0.8rem;
+    }
+  }
 `;
