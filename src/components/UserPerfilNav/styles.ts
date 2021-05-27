@@ -108,6 +108,8 @@ export const UserNavigation = styled.div`
     width: 100%;
     height: 90%;
     margin-top: 40px;
+    overflow: hidden;
+    padding: 20px 5px;
   }
 `;
 
@@ -120,6 +122,28 @@ export const Perfil = styled.div`
 
   @media screen and (min-width: 1024px) {
     border-bottom: 2px solid #f6f6f6;
+    /* padding: 0 15px 20px; */
+    margin: 0 15px;
+  }
+`;
+
+export const UserContent = styled.div`
+  @media screen and (min-width: 1024px) {
+    height: 85%;
+    overflow-y: auto;
+    padding: 0 15px;
+    margin: 20px 0;
+
+    &::-webkit-scrollbar {
+      background: #f3f4f8;
+      width: 6px;
+      border-radius: 1000px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #174c64;
+      border-radius: 1000px;
+    }
   }
 `;
 
@@ -198,6 +222,48 @@ export const UserMoney = styled.div`
   }
 `;
 
+export const Income = styled.div`
+  margin-top: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  @media screen and (min-width: 575px) {
+    align-items: center;
+  }
+
+  div {
+    h4 {
+      color: #646464;
+      font-size: 1.6rem;
+    }
+
+    > p {
+      color: #dfdfdf;
+      font-size: 1rem;
+      padding-right: 10px;
+      margin-top: 5px;
+
+      @media screen and (min-width: 1024px) {
+        margin-right: 30px;
+        padding-right: 0;
+      }
+    }
+  }
+
+  button {
+    border: none;
+    background: #1ae5bd;
+    padding: 10px 12px;
+    border-radius: 1000px;
+
+    svg {
+      width: 10px;
+      height: 10px;
+    }
+  }
+`;
+
 export const PerfilExpense = styled.div`
   margin-top: 20px;
 
@@ -223,11 +289,7 @@ export const Categories = styled.div`
   overflow-y: auto;
 `;
 
-type SelectCategoryProps = {
-  active?: boolean;
-};
-
-export const SelectCategory = styled.div<SelectCategoryProps>`
+export const SelectCategory = styled.div`
   background: #f3f4f8;
   width: 100%;
   height: 80px;
@@ -237,7 +299,6 @@ export const SelectCategory = styled.div<SelectCategoryProps>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: ${props => (props.active ? '2px solid #174c64' : 'none')};
   user-select: none;
   cursor: pointer;
 
@@ -260,7 +321,6 @@ export const SelectCategory = styled.div<SelectCategoryProps>`
   p {
     font-size: 0.5rem;
     margin-top: 10px;
-    color: ${props => (props.active ? '#174c64' : '#646464')};
 
     @media screen and (min-width: 575px) {
       font-size: 0.8rem;
