@@ -8,12 +8,22 @@ import {
   NotificationIcon,
   UserNavigation,
   Perfil,
+  UserContent,
   User,
-  UserMoney
+  UserMoney,
+  Income,
+  PerfilExpense,
+  Categories,
+  SelectCategory
 } from './styles';
 
+import Bell from '../icons/Bell';
+import MoreIncome from '../icons/MoreIncome';
+
 import herIcon from '../../assets/icons/her.svg';
-import bellIcon from '../../assets/icons/bell.svg';
+import billsIcon from '../../assets/icons/bills.svg';
+import investmentsIcon from '../../assets/icons/investment.svg';
+import funIcon from '../../assets/icons/fun.svg';
 
 const UserPerfilNav = () => {
   return (
@@ -23,10 +33,12 @@ const UserPerfilNav = () => {
         <Notification type="button">
           <span>Notifications</span>
           <NotificationIcon>
-            <img src={bellIcon} alt="bell" />
+            <Bell />
+            <span>100+</span>
           </NotificationIcon>
         </Notification>
       </Header>
+
       <UserNavigation>
         <Perfil>
           <User>
@@ -44,6 +56,39 @@ const UserPerfilNav = () => {
             <strong>$1000</strong>
           </UserMoney>
         </Perfil>
+
+        <UserContent>
+          <Income>
+            <div>
+              <h4>Income</h4>
+              <p>Put your available money in your account</p>
+            </div>
+
+            <button type="button">
+              <MoreIncome />
+            </button>
+          </Income>
+
+          <PerfilExpense>
+            <h4>Expense</h4>
+            <p>Choose a category to spent</p>
+
+            <Categories>
+              <SelectCategory>
+                <img src={billsIcon} alt="paper with dollar" />
+                <p>Bills</p>
+              </SelectCategory>
+              <SelectCategory>
+                <img src={investmentsIcon} alt="Dolar cent in up" />
+                <p>Investiments</p>
+              </SelectCategory>
+              <SelectCategory>
+                <img src={funIcon} alt="market" />
+                <p>Fun Money</p>
+              </SelectCategory>
+            </Categories>
+          </PerfilExpense>
+        </UserContent>
       </UserNavigation>
     </Container>
   );
