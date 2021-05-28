@@ -14,7 +14,12 @@ import {
   Income,
   PerfilExpense,
   Categories,
-  SelectCategory
+  SelectCategory,
+  Transactions,
+  Activities,
+  Symbol,
+  Info,
+  ActivitiesMoney
 } from './styles';
 
 import Bell from '../icons/Bell';
@@ -24,6 +29,9 @@ import herIcon from '../../assets/icons/her.svg';
 import billsIcon from '../../assets/icons/bills.svg';
 import investmentsIcon from '../../assets/icons/investment.svg';
 import funIcon from '../../assets/icons/fun.svg';
+
+import spentArrow from '../../assets/icons/spent-arrow.svg';
+import incomeArrow from '../../assets/icons/income-arrow.svg';
 
 const UserPerfilNav = () => {
   return (
@@ -88,6 +96,24 @@ const UserPerfilNav = () => {
               </SelectCategory>
             </Categories>
           </PerfilExpense>
+
+          <Transactions>
+            <h4>Recent Activities</h4>
+            <p>Your recent activities in expenses and incomes</p>
+
+            <Activities>
+              <div>
+                <Symbol>
+                  <img src={spentArrow} alt="arrow to right" />
+                </Symbol>
+                <Info>
+                  <strong>StarBucks</strong>
+                  <span>Bills</span>
+                </Info>
+              </div>
+              <ActivitiesMoney type="spent">$200</ActivitiesMoney>
+            </Activities>
+          </Transactions>
         </UserContent>
       </UserNavigation>
     </Container>

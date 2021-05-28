@@ -235,7 +235,7 @@ export const Income = styled.div`
   div {
     h4 {
       color: #646464;
-      font-size: 1.6rem;
+      font-size: 1.3rem;
     }
 
     > p {
@@ -269,7 +269,7 @@ export const PerfilExpense = styled.div`
 
   h4 {
     color: #646464;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
 
   > p {
@@ -326,4 +326,92 @@ export const SelectCategory = styled.div`
       font-size: 0.8rem;
     }
   }
+`;
+
+export const Transactions = styled.div`
+  margin-top: 40px;
+
+  h4 {
+    color: #646464;
+    font-size: 1.3rem;
+  }
+
+  > p {
+    color: #dfdfdf;
+    font-size: 1rem;
+    padding-right: 10px;
+    margin-top: 5px;
+  }
+`;
+
+export const Activities = styled.div`
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & + div {
+    margin-top: 20px;
+  }
+
+  > div {
+    display: flex;
+    align-items: center;
+  }
+`;
+
+export const Symbol = styled.div`
+  background: #f3f4f8;
+  width: auto;
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 20px;
+    max-height: 20px;
+  }
+`;
+
+export const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  strong {
+    color: #646464;
+    font-size: 1.1rem;
+  }
+
+  span {
+    color: #dfdfdf;
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+`;
+
+type ActivitiesMoneyProps = {
+  type?: 'spent' | 'income';
+};
+
+const activitiesColorType = (type?: string) => {
+  switch (type) {
+    case 'spent': {
+      return '#174c64';
+    }
+    case 'income': {
+      return '#1ae5bd';
+    }
+    default: {
+      return '#174c64';
+    }
+  }
+};
+
+export const ActivitiesMoney = styled.strong<ActivitiesMoneyProps>`
+  color: ${props => props.type && activitiesColorType(props.type)};
+  font-size: 1.2rem;
 `;
