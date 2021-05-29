@@ -29,7 +29,7 @@ export const Main = styled.div`
     height: 100vh;
     overflow-y: hidden;
     margin-left: 0;
-    padding: 20px 40px;
+    padding: 20px 15px 20px 40px;
   }
 `;
 

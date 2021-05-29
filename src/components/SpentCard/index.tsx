@@ -1,9 +1,13 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import { Container } from './styles';
 
 const SpentCard = () => {
-  return <div />;
+  return (
+    <Container>
+      <p>hello</p>
+    </Container>
+  );
 };
 
 export default SpentCard;

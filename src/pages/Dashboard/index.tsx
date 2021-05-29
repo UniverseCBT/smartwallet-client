@@ -16,6 +16,12 @@ const Dashboard = () => {
           <Col column={1}>
             <SpentCard />
           </Col>
+          <Col column={1}>
+            <SpentCard />
+          </Col>
+          <Col column={1}>
+            <SpentCard />
+          </Col>
         </Row>
       </Content>
     </Container>
