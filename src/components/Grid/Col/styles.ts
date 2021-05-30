@@ -9,7 +9,7 @@ type ContainerProps = {
     | 'flex-end'
     | 'baseline'
     | 'stretch';
-  mobileMargin?: boolean;
+  gap?: boolean;
 };
 
 export const Container = styled.div<ContainerProps>`
@@ -19,7 +19,7 @@ export const Container = styled.div<ContainerProps>`
 
   @media screen and (max-width: 1023px) {
     & + div {
-      margin-top: ${props => (props.mobileMargin ? '20px' : '0')};
+      margin-top: ${props => (props.gap ? '20px' : '0')};
     }
   }
 
@@ -28,7 +28,7 @@ export const Container = styled.div<ContainerProps>`
     position: static;
 
     & + div {
-      margin-left: 10px;
+      margin-left: ${props => (props.gap ? '20px' : '0')};
     }
   }
 `;

@@ -17,7 +17,7 @@ const Dashboard = () => {
 
       <Content>
         <Row>
-          <Col mobileMargin column={1}>
+          <Col gap column={1}>
             <SpentCard
               image={bills}
               title="Bills"
@@ -26,7 +26,7 @@ const Dashboard = () => {
               total="$1000"
             />
           </Col>
-          <Col mobileMargin column={1}>
+          <Col gap column={1}>
             <SpentCard
               image={investment}
               title="Investments"
@@ -35,7 +35,7 @@ const Dashboard = () => {
               total="$1000"
             />
           </Col>
-          <Col mobileMargin column={1}>
+          <Col gap column={1}>
             <SpentCard
               image={fun}
               title="Fun Money"
