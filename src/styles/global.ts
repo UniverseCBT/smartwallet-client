@@ -20,6 +20,7 @@ export default createGlobalStyle<GlobalProps>`
     --title: #646464;
     --text: #b5b5b5;
     --white: #fff;
+    --shadow: #EAEAEC;
   }
 
   * {

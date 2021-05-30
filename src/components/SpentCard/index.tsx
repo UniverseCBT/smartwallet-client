@@ -1,11 +1,41 @@
 import React from 'react';
 
-import { Container } from './styles';
+import ProgressBar from '../ProgressBar';
 
-const SpentCard = () => {
+import {
+  Container,
+  SpentCategory,
+  CategoryImage,
+  CategoryInfo
+} from './styles';
+
+type SpentCardProps = {
+  image: string;
+  title: string;
+  percent: number;
+  available: string;
+  total: string;
+};
+
+const SpentCard = ({
+  image,
+  title,
+  percent,
+  available,
+  total
+}: SpentCardProps) => {
   return (
     <Container>
-      <p>hello</p>
+      <SpentCategory>
+        <CategoryImage>
+          <img src={image} alt={title} />
+        </CategoryImage>
+        <CategoryInfo>
+          <h4>{title}</h4>
+          <p>{percent}</p>
+        </CategoryInfo>
+      </SpentCategory>
+      <ProgressBar available={500} total={1000} />
     </Container>
   );
 };
