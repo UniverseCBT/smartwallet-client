@@ -32,7 +32,7 @@ const SpentCard = ({
         </CategoryImage>
         <CategoryInfo>
           <h4>{title}</h4>
-          <p>{percent}</p>
+          <p>{`${percent}%`}</p>
         </CategoryInfo>
       </SpentCategory>
       <ProgressBar available={500} total={1000} />
