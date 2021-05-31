@@ -18,7 +18,7 @@ const Auth = ({ children, registerStep }: Props) => {
     <>{children}</>
   ) : (
     <Wrapper>
-      <Row auth>
+      <Row auth wrap="nowrap">
         <Navigation />
         <Container>
           <Row>

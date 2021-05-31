@@ -5,6 +5,10 @@ import { Container } from './styles';
 type Props = {
   children: React.ReactNode;
   column?: number | string;
+  xs?: number | string | 'auto';
+  sm?: number | string | 'auto';
+  md?: number | string | 'auto';
+  lg?: number | string | 'auto';
   gap?: boolean;
   align?:
     | 'auto'
@@ -15,9 +19,17 @@ type Props = {
     | 'stretch';
 };
 
-const Col = ({ children, column, gap, align }: Props) => {
+const Col = ({ children, column, xs, sm, md, lg, gap, align }: Props) => {
   return (
-    <Container column={column} align={align} gap={gap}>
+    <Container
+      column={column}
+      align={align}
+      gap={gap}
+      xs={xs}
+      sm={sm}
+      md={md}
+      lg={lg}
+    >
       {children}
     </Container>
   );
