@@ -1,7 +1,11 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 type ContainerProps = {
   column?: number | string;
+  xs?: number | string | 'auto';
+  sm?: number | string | 'auto';
+  md?: number | string | 'auto';
+  lg?: number | string | 'auto';
   align?:
     | 'auto'
     | 'center'
@@ -17,18 +21,44 @@ export const Container = styled.div<ContainerProps>`
   position: relative;
   align-self: ${props => props.align && props.align};
 
-  @media screen and (max-width: 1023px) {
-    & + div {
-      margin-top: ${props => (props.gap ? '20px' : '0')};
-    }
-  }
-
   @media screen and (min-width: 1024px) {
     flex: ${props => props.column};
     position: static;
-
-    & + div {
-      margin-left: ${props => (props.gap ? '20px' : '0')};
-    }
   }
+
+  ${props =>
+    props.xs &&
+    css`
+      @media screen and (max-width: 575px) {
+        width: ${props.xs ? (Number(props.xs) / 12) * 100 : '100'}%;
+      }
+    `}
+
+  ${props =>
+    props.sm &&
+    css`
+      @media screen and (min-width: 575px) {
+        width: ${props.sm ? (Number(props.sm) / 12) * 100 : '100'}%;
+      }
+    `}
+
+  ${props =>
+    props.md &&
+    css`
+      @media screen and (min-width: 1024px) {
+        width: calc(
+          ${props.md ? (Number(props.md) / 12) * 100 : '100'}% - 20px
+        );
+      }
+    `}
+
+  ${props =>
+    props.lg &&
+    css`
+      @media screen and (min-width: 1440px) {
+        width: calc(
+          ${props.lg ? (Number(props.lg) / 12) * 100 : '100'}% - 20px
+        );
+      }
+    `}
 `;

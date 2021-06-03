@@ -1,5 +1,8 @@
 import React from 'react';
 
+import Row from '../../components/Grid/Row';
+import Col from '../../components/Grid/Col';
+
 import { Container, Content } from './styles';
 
 const Dashboard = () => {
@@ -7,7 +10,11 @@ const Dashboard = () => {
     <Container>
       <h1>Overview</h1>
 
-      <Content />
+      <Row>
+        <Col>
+          <h1>Content</h1>
+        </Col>
+      </Row>
     </Container>
   );
 };
