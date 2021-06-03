@@ -21,6 +21,11 @@ export const Container = styled.div<ContainerProps>`
   position: relative;
   align-self: ${props => props.align && props.align};
 
+  @media screen and (min-width: 1024px) {
+    flex: ${props => props.column};
+    position: static;
+  }
+
   ${props =>
     props.xs &&
     css`
@@ -30,25 +35,30 @@ export const Container = styled.div<ContainerProps>`
     `}
 
   ${props =>
-    props.md &&
+    props.sm &&
     css`
-      @media screen and (min-width: 1024px) {
-        width: ${props.md ? (Number(props.md) / 12) * 100 : '100'}%;
+      @media screen and (min-width: 575px) {
+        width: ${props.sm ? (Number(props.sm) / 12) * 100 : '100'}%;
       }
     `}
 
-  @media screen and (max-width: 1023px) {
-    & + div {
-      margin-top: ${props => (props.gap ? '20px' : '0')};
-    }
-  }
+  ${props =>
+    props.md &&
+    css`
+      @media screen and (min-width: 1024px) {
+        width: calc(
+          ${props.md ? (Number(props.md) / 12) * 100 : '100'}% - 20px
+        );
+      }
+    `}
 
-  @media screen and (min-width: 1024px) {
-    flex: ${props => props.column};
-    position: static;
-
-    & + div {
-      margin-left: ${props => (props.gap ? '20px' : '0')};
-    }
-  }
+  ${props =>
+    props.lg &&
+    css`
+      @media screen and (min-width: 1440px) {
+        width: calc(
+          ${props.lg ? (Number(props.lg) / 12) * 100 : '100'}% - 20px
+        );
+      }
+    `}
 `;

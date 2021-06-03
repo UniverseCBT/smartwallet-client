@@ -11,14 +11,8 @@ const Dashboard = () => {
       <h1>Overview</h1>
 
       <Row>
-        <Col gap md={12}>
-          <Content />
-        </Col>
-        <Col gap>
-          <Content />
-        </Col>
-        <Col gap>
-          <Content />
+        <Col>
+          <h1>Content</h1>
         </Col>
       </Row>
     </Container>

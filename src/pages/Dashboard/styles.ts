@@ -5,9 +5,4 @@ export const Container = styled.div`
   margin-top: 20px;
 `;
 
-export const Content = styled.div`
-  margin-top: 20px;
-  height: 200px;
-  width: 100%;
-  background: #fff;
-`;
+export const Content = styled.div``;

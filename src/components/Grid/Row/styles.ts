@@ -2,18 +2,16 @@ import styled, { css } from 'styled-components';
 
 type ContainerProps = {
   auth?: boolean;
-  wrap?: 'wrap' | 'nowrap' | boolean;
+  wrap?: boolean;
   noFlex?: boolean;
   xs?: boolean;
   sm?: boolean;
-  md?: boolean;
-  lg?: boolean;
 };
 
 export const Container = styled.div<ContainerProps>`
   position: relative;
   width: 100%;
-  flex-wrap: ${props => (props.wrap === 'wrap' ? 'wrap' : 'nowrap')};
+  flex-wrap: ${props => (props.wrap ? 'nowrap' : 'wrap')};
 
   ${props =>
     props.xs &&
@@ -26,29 +24,13 @@ export const Container = styled.div<ContainerProps>`
   ${props =>
     props.sm &&
     css`
-      @media screen and (min-width: 575px) {
+      @media screen and (min-width: 575px) and (max-width: 1024px) {
         display: flex;
       }
     `}
 
   @media screen and (min-width: 1024px) {
-    display: ${props => (props.noFlex ? 'initial' : 'flex')};
+    display: ${props => (props.noFlex ? 'initial' : 'inline-flex')};
+    gap: 20px;
   }
-
-  /* ${props =>
-    props.md &&
-    css`
-      @media screen and (min-width: 1024px) {
-        display: flex;
-      }
-    `}
-
-  ${props =>
-    props.lg
-      ? css`
-          @media screen and (min-width: 1440px) {
-            display: ${props.lg ? 'flex' : 'initial'};
-          }
-        `
-      : 'flex'} */
 `;
