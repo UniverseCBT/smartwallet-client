@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { transformCurrency } from '../../shared/currency';
+
 import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
 
@@ -23,7 +25,7 @@ const Dashboard = () => {
               <OverviewItem>
                 <span>Bills</span>
                 <div>
-                  <strong>$500</strong>
+                  <strong>{transformCurrency(50000)}</strong>
                   <p>50%</p>
                 </div>
               </OverviewItem>
@@ -32,8 +34,8 @@ const Dashboard = () => {
               <OverviewItem>
                 <span>Investments</span>
                 <div>
-                  <strong>$300</strong>
-                  <p>50%</p>
+                  <strong>{transformCurrency(30000)}</strong>
+                  <p>30%</p>
                 </div>
               </OverviewItem>
             </Col>
@@ -41,7 +43,7 @@ const Dashboard = () => {
               <OverviewItem>
                 <span>Fun Money</span>
                 <div>
-                  <strong>$200</strong>
+                  <strong>{transformCurrency(2000)}</strong>
                   <p>20%</p>
                 </div>
               </OverviewItem>

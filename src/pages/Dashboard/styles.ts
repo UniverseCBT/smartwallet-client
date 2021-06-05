@@ -60,10 +60,23 @@ export const OverviewItem = styled.div`
     strong {
       font-size: 1.3rem;
       color: var(--title);
+
+      @media screen and (min-width: 575px) {
+        font-size: 0.8rem;
+      }
+
+      @media screen and (min-width: 1440px) {
+        font-size: 1.3rem;
+      }
     }
 
     p {
       color: var(--text);
+
+      @media screen and (min-width: 575px) and (max-width: 1440px) {
+        font-size: 0.8rem;
+        margin-left: 10px;
+      }
     }
   }
 `;
