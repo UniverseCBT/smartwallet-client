@@ -13,7 +13,7 @@ type Props = {
 
 const Row = ({ children, auth, wrap, noFlex, xs, sm }: Props) => {
   return (
-    <Container auth={auth} wrap={wrap} noFlex={noFlex} xs={xs} sm={sm}>
+    <Container auth={auth} flexWrap={wrap} noFlex={noFlex} xs={xs} sm={sm}>
       {children}
     </Container>
   );

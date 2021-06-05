@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 type ContainerProps = {
   auth?: boolean;
-  wrap?: boolean;
+  flexWrap?: boolean;
   noFlex?: boolean;
   xs?: boolean;
   sm?: boolean;
@@ -11,7 +11,8 @@ type ContainerProps = {
 export const Container = styled.div<ContainerProps>`
   position: relative;
   width: 100%;
-  flex-wrap: ${props => (props.wrap ? 'nowrap' : 'wrap')};
+  flex-wrap: ${props => (props.flexWrap ? 'nowrap' : 'wrap')};
+  gap: 20px;
 
   ${props =>
     props.xs &&
@@ -31,6 +32,5 @@ export const Container = styled.div<ContainerProps>`
 
   @media screen and (min-width: 1024px) {
     display: ${props => (props.noFlex ? 'initial' : 'inline-flex')};
-    gap: 20px;
   }
 `;

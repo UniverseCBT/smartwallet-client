@@ -21,6 +21,7 @@ export default createGlobalStyle<GlobalProps>`
     --text: #b5b5b5;
     --white: #fff;
     --shadow: #EAEAEC;
+    --border: #E4E4EA;
   }
 
   * {
