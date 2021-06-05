@@ -30,7 +30,9 @@ export const Container = styled.div<ContainerProps>`
     props.xs &&
     css`
       @media screen and (max-width: 575px) {
-        width: ${props.xs ? (Number(props.xs) / 12) * 100 : '100'}%;
+        width: calc(
+          ${props.xs ? (Number(props.xs) / 12) * 100 : '100'}% - 20px
+        );
       }
     `}
 
@@ -38,7 +40,9 @@ export const Container = styled.div<ContainerProps>`
     props.sm &&
     css`
       @media screen and (min-width: 575px) {
-        width: ${props.sm ? (Number(props.sm) / 12) * 100 : '100'}%;
+        width: calc(
+          ${props.sm ? (Number(props.sm) / 12) * 100 : '100'}% - 20px
+        );
       }
     `}
 
