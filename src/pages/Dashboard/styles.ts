@@ -80,3 +80,13 @@ export const OverviewItem = styled.div`
     }
   }
 `;
+
+export const Transactions = styled.div`
+  padding: 40px 0;
+
+  h3 {
+    color: var(--title);
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+  }
+`;

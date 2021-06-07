@@ -5,7 +5,15 @@ import { transformCurrency } from '../../shared/currency';
 import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
 
-import { Container, Content, Overview, OverviewItem } from './styles';
+import Table from '../../components/Table';
+
+import {
+  Container,
+  Content,
+  Overview,
+  OverviewItem,
+  Transactions
+} from './styles';
 
 const Dashboard = () => {
   return (
@@ -50,6 +58,34 @@ const Dashboard = () => {
             </Col>
           </Row>
         </Overview>
+
+        <Transactions>
+          <h3>Transactions</h3>
+
+          <Table>
+            <thead>
+              <tr>
+                <th>teste</th>
+                <th>teste</th>
+                <th>teste</th>
+                <th>teste</th>
+                <th>teste</th>
+                <th>teste</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>teste</td>
+                <td>teste</td>
+                <td>teste</td>
+                <td>teste</td>
+                <td>teste</td>
+                <td>teste</td>
+              </tr>
+            </tbody>
+          </Table>
+        </Transactions>
       </Content>
     </Container>
   );
