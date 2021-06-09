@@ -8,10 +8,14 @@ export const Wrapper = styled.div`
 `;
 
 export const Container = styled.table`
-  border-collapse: collapse;
+  thead {
+    display: none;
+  }
 
-  thead tr th {
-    padding-bottom: 20px;
-    border-bottom: 1px solid #ccc;
+  tbody tr td {
+    display: block;
+    text-align: right;
+    padding-left: 50px;
+    position: relative;
   }
 `;
