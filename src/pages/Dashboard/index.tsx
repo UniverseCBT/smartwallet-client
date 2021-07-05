@@ -5,14 +5,13 @@ import { transformCurrency } from '../../shared/currency';
 import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
 
-import Table from '../../components/Table';
-
 import {
   Container,
   Content,
   Overview,
   OverviewItem,
-  Transactions
+  Transactions,
+  WrapperTable
 } from './styles';
 
 const Dashboard = () => {
@@ -62,29 +61,141 @@ const Dashboard = () => {
         <Transactions>
           <h3>Transactions</h3>
 
-          <Table>
-            <thead>
-              <tr>
-                <th>teste</th>
-                <th>teste</th>
-                <th>teste</th>
-                <th>teste</th>
-                <th>teste</th>
-                <th>teste</th>
-              </tr>
-            </thead>
+          <WrapperTable>
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Expense</th>
+                  <th>Expected</th>
+                  <th>Available to spent</th>
+                  <th>Edit/Delete</th>
+                </tr>
+              </thead>
 
-            <tbody>
-              <tr>
-                <td>teste</td>
-                <td>teste</td>
-                <td>teste</td>
-                <td>teste</td>
-                <td>teste</td>
-                <td>teste</td>
-              </tr>
-            </tbody>
-          </Table>
+              <tbody>
+                <tr>
+                  <td>Gabriel</td>
+                  <td>$40</td>
+                  <td>$20.00</td>
+                  <td>$100.00</td>
+                  <td>teste</td>
+                </tr>
+                <tr>
+                  <td>Gabriel</td>
+                  <td>$40</td>
+                  <td>$20.00</td>
+                  <td>$100.00</td>
+                  <td>teste</td>
+                </tr>
+                <tr>
+                  <td>Gabriel</td>
+                  <td>$40</td>
+                  <td>$20.00</td>
+                  <td>$100.00</td>
+                  <td>teste</td>
+                </tr>
+                <tr>
+                  <td>Gabriel</td>
+                  <td>$40</td>
+                  <td>$20.00</td>
+                  <td>$100.00</td>
+                  <td>teste</td>
+                </tr>
+                <tr>
+                  <td>Gabriel</td>
+                  <td>$40</td>
+                  <td>$20.00</td>
+                  <td>$100.00</td>
+                  <td>teste</td>
+                </tr>
+                <tr>
+                  <td>Gabriel</td>
+                  <td>$40</td>
+                  <td>$20.00</td>
+                  <td>$100.00</td>
+                  <td>teste</td>
+                </tr>
+                <tr>
+                  <td>Gabriel</td>
+                  <td>$40</td>
+                  <td>$20.00</td>
+                  <td>$100.00</td>
+                  <td>teste</td>
+                </tr>
+                <tr>
+                  <td>Gabriel</td>
+                  <td>$40</td>
+                  <td>$20.00</td>
+                  <td>$100.00</td>
+                  <td>teste</td>
+                </tr>
+                <tr>
+                  <td>Gabriel</td>
+                  <td>$40</td>
+                  <td>$20.00</td>
+                  <td>$100.00</td>
+                  <td>teste</td>
+                </tr>
+                <tr>
+                  <td>Gabriel</td>
+                  <td>$40</td>
+                  <td>$20.00</td>
+                  <td>$100.00</td>
+                  <td>teste</td>
+                </tr>
+                <tr>
+                  <td>Gabriel</td>
+                  <td>$40</td>
+                  <td>$20.00</td>
+                  <td>$100.00</td>
+                  <td>teste</td>
+                </tr>
+                <tr>
+                  <td>Gabriel</td>
+                  <td>$40</td>
+                  <td>$20.00</td>
+                  <td>$100.00</td>
+                  <td>teste</td>
+                </tr>
+                <tr>
+                  <td>Gabriel</td>
+                  <td>$40</td>
+                  <td>$20.00</td>
+                  <td>$100.00</td>
+                  <td>teste</td>
+                </tr>
+                <tr>
+                  <td>Gabriel</td>
+                  <td>$40</td>
+                  <td>$20.00</td>
+                  <td>$100.00</td>
+                  <td>teste</td>
+                </tr>
+                <tr>
+                  <td>Gabriel</td>
+                  <td>$40</td>
+                  <td>$20.00</td>
+                  <td>$100.00</td>
+                  <td>teste</td>
+                </tr>
+                <tr>
+                  <td>Gabriel</td>
+                  <td>$40</td>
+                  <td>$20.00</td>
+                  <td>$100.00</td>
+                  <td>teste</td>
+                </tr>
+                <tr>
+                  <td>Gabriel</td>
+                  <td>$40</td>
+                  <td>$20.00</td>
+                  <td>$100.00</td>
+                  <td>teste</td>
+                </tr>
+              </tbody>
+            </table>
+          </WrapperTable>
         </Transactions>
       </Content>
     </Container>

@@ -90,3 +90,48 @@ export const Transactions = styled.div`
     margin-bottom: 40px;
   }
 `;
+
+export const WrapperTable = styled.div`
+  width: 100%;
+  background: var(--white);
+  border-radius: 4px;
+  overflow: auto;
+
+  @media screen and (min-width: 1024px) {
+    padding: 10px 1rem;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+
+    thead {
+      border-bottom: 1px solid var(--title);
+
+      th {
+        padding: 1.3rem 1rem;
+        text-align: left;
+        position: relative;
+        color: var(--shadow);
+        font-weight: normal;
+      }
+
+      th + th::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate3d(0, -50%, 0);
+        height: 30px;
+        width: 2px;
+        background: var(--shadow);
+      }
+    }
+
+    tbody {
+      td {
+        padding: 1.3rem 1rem;
+      }
+    }
+  }
+`;
