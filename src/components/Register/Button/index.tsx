@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { Container } from './styles';
+import * as S from './styles';
 
 export type Props = {
   theme?: string;
   text: string;
+  type?: 'button' | 'submit';
   icon?: {
     url: string;
     altText?: string;
@@ -13,11 +14,11 @@ export type Props = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const Button = ({ theme, text, icon, onClick }: Props) => {
+const Button = ({ theme, text, type = 'button', icon, onClick }: Props) => {
   return (
-    <Container
+    <S.Container
       onClick={onClick}
-      type="button"
+      type={type && type}
       theme={theme}
       themeExist={!!theme}
       icon={!!icon}
@@ -29,7 +30,7 @@ const Button = ({ theme, text, icon, onClick }: Props) => {
       {icon && icon.side === 'right' && (
         <img src={icon.url} alt={icon.altText} />
       )}
-    </Container>
+    </S.Container>
   );
 };
 

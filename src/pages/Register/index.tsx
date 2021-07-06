@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useForm, SubmitHandler } from 'react-hook-form';
 
 import Wrapper from '../../components/_noauth/Wrapper';
 
-import { Container, Footer } from './styles';
+import * as S from './styles';
 
 import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
@@ -18,10 +19,26 @@ import RegisterButton from '../../components/Register/Button';
 
 import arrowRightIcon from '../../assets/icons/arrowRight.svg';
 
+type RegisterFormInput = {
+  name: string;
+  username: string;
+  email: string;
+  password: string;
+};
+
 const Register = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors }
+  } = useForm<RegisterFormInput>();
+
+  const onSubmit: SubmitHandler<RegisterFormInput> = data => console.log(data);
+
   return (
     <Wrapper>
-      <Container>
+      <S.Container>
         <Row>
           <Col column={1}>
             <SideNavigation />
@@ -40,7 +57,7 @@ const Register = () => {
                   <Link to="/">Get Help</Link>
                 </p>
               </Header>
-              <Form>
+              <Form onSubmit={handleSubmit(onSubmit)}>
                 <div className="description">
                   <h1>Lets start with your account</h1>
                   <p>
@@ -49,7 +66,12 @@ const Register = () => {
                   </p>
                 </div>
                 <div>
-                  <Input inputName="name" type="text" text="Name" />
+                  <Input
+                    {...register('name')}
+                    inputName="name"
+                    type="text"
+                    text="Name"
+                  />
                   <Input inputName="username" type="text" text="Username" />
                   <Input inputName="email" type="email" text="Email" />
                   <Input inputName="password" type="password" text="Password" />
@@ -59,7 +81,7 @@ const Register = () => {
                     text="Repeat password"
                   />
                 </div>
-                <Footer>
+                <S.Footer>
                   <RegisterButton
                     text="Next"
                     icon={{
@@ -67,13 +89,14 @@ const Register = () => {
                       altText: 'Arrow Right',
                       side: 'right'
                     }}
+                    type="submit"
                   />
-                </Footer>
+                </S.Footer>
               </Form>
             </Content>
           </Col>
         </Row>
-      </Container>
+      </S.Container>
     </Wrapper>
   );
 };
