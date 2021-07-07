@@ -1,17 +1,29 @@
 import React, { useState, useEffect, useCallback } from 'react';
+// import { Path, useForm, UseFormRegister, SubmitHandler } from 'react-hook-form';
 
 import * as S from './styles';
 
 import closeEyesIcon from '../../assets/icons/close_eyes.svg';
 import openEyesIcon from '../../assets/icons/open_eyes.svg';
 
-type InputProps = {
+type RefReturn =
+  | string
+  | ((instance: HTMLInputElement | null) => void)
+  | React.RefObject<HTMLInputElement>
+  | null
+  | undefined;
+
+export type InputProps = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+> & {
   inputName: string;
   text?: string;
   type?: string;
+  register?: ({ required }: { required?: boolean }) => RefReturn;
 };
 
-const Input = ({ inputName, text, type }: InputProps) => {
+const Input = ({ inputName, text, type, register, required }: InputProps) => {
   const [isPassword, setIsPassword] = useState(false);
   const [visible, setVisible] = useState(false);
   const [defaultType, setDefaultType] = useState('');
@@ -51,6 +63,7 @@ const Input = ({ inputName, text, type }: InputProps) => {
             autoComplete={type === 'email' ? 'on' : 'off'}
             name={inputName}
             id={inputName}
+            ref={register && register({ required })}
           />
         </S.LabelValue>
         {isPassword && (

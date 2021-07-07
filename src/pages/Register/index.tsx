@@ -14,7 +14,7 @@ import Content from '../../components/_noauth/Content';
 import Form from '../../components/_noauth/Form';
 import SideNavigation from '../../components/_noauth/SideNavigation';
 
-import Input from '../../components/Input';
+import Input, { InputProps } from '../../components/Input';
 import RegisterButton from '../../components/Register/Button';
 
 import arrowRightIcon from '../../assets/icons/arrowRight.svg';
@@ -27,14 +27,39 @@ type RegisterFormInput = {
 };
 
 const Register = () => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors }
-  } = useForm<RegisterFormInput>();
+  const { register, handleSubmit } = useForm<RegisterFormInput>();
 
-  const onSubmit: SubmitHandler<RegisterFormInput> = data => console.log(data);
+  const onSubmit: SubmitHandler<RegisterFormInput> = data => {
+    console.log(data);
+  };
+
+  const inputValue: InputProps[] = [
+    {
+      inputName: 'name',
+      type: 'text',
+      text: 'Name'
+    },
+    {
+      inputName: 'username',
+      type: 'text',
+      text: 'Username'
+    },
+    {
+      inputName: 'email',
+      type: 'text',
+      text: 'Email'
+    },
+    {
+      inputName: 'password',
+      type: 'password',
+      text: 'Password'
+    },
+    {
+      inputName: 'confirmPassword',
+      type: 'password',
+      text: 'Repeat your password'
+    }
+  ];
 
   return (
     <Wrapper>
@@ -66,20 +91,15 @@ const Register = () => {
                   </p>
                 </div>
                 <div>
-                  <Input
-                    {...register('name')}
-                    inputName="name"
-                    type="text"
-                    text="Name"
-                  />
-                  <Input inputName="username" type="text" text="Username" />
-                  <Input inputName="email" type="email" text="Email" />
-                  <Input inputName="password" type="password" text="Password" />
-                  <Input
-                    inputName="confirmPassword"
-                    type="password"
-                    text="Repeat password"
-                  />
+                  {inputValue.map(inputItem => (
+                    <Input
+                      register={register}
+                      inputName={inputItem.inputName}
+                      type={inputItem.type}
+                      text={inputItem.text}
+                      key={inputItem.inputName}
+                    />
+                  ))}
                 </div>
                 <S.Footer>
                   <RegisterButton
