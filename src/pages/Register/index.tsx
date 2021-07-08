@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+// import { yupResolver } from '@hookform/resolvers/yup';
+// import * as yup from 'yup';
 
-import Wrapper from '../../components/_noauth/Wrapper';
+import { api } from '../../services/api';
 
 import * as S from './styles';
 
+import Wrapper from '../../components/_noauth/Wrapper';
 import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
 
@@ -14,7 +17,7 @@ import Content from '../../components/_noauth/Content';
 import Form from '../../components/_noauth/Form';
 import SideNavigation from '../../components/_noauth/SideNavigation';
 
-import Input, { InputProps } from '../../components/Input';
+import Input from '../../components/Input';
 import RegisterButton from '../../components/Register/Button';
 
 import arrowRightIcon from '../../assets/icons/arrowRight.svg';
@@ -26,40 +29,23 @@ type RegisterFormInput = {
   password: string;
 };
 
+// const schema = yup.object().shape({
+//   name: yup.string().required(),
+//   username: yup.string().required()
+// });
+
 const Register = () => {
   const { register, handleSubmit } = useForm<RegisterFormInput>();
 
-  const onSubmit: SubmitHandler<RegisterFormInput> = data => {
-    console.log(data);
-  };
+  const onSubmit = async (data: RegisterFormInput) => {
+    try {
+      const response = await api.post('/users', data);
 
-  const inputValue: InputProps[] = [
-    {
-      inputName: 'name',
-      type: 'text',
-      text: 'Name'
-    },
-    {
-      inputName: 'username',
-      type: 'text',
-      text: 'Username'
-    },
-    {
-      inputName: 'email',
-      type: 'text',
-      text: 'Email'
-    },
-    {
-      inputName: 'password',
-      type: 'password',
-      text: 'Password'
-    },
-    {
-      inputName: 'confirmPassword',
-      type: 'password',
-      text: 'Repeat your password'
+      console.log(response.data);
+    } catch (err) {
+      console.log(err.response.data);
     }
-  ];
+  };
 
   return (
     <Wrapper>
@@ -91,15 +77,35 @@ const Register = () => {
                   </p>
                 </div>
                 <div>
-                  {inputValue.map(inputItem => (
-                    <Input
-                      register={register}
-                      inputName={inputItem.inputName}
-                      type={inputItem.type}
-                      text={inputItem.text}
-                      key={inputItem.inputName}
-                    />
-                  ))}
+                  <Input
+                    register={register}
+                    inputName="name"
+                    type="text"
+                    text="Name"
+                  />
+                  <Input
+                    register={register}
+                    inputName="username"
+                    type="text"
+                    text="Username"
+                  />
+                  <Input
+                    register={register}
+                    inputName="email"
+                    type="text"
+                    text="Email"
+                  />
+                  <Input
+                    register={register}
+                    inputName="password"
+                    type="password"
+                    text="Password"
+                  />
+                  <Input
+                    inputName="confirmPassword"
+                    type="password"
+                    text="Repeat Password"
+                  />
                 </div>
                 <S.Footer>
                   <RegisterButton
