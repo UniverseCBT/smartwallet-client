@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-// import { yupResolver } from '@hookform/resolvers/yup';
-// import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 import { api } from '../../services/api';
 
@@ -29,13 +29,21 @@ type RegisterFormInput = {
   password: string;
 };
 
-// const schema = yup.object().shape({
-//   name: yup.string().required(),
-//   username: yup.string().required()
-// });
+const schema = yup.object().shape({
+  name: yup.string().required(),
+  username: yup.string().required(),
+  email: yup.string().email().required(),
+  password: yup.string().min(6).required()
+});
 
 const Register = () => {
-  const { register, handleSubmit } = useForm<RegisterFormInput>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<RegisterFormInput>({
+    resolver: yupResolver(schema)
+  });
 
   const onSubmit = async (data: RegisterFormInput) => {
     try {
@@ -82,29 +90,34 @@ const Register = () => {
                     inputName="name"
                     type="text"
                     text="Name"
+                    error={errors.name?.message}
                   />
                   <Input
                     register={register}
                     inputName="username"
                     type="text"
                     text="Username"
+                    error={errors.username?.message}
                   />
                   <Input
                     register={register}
                     inputName="email"
                     type="text"
                     text="Email"
+                    error={errors.email?.message}
                   />
                   <Input
                     register={register}
                     inputName="password"
                     type="password"
                     text="Password"
+                    error={errors.password?.message}
                   />
                   <Input
                     inputName="confirmPassword"
                     type="password"
                     text="Repeat Password"
+                    register={register}
                   />
                 </div>
                 <S.Footer>

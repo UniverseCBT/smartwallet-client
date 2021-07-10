@@ -1,29 +1,20 @@
 import React, { useState, useEffect, useCallback } from 'react';
-// import { Path, useForm, UseFormRegister, SubmitHandler } from 'react-hook-form';
+import { UseFormRegister } from 'react-hook-form';
 
 import * as S from './styles';
 
 import closeEyesIcon from '../../assets/icons/close_eyes.svg';
 import openEyesIcon from '../../assets/icons/open_eyes.svg';
 
-type RefReturn =
-  | string
-  | ((instance: HTMLInputElement | null) => void)
-  | React.RefObject<HTMLInputElement>
-  | null
-  | undefined;
-
-export type InputProps = React.DetailedHTMLProps<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
-> & {
+export type InputProps = {
   inputName: string;
   text?: string;
   type?: string;
-  register?: ({ required }: { required?: boolean }) => RefReturn;
+  register: UseFormRegister<any>;
+  error?: string;
 };
 
-const Input = ({ inputName, text, type, register, required }: InputProps) => {
+const Input = ({ inputName, text, type, register, error }: InputProps) => {
   const [isPassword, setIsPassword] = useState(false);
   const [visible, setVisible] = useState(false);
   const [defaultType, setDefaultType] = useState('');
@@ -54,16 +45,15 @@ const Input = ({ inputName, text, type, register, required }: InputProps) => {
 
   return (
     <S.Container>
-      <S.Label htmlFor={inputName}>
+      <S.Label htmlFor={inputName} error={error}>
         <S.LabelValue>
           <span>{text}</span>
           <input
             type={isPassword ? defaultType : type}
             spellCheck="false"
             autoComplete={type === 'email' ? 'on' : 'off'}
-            name={inputName}
             id={inputName}
-            ref={register && register({ required })}
+            {...register(inputName)}
           />
         </S.LabelValue>
         {isPassword && (

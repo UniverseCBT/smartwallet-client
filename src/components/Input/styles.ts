@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import { InputProps } from '.';
 
 export const Container = styled.div`
   user-select: none;
@@ -10,7 +12,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Label = styled.label`
+export const Label = styled.label<Pick<InputProps, 'error'>>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,6 +24,10 @@ export const Label = styled.label`
   border-radius: 4px;
   cursor: text;
   overflow: hidden;
+
+  ${({ error }) => css`
+    border: ${error && '1px solid red'};
+  `}
 `;
 
 export const LabelValue = styled.div`

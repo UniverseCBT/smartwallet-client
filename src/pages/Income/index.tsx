@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import { v4 } from 'uuid';
 
 import { detectPhone } from '../../shared/detectPhone';
@@ -30,6 +31,8 @@ type PaycheckItems = {
 };
 
 const Income = () => {
+  const { register } = useForm();
+
   const [paycheckItems, setPaycheckItems] = useState<PaycheckItems[]>([]);
 
   const [selectValue, setSelectValue] = useState<string | number>('' || 0);
@@ -102,7 +105,11 @@ const Income = () => {
               <PaycheckForm>
                 <Row>
                   <Col>
-                    <Input inputName="name" text="Income Name" />
+                    <Input
+                      inputName="name"
+                      text="Income Name"
+                      register={register}
+                    />
                   </Col>
                   <Col>
                     <Select
@@ -112,7 +119,11 @@ const Income = () => {
                     />
                   </Col>
                   <Col>
-                    <Input inputName="expectedMoney" text="Expected Money" />
+                    <Input
+                      inputName="expectedMoney"
+                      text="Expected Money"
+                      register={register}
+                    />
                   </Col>
                   <Col column={1} align="center">
                     <ButtonForm type="button" onClick={handleAddPaycheckList}>
