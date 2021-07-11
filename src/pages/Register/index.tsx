@@ -27,13 +27,17 @@ type RegisterFormInput = {
   username: string;
   email: string;
   password: string;
+  confirmPassword: string;
 };
 
 const schema = yup.object().shape({
   name: yup.string().required(),
   username: yup.string().required(),
   email: yup.string().email().required(),
-  password: yup.string().min(6).required()
+  password: yup.string().min(6).required(),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref('password'), null], `Passwords don't match`)
 });
 
 const Register = () => {
@@ -89,7 +93,7 @@ const Register = () => {
                     register={register}
                     inputName="name"
                     type="text"
-                    text="Name"
+                    text="Typing your full name"
                     error={errors.name?.message}
                   />
                   <Input
@@ -118,6 +122,7 @@ const Register = () => {
                     type="password"
                     text="Repeat Password"
                     register={register}
+                    error={errors.confirmPassword?.message}
                   />
                 </div>
                 <S.Footer>

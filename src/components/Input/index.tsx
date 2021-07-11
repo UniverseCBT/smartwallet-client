@@ -6,10 +6,12 @@ import * as S from './styles';
 import closeEyesIcon from '../../assets/icons/close_eyes.svg';
 import openEyesIcon from '../../assets/icons/open_eyes.svg';
 
+// search a type to register
 export type InputProps = {
   inputName: string;
   text?: string;
   type?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: UseFormRegister<any>;
   error?: string;
 };
@@ -68,6 +70,7 @@ const Input = ({ inputName, text, type, register, error }: InputProps) => {
           </S.VisiblePassword>
         )}
       </S.Label>
+      {error && <p>{error}</p>}
     </S.Container>
   );
 };

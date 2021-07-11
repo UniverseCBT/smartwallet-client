@@ -10,6 +10,11 @@ export const Container = styled.div`
   & + div {
     margin-top: 20px;
   }
+
+  p {
+    color: var(--danger);
+    margin-top: 0.5rem;
+  }
 `;
 
 export const Label = styled.label<Pick<InputProps, 'error'>>`
@@ -24,9 +29,10 @@ export const Label = styled.label<Pick<InputProps, 'error'>>`
   border-radius: 4px;
   cursor: text;
   overflow: hidden;
+  position: relative;
 
   ${({ error }) => css`
-    border: ${error && '1px solid red'};
+    border: ${error && '1px solid var(--danger)'};
   `}
 `;
 
@@ -39,9 +45,9 @@ export const LabelValue = styled.div`
 
   span {
     display: block;
-    color: #646464;
     font-weight: bold;
     font-size: 10px;
+    color: #646464;
   }
 
   input {
@@ -75,7 +81,7 @@ export const VisiblePassword = styled.button`
   border: none;
   background: none;
   transform: translate3d(0, -50%, 0);
-  background: #fff;
+  background: transparent;
   width: 50px;
   height: 100%;
 
