@@ -31,10 +31,16 @@ type RegisterFormInput = {
 };
 
 const schema = yup.object().shape({
-  name: yup.string().required(),
-  username: yup.string().required(),
-  email: yup.string().email().required(),
-  password: yup.string().min(6).required(),
+  name: yup.string().required('Name is a required field.'),
+  username: yup.string().required('Username is a required field'),
+  email: yup
+    .string()
+    .email('Email must be a valid email')
+    .required('Email is a required field'),
+  password: yup
+    .string()
+    .min(6, 'Password mus be at least 6 characteres')
+    .required('Password is a required field'),
   confirmPassword: yup
     .string()
     .oneOf([yup.ref('password'), null], `Passwords don't match`)
@@ -44,10 +50,14 @@ const Register = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
+    setError,
+    watch
   } = useForm<RegisterFormInput>({
     resolver: yupResolver(schema)
   });
+
+  const values = watch();
 
   const onSubmit = async (data: RegisterFormInput) => {
     try {
@@ -56,8 +66,14 @@ const Register = () => {
       console.log(response.data);
     } catch (err) {
       console.log(err.response.data);
+      setError(err.response.data.field, {
+        type: 'manual',
+        message: err.response.data.message
+      });
     }
   };
+
+  console.log(values);
 
   return (
     <Wrapper>
