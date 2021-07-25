@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -56,24 +56,40 @@ const Register = () => {
   } = useForm<RegisterFormInput>({
     resolver: yupResolver(schema)
   });
-
   const values = watch();
+
+  const [emptyValues, setEmptyValues] = useState(true);
+
+  useEffect(() => {
+    if (
+      values.name &&
+      values.name.length > 0 &&
+      values.username &&
+      values.username.length > 0 &&
+      values.email &&
+      values.email.length > 0 &&
+      values.password &&
+      values.password.length > 0 &&
+      values.confirmPassword &&
+      values.confirmPassword.length > 0
+    ) {
+      setEmptyValues(false);
+      return;
+    }
+
+    setEmptyValues(true);
+  }, [values]);
 
   const onSubmit = async (data: RegisterFormInput) => {
     try {
-      const response = await api.post('/users', data);
-
-      console.log(response.data);
+      await api.post('/users', data);
     } catch (err) {
-      console.log(err.response.data);
       setError(err.response.data.field, {
         type: 'manual',
         message: err.response.data.message
       });
     }
   };
-
-  console.log(values);
 
   return (
     <Wrapper>
@@ -150,6 +166,7 @@ const Register = () => {
                       side: 'right'
                     }}
                     type="submit"
+                    disabled={emptyValues}
                   />
                 </S.Footer>
               </Form>

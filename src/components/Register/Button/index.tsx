@@ -12,9 +12,17 @@ export type Props = {
     side?: string;
   };
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
 };
 
-const Button = ({ theme, text, type = 'button', icon, onClick }: Props) => {
+const Button = ({
+  theme,
+  text,
+  type = 'button',
+  icon,
+  onClick,
+  disabled
+}: Props) => {
   return (
     <S.Container
       onClick={onClick}
@@ -22,6 +30,7 @@ const Button = ({ theme, text, type = 'button', icon, onClick }: Props) => {
       theme={theme}
       themeExist={!!theme}
       icon={!!icon}
+      disabled={disabled}
     >
       {icon && (!icon.side || icon.side === 'left') && (
         <img src={icon.url} alt={icon.altText} />
