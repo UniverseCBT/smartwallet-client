@@ -81,8 +81,20 @@ const Register = () => {
   }, [values]);
 
   const onSubmit = async (data: RegisterFormInput) => {
+    /*
+      TODO: IMPLEMENTATIONS
+
+      1°- Verify where my token has generate register or login
+      2°- If first time user its register in application they redirect to register steps
+        2.1° - Else the application redirect her to dashboard
+      3° - On register steps he can't change steps by url
+      4° - Case user exit the page in register steps when he back put he is back in the page register
+    */
+
     try {
-      await api.post('/users', data);
+      const response = await api.post('/users', data);
+
+      window.localStorage.setItem('bb:auth-token', response.data.token);
     } catch (err) {
       setError(err.response.data.field, {
         type: 'manual',

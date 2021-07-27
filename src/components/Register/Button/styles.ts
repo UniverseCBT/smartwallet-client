@@ -13,7 +13,8 @@ export const Container = styled.button<ButtonProps>`
 
   &:disabled {
     background: #d8d8d8;
-    box-shadow: rgb(206 206 206) 0px 4px 14px 0px;
+    box-shadow: none;
+    opacity: 0.3;
   }
 
   ${props =>
