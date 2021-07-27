@@ -11,6 +11,12 @@ export const Container = styled.button<ButtonProps>`
     margin-left: 20px;
   }
 
+  &:disabled {
+    background: #d8d8d8;
+    box-shadow: none;
+    opacity: 0.3;
+  }
+
   ${props =>
     (!props.themeExist || props.theme === 'primary') &&
     css`
@@ -24,7 +30,7 @@ export const Container = styled.button<ButtonProps>`
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: padding 0.2s;
+      transition: all 0.2s;
     `}
 
   ${props =>

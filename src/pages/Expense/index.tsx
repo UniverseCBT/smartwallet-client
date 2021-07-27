@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import { v4 } from 'uuid';
 
 import Wrapper from '../../components/_noauth/Wrapper';
@@ -34,6 +35,8 @@ type ExpenseItems = {
 };
 
 const Expense = () => {
+  const { register } = useForm();
+
   const [habitsItems, setHabitsItems] = useState<ExpenseItems[]>([]);
   const [selectValue, setSelectValue] = useState<string | number>('' || 0);
   const [filterValue, setFilterValue] = useState<string>('all');
@@ -126,10 +129,18 @@ const Expense = () => {
               <ExpenseForm>
                 <Row>
                   <Col>
-                    <Input inputName="name" text="Habit Name" />
+                    <Input
+                      inputName="name"
+                      text="Habit Name"
+                      register={register}
+                    />
                   </Col>
                   <Col>
-                    <Input inputName="spent" text="Expected spent" />
+                    <Input
+                      inputName="spent"
+                      text="Expected spent"
+                      register={register}
+                    />
                   </Col>
                   <Col>
                     <Select

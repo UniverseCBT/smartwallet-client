@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import { InputProps } from '.';
 
 export const Container = styled.div`
   user-select: none;
@@ -8,9 +10,14 @@ export const Container = styled.div`
   & + div {
     margin-top: 20px;
   }
+
+  p {
+    color: var(--danger);
+    margin-top: 0.5rem;
+  }
 `;
 
-export const Label = styled.label`
+export const Label = styled.label<Pick<InputProps, 'error'>>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,6 +29,11 @@ export const Label = styled.label`
   border-radius: 4px;
   cursor: text;
   overflow: hidden;
+  position: relative;
+
+  ${({ error }) => css`
+    border: ${error && '1px solid var(--danger)'};
+  `}
 `;
 
 export const LabelValue = styled.div`
@@ -33,9 +45,9 @@ export const LabelValue = styled.div`
 
   span {
     display: block;
-    color: #646464;
     font-weight: bold;
     font-size: 10px;
+    color: #646464;
   }
 
   input {
@@ -69,7 +81,7 @@ export const VisiblePassword = styled.button`
   border: none;
   background: none;
   transform: translate3d(0, -50%, 0);
-  background: #fff;
+  background: transparent;
   width: 50px;
   height: 100%;
 

@@ -1,26 +1,36 @@
 import React from 'react';
 
-import { Container } from './styles';
+import * as S from './styles';
 
 export type Props = {
   theme?: string;
   text: string;
+  type?: 'button' | 'submit';
   icon?: {
     url: string;
     altText?: string;
     side?: string;
   };
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
 };
 
-const Button = ({ theme, text, icon, onClick }: Props) => {
+const Button = ({
+  theme,
+  text,
+  type = 'button',
+  icon,
+  onClick,
+  disabled
+}: Props) => {
   return (
-    <Container
+    <S.Container
       onClick={onClick}
-      type="button"
+      type={type && type}
       theme={theme}
       themeExist={!!theme}
       icon={!!icon}
+      disabled={disabled}
     >
       {icon && (!icon.side || icon.side === 'left') && (
         <img src={icon.url} alt={icon.altText} />
@@ -29,7 +39,7 @@ const Button = ({ theme, text, icon, onClick }: Props) => {
       {icon && icon.side === 'right' && (
         <img src={icon.url} alt={icon.altText} />
       )}
-    </Container>
+    </S.Container>
   );
 };
 

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 import Wrapper from '../../components/_noauth/Wrapper';
 
-import { Container, Footer } from './styles';
+import * as S from './styles';
 
 import Row from '../../components/Grid/Row';
 import Col from '../../components/Grid/Col';
@@ -19,6 +20,8 @@ import Button from '../../components/Register/Button';
 import LoginArt from '../../components/icons/LoginArt';
 
 const Login = () => {
+  const { register } = useForm();
+
   return (
     <Wrapper>
       <Row>
@@ -45,13 +48,22 @@ const Login = () => {
                 <p>Let`s sign you in</p>
               </div>
               <div>
-                <Input inputName="usernameOrEmail" text="Username/Email" />
-                <Input inputName="password" type="password" text="Password" />
+                <Input
+                  inputName="usernameOrEmail"
+                  text="Username/Email"
+                  register={register}
+                />
+                <Input
+                  inputName="password"
+                  type="password"
+                  text="Password"
+                  register={register}
+                />
               </div>
-              <Footer>
+              <S.Footer>
                 <Link to="/">Forgot your password?</Link>
                 <Button text="Sign In" />
-              </Footer>
+              </S.Footer>
             </Form>
           </Content>
         </Col>

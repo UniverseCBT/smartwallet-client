@@ -1,18 +1,22 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { UseFormRegister } from 'react-hook-form';
 
-import { Container, Label, LabelValue, VisiblePassword } from './styles';
+import * as S from './styles';
 
 import closeEyesIcon from '../../assets/icons/close_eyes.svg';
 import openEyesIcon from '../../assets/icons/open_eyes.svg';
 
-type InputProps = {
+// search a type to register
+export type InputProps = {
   inputName: string;
   text?: string;
-  placeholder?: string;
   type?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  register: UseFormRegister<any>;
+  error?: string;
 };
 
-const Input: React.FC<InputProps> = ({ inputName, text, type }) => {
+const Input = ({ inputName, text, type, register, error }: InputProps) => {
   const [isPassword, setIsPassword] = useState(false);
   const [visible, setVisible] = useState(false);
   const [defaultType, setDefaultType] = useState('');
@@ -42,28 +46,32 @@ const Input: React.FC<InputProps> = ({ inputName, text, type }) => {
   }, [isPassword, visible, setDefaultType]);
 
   return (
-    <Container>
-      <Label htmlFor={inputName}>
-        <LabelValue>
+    <S.Container>
+      <S.Label htmlFor={inputName} error={error}>
+        <S.LabelValue>
           <span>{text}</span>
           <input
             type={isPassword ? defaultType : type}
             spellCheck="false"
             autoComplete={type === 'email' ? 'on' : 'off'}
-            name={inputName}
             id={inputName}
+            {...register(inputName)}
           />
-        </LabelValue>
+        </S.LabelValue>
         {isPassword && (
-          <VisiblePassword type="button" onClick={() => visiblePasswordType()}>
+          <S.VisiblePassword
+            type="button"
+            onClick={() => visiblePasswordType()}
+          >
             <img
               src={visible ? openEyesIcon : closeEyesIcon}
               alt={visible ? 'Visible' : 'Hidden'}
             />
-          </VisiblePassword>
+          </S.VisiblePassword>
         )}
-      </Label>
-    </Container>
+      </S.Label>
+      {error && <p>{error}</p>}
+    </S.Container>
   );
 };
 
