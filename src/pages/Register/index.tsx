@@ -95,6 +95,8 @@ const Register = () => {
       const response = await api.post('/users', data);
 
       window.localStorage.setItem('bb:auth-token', response.data.token);
+
+      // history.push('/register/income');
     } catch (err) {
       setError(err.response.data.field, {
         type: 'manual',

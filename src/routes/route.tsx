@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Route,
   Redirect,
@@ -21,6 +21,10 @@ const RouteWrapper = ({
   ...rest
 }: Props) => {
   const signed = false;
+
+  useEffect(() => {
+    const token = window.localStorage.getItem('bb:auth-token');
+  }, []);
 
   if (signed && !isPrivate) {
     return <Redirect to="/" />;

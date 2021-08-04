@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { Router, Switch } from 'react-router-dom';
+
+import history from '../services/history';
 
 import Route from './route';
 
@@ -15,7 +17,7 @@ import Dashboard from '../pages/Dashboard';
 
 const Routes = () => {
   return (
-    <BrowserRouter>
+    <Router history={history}>
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/register/perfil" component={Register} />
@@ -41,7 +43,7 @@ const Routes = () => {
 
         <Route path="/" exact component={Dashboard} isPrivate />
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 };
 
