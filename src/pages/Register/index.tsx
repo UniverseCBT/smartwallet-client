@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import { api } from '../../services/api';
+import { history } from '../../services/history';
 
 import * as S from './styles';
 
@@ -96,7 +97,7 @@ const Register = () => {
 
       window.localStorage.setItem('bb:auth-token', response.data.token);
 
-      // history.push('/register/income');
+      history.push('/register/income');
     } catch (err) {
       setError(err.response.data.field, {
         type: 'manual',

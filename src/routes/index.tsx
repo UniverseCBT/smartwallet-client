@@ -1,7 +1,5 @@
 import React from 'react';
-import { Router, Switch } from 'react-router-dom';
-
-import history from '../services/history';
+import { Switch } from 'react-router-dom';
 
 import Route from './route';
 
@@ -17,33 +15,31 @@ import Dashboard from '../pages/Dashboard';
 
 const Routes = () => {
   return (
-    <Router history={history}>
-      <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/register/perfil" component={Register} />
+    <Switch>
+      <Route path="/login" component={Login} />
+      <Route path="/register/perfil" component={Register} />
 
-        <Route
-          path="/register/income"
-          component={Income}
-          isPrivate
-          registerStep
-        />
-        <Route
-          path="/register/expense"
-          component={Expense}
-          isPrivate
-          registerStep
-        />
-        <Route
-          path="/register/overview"
-          component={Overview}
-          isPrivate
-          registerStep
-        />
+      <Route
+        path="/register/income"
+        component={Income}
+        isPrivate
+        registerStep
+      />
+      <Route
+        path="/register/expense"
+        component={Expense}
+        isPrivate
+        registerStep
+      />
+      <Route
+        path="/register/overview"
+        component={Overview}
+        isPrivate
+        registerStep
+      />
 
-        <Route path="/" exact component={Dashboard} isPrivate />
-      </Switch>
-    </Router>
+      <Route path="/" exact component={Dashboard} isPrivate />
+    </Switch>
   );
 };
 
