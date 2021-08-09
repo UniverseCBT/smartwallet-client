@@ -35,9 +35,11 @@
     "react/prop-types": "off",
     "react/require-default-props": "off",
     "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": "off",
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "camelcase": "off",
+    "no-shadow": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "import/extensions": [
       "error",
