@@ -4,23 +4,24 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import { api } from '../../services/api';
+import { api } from 'services/api';
+import { history } from 'services/history';
+
+import Row from 'components/Grid/Row';
+import Col from 'components/Grid/Col';
+
+import Wrapper from 'components/_noauth/Wrapper';
+import Header from 'components/_noauth/Header';
+import Content from 'components/_noauth/Content';
+import Form from 'components/_noauth/Form';
+import SideNavigation from 'components/_noauth/SideNavigation';
+
+import Input from 'components/Input';
+import RegisterButton from 'components/Register/Button';
+
+import arrowRightIcon from 'assets/icons/arrowRight.svg';
 
 import * as S from './styles';
-
-import Wrapper from '../../components/_noauth/Wrapper';
-import Row from '../../components/Grid/Row';
-import Col from '../../components/Grid/Col';
-
-import Header from '../../components/_noauth/Header';
-import Content from '../../components/_noauth/Content';
-import Form from '../../components/_noauth/Form';
-import SideNavigation from '../../components/_noauth/SideNavigation';
-
-import Input from '../../components/Input';
-import RegisterButton from '../../components/Register/Button';
-
-import arrowRightIcon from '../../assets/icons/arrowRight.svg';
 
 type RegisterFormInput = {
   name: string;
@@ -93,8 +94,12 @@ const Register = () => {
 
     try {
       const response = await api.post('/users', data);
+      const { token } = response.data;
 
-      window.localStorage.setItem('bb:auth-token', response.data.token);
+      api.defaults.headers.Authorization = `Bearer ${token}`;
+      window.localStorage.setItem('bb:auth-token', token);
+
+      history.push('/register/income');
     } catch (err) {
       setError(err.response.data.field, {
         type: 'manual',
