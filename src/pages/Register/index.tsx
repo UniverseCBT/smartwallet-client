@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+
+import { addUserRequest } from 'store/modules/user/User.actions';
 
 import { api } from 'services/api';
 import { history } from 'services/history';
@@ -21,6 +24,7 @@ import RegisterButton from 'components/Register/Button';
 
 import arrowRightIcon from 'assets/icons/arrowRight.svg';
 
+import { UserType } from 'store/modules/user/User.types';
 import * as S from './styles';
 
 type RegisterFormInput = {
@@ -61,6 +65,8 @@ const Register = () => {
 
   const [emptyValues, setEmptyValues] = useState(true);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if (
       values.name &&
@@ -92,20 +98,29 @@ const Register = () => {
       4° - Case user exit the page in register steps when he back put he is back in the page register
     */
 
-    try {
-      const response = await api.post('/users', data);
-      const { token } = response.data;
+    dispatch(
+      addUserRequest({
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        username: data.username
+      })
+    );
 
-      api.defaults.headers.Authorization = `Bearer ${token}`;
-      window.localStorage.setItem('bb:auth-token', token);
+    // try {
+    //   const response = await api.post('/users', data);
+    //   const { token } = response.data;
 
-      history.push('/register/income');
-    } catch (err) {
-      setError(err.response.data.field, {
-        type: 'manual',
-        message: err.response.data.message
-      });
-    }
+    //   api.defaults.headers.Authorization = `Bearer ${token}`;
+    //   window.localStorage.setItem('bb:auth-token', token);
+
+    //   history.push('/register/income');
+    // } catch (err) {
+    //   setError(err.response.data.field, {
+    //     type: 'manual',
+    //     message: err.response.data.message
+    //   });
+    // }
   };
 
   return (

@@ -1,7 +1,7 @@
 import produce from 'immer';
 import { Reducer } from 'redux';
 
-import { User } from './User.types';
+import { User, UserActions } from './User.types';
 
 const INITIAL_STATE: User = {
   user: {
@@ -15,6 +15,11 @@ const INITIAL_STATE: User = {
 const user: Reducer<User> = (state = INITIAL_STATE, action) => {
   return produce(state, draft => {
     switch (action.type) {
+      case UserActions.addUserRequest: {
+        console.log(action);
+
+        break;
+      }
       default:
         return draft;
     }

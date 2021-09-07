@@ -4,9 +4,7 @@ export function addUserRequest(user: UserType) {
   return {
     type: UserActions.addUserRequest,
     payload: {
-      user: {
-        user
-      }
+      user
     }
   };
 }
@@ -15,9 +13,7 @@ export function addUserSuccess(user: UserType) {
   return {
     type: UserActions.addUserRequest,
     payload: {
-      user: {
-        user
-      }
+      user
     }
   };
 }
