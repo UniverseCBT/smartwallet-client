@@ -7,9 +7,6 @@ import * as yup from 'yup';
 
 import { addUserRequest } from 'store/modules/user/User.actions';
 
-import { api } from 'services/api';
-import { history } from 'services/history';
-
 import Row from 'components/Grid/Row';
 import Col from 'components/Grid/Col';
 
@@ -24,7 +21,6 @@ import RegisterButton from 'components/Register/Button';
 
 import arrowRightIcon from 'assets/icons/arrowRight.svg';
 
-import { UserType } from 'store/modules/user/User.types';
 import * as S from './styles';
 
 type RegisterFormInput = {

@@ -16,7 +16,10 @@ const user: Reducer<User> = (state = INITIAL_STATE, action) => {
   return produce(state, draft => {
     switch (action.type) {
       case UserActions.addUserRequest: {
-        console.log(action);
+        const { user } = action.payload;
+
+        // eslint-disable-next-line no-param-reassign
+        draft.user = user;
 
         break;
       }
