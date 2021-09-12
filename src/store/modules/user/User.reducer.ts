@@ -8,8 +8,11 @@ const INITIAL_STATE: User = {
     name: '',
     username: '',
     email: '',
-    password: ''
-  }
+    password: '',
+    confirmPassword: ''
+  },
+  field: '',
+  message: ''
 };
 
 const user: Reducer<User> = (state = INITIAL_STATE, action) => {
@@ -18,11 +21,15 @@ const user: Reducer<User> = (state = INITIAL_STATE, action) => {
       case UserActions.addUserRequest: {
         const { user } = action.payload;
 
-        // eslint-disable-next-line no-param-reassign
         draft.user = user;
 
         break;
       }
+      // case UserActions.addUserFailed: {
+      //   const;
+
+      //   break;
+      // }
       default:
         return draft;
     }

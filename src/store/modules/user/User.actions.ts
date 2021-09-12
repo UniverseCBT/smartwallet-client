@@ -9,20 +9,25 @@ export function addUserRequest(user: UserType) {
   };
 }
 
-export function addUserSuccess(user: UserType) {
+export function addUserSuccess(
+  user: Omit<UserType, 'confirmPassword'>,
+  token: string
+) {
   return {
     type: UserActions.addUserRequest,
     payload: {
-      user
+      user,
+      token
     }
   };
 }
 
-export function addUserFailed(userId: number) {
+export function addUserFailed(field: string, message: string) {
   return {
     type: UserActions.addUserRequest,
     payload: {
-      userId
+      field,
+      message
     }
   };
 }

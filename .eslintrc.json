@@ -30,6 +30,7 @@
     }],
     "react-hooks/rules-of-hooks": "error",
     "no-use-before-define": "off",
+    "no-param-reassign": "off",
     "react/jsx-props-no-spreading": "off",
     "consistent-return": "off",
     "react/jsx-curly-newline": "off",

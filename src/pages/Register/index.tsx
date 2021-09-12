@@ -94,14 +94,7 @@ const Register = () => {
       4° - Case user exit the page in register steps when he back put he is back in the page register
     */
 
-    dispatch(
-      addUserRequest({
-        name: data.name,
-        email: data.email,
-        password: data.password,
-        username: data.username
-      })
-    );
+    dispatch(addUserRequest(data));
 
     // try {
     //   const response = await api.post('/users', data);

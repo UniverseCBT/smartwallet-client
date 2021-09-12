@@ -9,8 +9,16 @@ export type UserType = {
   username: string;
   email: string;
   password: string;
+  confirmPassword: string;
 };
 
 export type User = {
   user: UserType;
+  field?: string;
+  message?: string;
+};
+
+export type UserResponse = {
+  token: string;
+  user: Omit<UserType, 'confirmPassword'>;
 };
