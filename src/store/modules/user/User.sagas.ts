@@ -1,4 +1,4 @@
-import { AxiosResponse } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 import { all, takeLatest, call, put } from 'redux-saga/effects';
 
 import { api } from 'services/api';
@@ -22,7 +22,9 @@ function* register({ payload }: ActionPayload) {
 
     yield put(addUserSuccess(user, token));
   } catch (err) {
-    const { field, message } = err.response.data;
+    const error = err as AxiosError;
+
+    const { field, message } = error.response?.data;
 
     yield put(addUserFailed(field, message));
   }

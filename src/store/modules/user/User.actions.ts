@@ -14,7 +14,7 @@ export function addUserSuccess(
   token: string
 ) {
   return {
-    type: UserActions.addUserRequest,
+    type: UserActions.addUserSuccess,
     payload: {
       user,
       token
@@ -24,7 +24,7 @@ export function addUserSuccess(
 
 export function addUserFailed(field: string, message: string) {
   return {
-    type: UserActions.addUserRequest,
+    type: UserActions.addUserFailed,
     payload: {
       field,
       message

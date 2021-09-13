@@ -12,7 +12,8 @@ const INITIAL_STATE: User = {
     confirmPassword: ''
   },
   field: '',
-  message: ''
+  message: '',
+  loading: false
 };
 
 const user: Reducer<User> = (state = INITIAL_STATE, action) => {
@@ -21,15 +22,22 @@ const user: Reducer<User> = (state = INITIAL_STATE, action) => {
       case UserActions.addUserRequest: {
         const { user } = action.payload;
 
+        draft.loading = true;
+        draft.message = '';
+        draft.field = '';
         draft.user = user;
 
         break;
       }
-      // case UserActions.addUserFailed: {
-      //   const;
+      case UserActions.addUserFailed: {
+        const { field, message } = action.payload;
 
-      //   break;
-      // }
+        draft.message = message;
+        draft.field = field;
+        draft.loading = false;
+
+        break;
+      }
       default:
         return draft;
     }
