@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -6,6 +7,10 @@ import * as yup from 'yup';
 
 import { api } from 'services/api';
 import { history } from 'services/history';
+
+import { StoreState } from 'store/store.type';
+import { User } from 'store/modules/user/User.types';
+import { addUserRequest } from 'store/modules/user/User.actions';
 
 import Row from 'components/Grid/Row';
 import Col from 'components/Grid/Col';
@@ -61,6 +66,9 @@ const Register = () => {
 
   const [emptyValues, setEmptyValues] = useState(true);
 
+  const user = useSelector<StoreState, User>(state => state.user);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if (
       values.name &&
@@ -82,31 +90,19 @@ const Register = () => {
   }, [values]);
 
   const onSubmit = async (data: RegisterFormInput) => {
-    /*
-      TODO: IMPLEMENTATIONS
-
-      1°- Verify where my token has generate register or login
-      2°- If first time user its register in application they redirect to register steps
-        2.1° - Else the application redirect her to dashboard
-      3° - On register steps he can't change steps by url
-      4° - Case user exit the page in register steps when he back put he is back in the page register
-    */
-
-    try {
-      const response = await api.post('/users', data);
-      const { token } = response.data;
-
-      api.defaults.headers.Authorization = `Bearer ${token}`;
-      window.localStorage.setItem('bb:auth-token', token);
-
-      history.push('/register/income');
-    } catch (err) {
-      setError(err.response.data.field, {
-        type: 'manual',
-        message: err.response.data.message
-      });
-    }
+    dispatch(addUserRequest(data));
   };
+
+  useEffect(() => {
+    // if (user) {
+    //   setError(user.field, {
+    //     type: 'manual',
+    //     message: err.response.data.message
+    //   });
+    // }
+
+    console.log(typeof user.field);
+  }, [user]);
 
   return (
     <Wrapper>

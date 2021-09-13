@@ -10,12 +10,10 @@ import arrowRightIcon from '../../../assets/icons/arrowRight.svg';
 import { Container } from './styles';
 
 type Props = {
-  back?: string;
-  next?: string;
   totalMoney: number;
 };
 
-const Footer = ({ back, next, totalMoney }: Props) => {
+const Footer = ({ totalMoney }: Props) => {
   return (
     <Container>
       <div className="actions">

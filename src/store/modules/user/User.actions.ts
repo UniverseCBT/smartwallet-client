@@ -4,29 +4,30 @@ export function addUserRequest(user: UserType) {
   return {
     type: UserActions.addUserRequest,
     payload: {
-      user: {
-        user
-      }
+      user
     }
   };
 }
 
-export function addUserSuccess(user: UserType) {
+export function addUserSuccess(
+  user: Omit<UserType, 'confirmPassword'>,
+  token: string
+) {
   return {
-    type: UserActions.addUserRequest,
+    type: UserActions.addUserSuccess,
     payload: {
-      user: {
-        user
-      }
+      user,
+      token
     }
   };
 }
 
-export function addUserFailed(userId: number) {
+export function addUserFailed(field: string, message: string) {
   return {
-    type: UserActions.addUserRequest,
+    type: UserActions.addUserFailed,
     payload: {
-      userId
+      field,
+      message
     }
   };
 }
