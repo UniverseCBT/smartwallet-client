@@ -5,9 +5,6 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import { api } from 'services/api';
-import { history } from 'services/history';
-
 import { StoreState } from 'store/store.type';
 import { User } from 'store/modules/user/User.types';
 import { addUserRequest } from 'store/modules/user/User.actions';
@@ -94,15 +91,19 @@ const Register = () => {
   };
 
   useEffect(() => {
-    // if (user) {
-    //   setError(user.field, {
-    //     type: 'manual',
-    //     message: err.response.data.message
-    //   });
-    // }
-
-    console.log(typeof user.field);
-  }, [user]);
+    setError(
+      user.field as
+        | 'name'
+        | 'username'
+        | 'email'
+        | 'password'
+        | 'confirmPassword',
+      {
+        type: 'manual',
+        message: user.message
+      }
+    );
+  }, [user, setError]);
 
   return (
     <Wrapper>
