@@ -4,6 +4,7 @@ import { all, takeLatest, call, put } from 'redux-saga/effects';
 import { api } from 'services/api';
 import { history } from 'services/history';
 
+import { setTokenRequest } from 'store/modules/auth/Auth.actions';
 import { addUserRequest, addUserFailed, addUserSuccess } from './User.actions';
 import { UserActions, UserResponse } from './User.types';
 
@@ -21,13 +22,8 @@ function* register({ payload }: ActionPayload) {
 
     const { user, token } = response.data;
 
-    yield put(addUserSuccess(user, token));
-
-    api.defaults.headers.common = {
-      Authorization: `Bearer ${token}`
-    };
-
-    window.localStorage.setItem('@bb:token', token);
+    yield put(addUserSuccess(user));
+    yield put(setTokenRequest(token));
 
     history.push('/register/income');
   } catch (err) {

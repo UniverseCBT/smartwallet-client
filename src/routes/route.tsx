@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Route,
   Redirect,
   RouteProps,
   RouteComponentProps
 } from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
 
 import store from 'store';
 
@@ -22,8 +23,20 @@ const RouteWrapper = ({
   component: Component,
   ...rest
 }: Props) => {
+  const [signed, setSigned] = useState(false);
+
   // Verify if bearer is valid with saga middleware
-  const { token } = store.getState().user;
+  const { token } = store.getState().auth;
+
+  useEffect(() => {
+    const getToken = window.localStorage.getItem('bb:token');
+
+    if (getToken) {
+      const decode = jwt_decode(getToken);
+
+      console.log(decode);
+    }
+  }, []);
 
   if (!!token && !isPrivate) {
     return <Redirect to="/" />;

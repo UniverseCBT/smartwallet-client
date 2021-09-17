@@ -1,8 +1,7 @@
 export enum UserActions {
   addUserRequest = 'ADD/USER_REQUEST',
   addUserSuccess = 'ADD/USER_SUCCESS',
-  addUserFailed = 'ADD/USER_FAILED',
-  verifyToken = 'VERIFY/USER_TOKEN'
+  addUserFailed = 'ADD/USER_FAILED'
 }
 
 export type UserType = {
@@ -15,7 +14,6 @@ export type UserType = {
 
 export type User = {
   user: UserType;
-  token?: string;
   field: string;
   message: string;
   loading: boolean;
