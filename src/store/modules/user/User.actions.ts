@@ -9,15 +9,11 @@ export function addUserRequest(user: UserType) {
   };
 }
 
-export function addUserSuccess(
-  user: Omit<UserType, 'confirmPassword'>,
-  token: string
-) {
+export function addUserSuccess(user: Omit<UserType, 'confirmPassword'>) {
   return {
     type: UserActions.addUserSuccess,
     payload: {
-      user,
-      token
+      user
     }
   };
 }

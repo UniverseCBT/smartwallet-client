@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Route,
   Redirect,
   RouteProps,
   RouteComponentProps
 } from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
 
-import Auth from '../components/_auth/Auth';
+import store from 'store';
+
+import Auth from 'components/_auth/Auth';
 
 type Props = {
   isPrivate?: boolean;
@@ -20,18 +23,31 @@ const RouteWrapper = ({
   component: Component,
   ...rest
 }: Props) => {
-  const signed = false;
+  const [signed, setSigned] = useState(false);
 
-  if (signed && !isPrivate) {
+  // Verify if bearer is valid with saga middleware
+  const { token } = store.getState().auth;
+
+  useEffect(() => {
+    const getToken = window.localStorage.getItem('bb:token');
+
+    if (getToken) {
+      const decode = jwt_decode(getToken);
+
+      console.log(decode);
+    }
+  }, []);
+
+  if (!!token && !isPrivate) {
     return <Redirect to="/" />;
   }
 
-  if (!signed && isPrivate) {
+  if (!token && isPrivate) {
     return <Redirect to="/login" />;
   }
 
   const PrivateComponent = (props: RouteComponentProps) => {
-    return signed ? (
+    return token ? (
       <Auth registerStep={registerStep}>
         <Component {...props} />
       </Auth>

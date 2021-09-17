@@ -29,6 +29,13 @@ const user: Reducer<User> = (state = INITIAL_STATE, action) => {
 
         break;
       }
+      case UserActions.addUserSuccess: {
+        draft.message = '';
+        draft.field = '';
+        draft.loading = false;
+
+        break;
+      }
       case UserActions.addUserFailed: {
         const { field, message } = action.payload;
 

@@ -14,8 +14,8 @@ export type UserType = {
 
 export type User = {
   user: UserType;
-  field?: string;
-  message?: string;
+  field: string;
+  message: string;
   loading: boolean;
 };
 
