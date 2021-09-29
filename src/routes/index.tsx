@@ -39,6 +39,7 @@ const Routes = () => {
       />
 
       <Route path="/" exact component={Dashboard} isPrivate />
+      <Route path="/historic" component={Dashboard} isPrivate />
     </Switch>
   );
 };
