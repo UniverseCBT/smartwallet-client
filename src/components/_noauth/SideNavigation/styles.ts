@@ -1,15 +1,12 @@
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 interface ContentProps {
-  register?: boolean;
+  register: boolean;
 }
 
 interface StepProps {
-  active?: boolean;
-}
-
-interface StepContentProps {
-  active?: boolean;
+  $activelink?: boolean;
 }
 
 export const Container = styled.div`
@@ -128,7 +125,7 @@ export const Content = styled.div<ContentProps>`
     `}
 `;
 
-export const Step = styled.div<StepProps>`
+export const Step = styled(Link)<StepProps>`
   display: none;
   align-items: center;
 
@@ -137,7 +134,7 @@ export const Step = styled.div<StepProps>`
   }
 
   ${props =>
-    props.active &&
+    props.$activelink &&
     css`
       display: flex;
       margin: 40px 10px 20px;
@@ -159,7 +156,7 @@ export const Step = styled.div<StepProps>`
     align-items: center;
 
     ${props =>
-      props.active &&
+      props.$activelink &&
       css`
         color: #fff;
         border: 2px solid #fff;
@@ -185,21 +182,21 @@ export const Step = styled.div<StepProps>`
     @media screen and (min-width: 1024px) {
       font-size: 18px;
       margin-top: 0;
-      color: ${props => (props.active ? '#f3f4f8' : '#ffffffa6')};
-      font-weight: ${props => (props.active ? 'bold' : 'normal')};
+      color: ${props => (props.$activelink ? '#f3f4f8' : '#ffffffa6')};
+      font-weight: ${props => (props.$activelink ? 'bold' : 'normal')};
     }
   }
 `;
 
-export const StepContent = styled.div<StepContentProps>`
+export const StepContent = styled.div<StepProps>`
   color: #f3f4f8;
   font-size: 14px;
   font-weight: bold;
 
   @media screen and (min-width: 1024px) {
-    font-weight: ${props => (props.active ? 'bold' : 'normal')};
+    font-weight: ${props => (props.$activelink ? 'bold' : 'normal')};
     font-size: 12px;
-    color: ${props => (props.active ? '#f3f4f8' : '#ffffffa6')};
+    color: ${props => (props.$activelink ? '#f3f4f8' : '#ffffffa6')};
   }
 
   .total-step {

@@ -10,9 +10,9 @@ export const Container = styled.div`
   }
 
   .money {
-    padding-top: 10px;
-    border-top: 1px solid #ececec;
-    margin: 20px 0 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ececec;
+    margin: 0 0 20px;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;

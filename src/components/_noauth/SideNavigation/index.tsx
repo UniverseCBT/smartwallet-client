@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+
+import Logo from 'components/icons/Logo';
 
 import { Container, Header, Content, Step, StepContent } from './styles';
-
-import Logo from '../../icons/Logo';
 
 type SideNavigationProps = {
   children?: React.ReactNode;
@@ -12,68 +12,51 @@ type SideNavigationProps = {
 type RegisterPages = {
   step: number;
   page: string;
-  active?: boolean;
-  hasActive?: boolean;
+  active: boolean;
 };
 
-const SideNavigation = ({ children }: SideNavigationProps) => {
-  const { url } = useRouteMatch();
+const steps: RegisterPages[] = [
+  {
+    step: 1,
+    page: 'Perfil',
+    active: false
+  },
+  {
+    step: 2,
+    page: 'Income',
+    active: false
+  },
+  {
+    step: 3,
+    page: 'Expense',
+    active: false
+  },
+  {
+    step: 4,
+    page: 'Overview',
+    active: false
+  }
+];
 
-  const [page, setPage] = useState<string>('');
-  const [registerPageName, setRegisterPageName] = useState<string>('');
-  const [registerPages, setRegisterPages] = useState<RegisterPages[]>([]);
+const SideNavigation = ({ children }: SideNavigationProps) => {
+  const location = useLocation();
+
+  const [pageIndex, setPageIndex] = useState(0);
   const [isRegister, setIsRegister] = useState<boolean>(false);
 
   useEffect(() => {
-    const [, urlName, registerName] = url.split('/');
+    const registerLocation = location.pathname.split('/')[1];
 
-    setPage(urlName);
-    setRegisterPageName(registerName);
-  }, [setPage, setRegisterPageName, url]);
+    const getRegisterIndex = steps.findIndex(
+      registerItem => registerItem.page.toLocaleLowerCase() === registerLocation
+    );
 
-  useEffect(() => {
-    setRegisterPages([
-      {
-        step: 1,
-        page: 'Perfil',
-        active: false
-      },
-      {
-        step: 2,
-        page: 'Income',
-        active: false
-      },
-      {
-        step: 3,
-        page: 'Expense',
-        active: false
-      },
-      {
-        step: 4,
-        page: 'Overview',
-        active: false
-      }
-    ]);
-  }, [setRegisterPages]);
-
-  useEffect(() => {
-    registerPages.forEach(registerItem => {
-      const registerNameLowerCase = registerItem.page.toLowerCase();
-
-      if (registerNameLowerCase === registerPageName) {
-        Object.assign(registerItem, {
-          ...registerItem,
-          active: true
-        });
-      }
-    });
-  }, [registerPages, registerPageName]);
-
-  useEffect(() => {
-    if (page === 'register') {
+    if (registerLocation === 'register') {
       setIsRegister(true);
     }
-  }, [page, setIsRegister]);
+
+    setPageIndex(getRegisterIndex);
+  }, [location.pathname]);
 
   return (
     <Container>
@@ -89,20 +72,19 @@ const SideNavigation = ({ children }: SideNavigationProps) => {
       <Content register={isRegister}>
         {isRegister ? (
           <ul>
-            {registerPages.map((registerItems, registerIndex) => (
-              <li key={registerItems.page}>
-                <Step active={registerItems.active}>
-                  <span className="content-number">
-                    {`0${registerIndex + 1}`}
-                  </span>
+            {steps.map((step, index) => (
+              <li key={step.page}>
+                <Step
+                  to={`/register/${step.page.toLocaleLowerCase()}`}
+                  $activelink={pageIndex >= index}
+                >
+                  <span className="content-number">{`0${index + 1}`}</span>
                   <div>
-                    <StepContent active={registerItems.active}>
-                      {`STEP 0${registerIndex + 1}`}
-                      <span className="total-step">
-                        {`/ 0${registerPages.length}`}
-                      </span>
+                    <StepContent $activelink={pageIndex >= index}>
+                      {`STEP 0${index + 1}`}
+                      <span className="total-step">{`/ 0${steps.length}`}</span>
                     </StepContent>
-                    <p>{` ${registerItems.page}`}</p>
+                    <p>{` ${step.page}`}</p>
                   </div>
                 </Step>
               </li>

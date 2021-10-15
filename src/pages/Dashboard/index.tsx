@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { transformCurrency } from '../../shared/currency';
 
 import Row from '../../components/Grid/Row';

@@ -7,6 +7,7 @@ import {
   useLocation
 } from 'react-router-dom';
 import jwt_decode, { JwtPayload } from 'jwt-decode';
+import { AxiosError } from 'axios';
 
 import { api } from 'services/api';
 
@@ -18,81 +19,68 @@ type Props = {
   component: React.ComponentType;
 } & RouteProps;
 
-type RegisterStepProps = {
-  page: 'income' | 'expense' | 'overview';
-  registered: boolean;
-};
-
 const RouteWrapper = ({
   isPrivate,
   registerStep,
   component: Component,
   ...rest
 }: Props) => {
-  const [signed, setSigned] = useState(false);
-  const [token, setToken] = useState('');
-  const [redirect, setRedirect] = useState('/');
+  const location = useLocation();
 
-  const { pathname } = useLocation();
+  const [hasRegistered, setHasRegistered] = useState<boolean>(false);
+  const [hasToken, setHasToken] = useState<boolean>(false);
 
   useEffect(() => {
-    const [, stepPath] = pathname.split('/');
+    async function loadAuth() {
+      const registerStep = location.pathname.split('/')[2];
 
-    try {
-      const getToken = window.localStorage.getItem('bb:auth');
+      try {
+        const token = window.localStorage.getItem('bb:auth');
 
-      if (!getToken) {
-        window.localStorage.removeItem('bb:auth');
-        setSigned(false);
+        const { hasRegistered } = (
+          await api.get<{ hasRegistered: boolean }>(
+            `/sessions/${registerStep ?? 'overview'}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            }
+          )
+        ).data;
 
-        if (stepPath === 'register') {
-          setRedirect('/register/perfil');
-          return;
+        if (hasRegistered) {
+          setHasRegistered(true);
         }
 
-        setRedirect('/login');
+        setHasRegistered(false);
+      } catch (err) {
+        const error = err as AxiosError;
+
+        console.log(error.response?.data);
       }
-
-      if (getToken) {
-        setToken(getToken);
-        const { exp } = jwt_decode<JwtPayload>(getToken);
-
-        setSigned(true);
-
-        api.defaults.headers.common = {
-          Authorization: `Bearer ${getToken}`
-        };
-
-        if (exp) {
-          const expirationToken = exp >= new Date().getTime() / 1000;
-
-          if (!expirationToken) {
-            setSigned(false);
-            window.localStorage.removeItem('bb:auth');
-          }
-        }
-
-        setRedirect('/');
-      }
-    } catch (err) {
-      window.localStorage.removeItem('bb:auth');
-      setSigned(false);
-
-      if (stepPath === 'register') {
-        setRedirect('/register/perfil');
-        return;
-      }
-
-      setRedirect('/login');
     }
-  }, [pathname]);
 
-  if (!signed && isPrivate && registerStep) {
-    return <Redirect to={redirect} />;
+    loadAuth();
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const token = window.localStorage.getItem('bb:auth');
+
+    if (token) {
+      setHasToken(true);
+    }
+  }, []);
+
+  if (!isPrivate && hasToken) {
+    if (!hasRegistered) {
+      return <Redirect to="/register/income" />;
+    }
+
+    return <Redirect to="/" />;
   }
 
-  if (signed && !isPrivate && !registerStep) {
-    return <Redirect to="/" />;
+  if (isPrivate && !hasToken) {
+    return <Redirect to="/login" />;
   }
 
   const PrivateComponent = (props: RouteComponentProps) => {
