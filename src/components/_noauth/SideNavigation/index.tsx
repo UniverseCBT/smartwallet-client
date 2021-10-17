@@ -45,10 +45,10 @@ const SideNavigation = ({ children }: SideNavigationProps) => {
   const [isRegister, setIsRegister] = useState<boolean>(false);
 
   useEffect(() => {
-    const registerLocation = location.pathname.split('/')[1];
+    const [, registerLocation, stepName] = location.pathname.split('/');
 
     const getRegisterIndex = steps.findIndex(
-      registerItem => registerItem.page.toLocaleLowerCase() === registerLocation
+      registerItem => registerItem.page.toLocaleLowerCase() === stepName
     );
 
     if (registerLocation === 'register') {
