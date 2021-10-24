@@ -74,7 +74,7 @@ export const LabelValue = styled.div`
   }
 `;
 
-export const VisiblePassword = styled.button`
+export const VisiblePassword = styled.div`
   position: absolute;
   top: 50%;
   right: 0;
@@ -84,6 +84,10 @@ export const VisiblePassword = styled.button`
   background: transparent;
   width: 50px;
   height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &::before {
     content: '';
