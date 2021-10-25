@@ -22,20 +22,20 @@ const Routes = () => {
       <Route
         path="/register/income"
         component={Income}
-        isPrivate
         registerStep
+        isPrivate
       />
       <Route
         path="/register/expense"
         component={Expense}
-        isPrivate
         registerStep
+        isPrivate
       />
       <Route
         path="/register/overview"
         component={Overview}
-        isPrivate
         registerStep
+        isPrivate
       />
 
       <Route path="/" exact component={Dashboard} isPrivate />

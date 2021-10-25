@@ -16,6 +16,11 @@ type Props = {
 const Footer = ({ totalMoney }: Props) => {
   return (
     <Container>
+      <div className="money">
+        <h4>Total Expected</h4>
+        <span>{transformMoney(totalMoney)}</span>
+      </div>
+
       <div className="actions">
         <Button
           text="Back"
@@ -30,11 +35,6 @@ const Footer = ({ totalMoney }: Props) => {
             side: 'right'
           }}
         />
-      </div>
-
-      <div className="money">
-        <h4>Total Expected</h4>
-        <span>{transformMoney(totalMoney)}</span>
       </div>
     </Container>
   );

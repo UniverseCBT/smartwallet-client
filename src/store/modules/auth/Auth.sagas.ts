@@ -10,7 +10,6 @@ export function* setToken(token: string) {
   if (!token) {
     return;
   }
-
   window.localStorage.setItem('bb:auth', token);
 
   yield put(setTokenSuccess(token));

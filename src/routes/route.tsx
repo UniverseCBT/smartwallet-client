@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   Route,
   Redirect,
   RouteProps,
-  RouteComponentProps
+  RouteComponentProps,
+  useLocation
 } from 'react-router-dom';
-import jwt_decode from 'jwt-decode';
 
-import store from 'store';
+import { useToken } from 'hooks/useToken';
 
 import Auth from 'components/_auth/Auth';
 
@@ -23,31 +23,32 @@ const RouteWrapper = ({
   component: Component,
   ...rest
 }: Props) => {
-  const [signed, setSigned] = useState(false);
+  const location = useLocation().pathname.split('/')[1];
 
-  // Verify if bearer is valid with saga middleware
-  const { token } = store.getState().auth;
+  const { validToken, registered, loading } = useToken();
 
-  useEffect(() => {
-    const getToken = window.localStorage.getItem('bb:token');
+  const userLogged = !isPrivate && validToken;
+  const notLogged = isPrivate && !validToken;
+  const isRegisterPage = location === 'register';
 
-    if (getToken) {
-      const decode = jwt_decode(getToken);
-
-      console.log(decode);
+  if (userLogged) {
+    if (!registered) {
+      return <Redirect to="/register/income" />;
     }
-  }, []);
 
-  if (!!token && !isPrivate) {
     return <Redirect to="/" />;
   }
 
-  if (!token && isPrivate) {
+  if (notLogged) {
+    if (isRegisterPage) {
+      return <Redirect to="/register/perfil" />;
+    }
+
     return <Redirect to="/login" />;
   }
 
   const PrivateComponent = (props: RouteComponentProps) => {
-    return token ? (
+    return isPrivate ? (
       <Auth registerStep={registerStep}>
         <Component {...props} />
       </Auth>
@@ -56,7 +57,11 @@ const RouteWrapper = ({
     );
   };
 
-  return <Route {...rest} render={props => <PrivateComponent {...props} />} />;
+  return loading ? (
+    <h1>Carregando</h1>
+  ) : (
+    <Route {...rest} render={props => <PrivateComponent {...props} />} />
+  );
 };
 
 export default RouteWrapper;

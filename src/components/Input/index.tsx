@@ -59,10 +59,7 @@ const Input = ({ inputName, text, type, register, error }: InputProps) => {
           />
         </S.LabelValue>
         {isPassword && (
-          <S.VisiblePassword
-            type="button"
-            onClick={() => visiblePasswordType()}
-          >
+          <S.VisiblePassword onClick={() => visiblePasswordType()}>
             <img
               src={visible ? openEyesIcon : closeEyesIcon}
               alt={visible ? 'Visible' : 'Hidden'}
