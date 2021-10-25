@@ -43,8 +43,6 @@ const steps: RegisterPages[] = [
 const SideNavigation = ({ children }: SideNavigationProps) => {
   const isDesktop = useDevice('desktop');
 
-  console.log(isDesktop);
-
   const location = useLocation();
 
   const [pageIndex, setPageIndex] = useState(0);

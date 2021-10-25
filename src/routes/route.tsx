@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   Route,
   Redirect,
@@ -6,10 +6,8 @@ import {
   RouteComponentProps,
   useLocation
 } from 'react-router-dom';
-import jwt_decode, { JwtPayload } from 'jwt-decode';
-import { AxiosError } from 'axios';
 
-import { api } from 'services/api';
+import { useToken } from 'hooks/useToken';
 
 import Auth from 'components/_auth/Auth';
 
@@ -25,61 +23,27 @@ const RouteWrapper = ({
   component: Component,
   ...rest
 }: Props) => {
-  const location = useLocation();
+  const location = useLocation().pathname.split('/')[1];
 
-  const [hasRegistered, setHasRegistered] = useState<boolean>(false);
-  const [hasToken, setHasToken] = useState<boolean>(false);
+  const { validToken, registered, loading } = useToken();
 
-  useEffect(() => {
-    async function loadAuth() {
-      const registerStep = location.pathname.split('/')[2];
+  const userLogged = !isPrivate && validToken;
+  const notLogged = isPrivate && !validToken;
+  const isRegisterPage = location === 'register';
 
-      try {
-        const token = window.localStorage.getItem('bb:auth');
-
-        const { hasRegistered } = (
-          await api.get<{ hasRegistered: boolean }>(
-            `/sessions/${registerStep ?? 'overview'}`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`
-              }
-            }
-          )
-        ).data;
-
-        if (hasRegistered) {
-          setHasRegistered(true);
-        }
-
-        setHasRegistered(false);
-      } catch (err) {
-        const error = err as AxiosError;
-
-        console.log(error.response?.data);
-      }
-    }
-
-    loadAuth();
-  }, [location.pathname]);
-
-  useEffect(() => {
-    const token = window.localStorage.getItem('bb:auth');
-
-    if (token) {
-      setHasToken(true);
-    }
-  }, []);
-
-  if (!isPrivate && hasToken) {
-    if (!hasRegistered) {
+  if (userLogged) {
+    if (!registered) {
       return <Redirect to="/register/income" />;
     }
 
     return <Redirect to="/" />;
   }
 
-  if (isPrivate && !hasToken) {
+  if (notLogged) {
+    if (isRegisterPage) {
+      return <Redirect to="/register/perfil" />;
+    }
+
     return <Redirect to="/login" />;
   }
 
@@ -93,7 +57,11 @@ const RouteWrapper = ({
     );
   };
 
-  return <Route {...rest} render={props => <PrivateComponent {...props} />} />;
+  return loading ? (
+    <h1>Carregando</h1>
+  ) : (
+    <Route {...rest} render={props => <PrivateComponent {...props} />} />
+  );
 };
 
 export default RouteWrapper;
