@@ -7,7 +7,7 @@ import {
   useLocation
 } from 'react-router-dom';
 
-import { useToken } from 'hooks/useToken';
+import { useAuth } from 'hooks/useAuth';
 
 import Auth from 'components/_auth/Auth';
 
@@ -25,7 +25,7 @@ const RouteWrapper = ({
 }: Props) => {
   const location = useLocation().pathname.split('/')[1];
 
-  const { validToken, registered, loading } = useToken();
+  const { validToken, registered, loading } = useAuth();
 
   const userLogged = !isPrivate && validToken;
   const notLogged = isPrivate && !validToken;
