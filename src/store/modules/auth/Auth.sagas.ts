@@ -1,22 +1,16 @@
-import { all, put, takeLatest } from 'redux-saga/effects';
+import { all, takeLatest } from 'redux-saga/effects';
 
 import { api } from 'services/api';
-
-import { setTokenSuccess } from './Auth.actions';
+import { history } from 'services/history';
 
 import { AuthActions } from './Auth.types';
 
-export function* setToken(token: string) {
-  if (!token) {
-    return;
-  }
-  window.localStorage.setItem('bb:auth', token);
+function logout() {
+  window.localStorage.removeItem('bb:auth');
 
-  yield put(setTokenSuccess(token));
+  delete api.defaults.headers.Authorization;
 
-  api.defaults.headers.common = {
-    Authorization: `Bearer ${token}`
-  };
+  history.push('/login');
 }
 
-export default all([takeLatest(AuthActions.setTokenRequest as any, setToken)]);
+export default all([takeLatest(AuthActions.logoutRequest, logout)]);

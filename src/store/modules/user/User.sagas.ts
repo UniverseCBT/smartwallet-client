@@ -22,15 +22,12 @@ function* register({ payload }: ActionPayload) {
     const { user, token } = response.data;
 
     yield put(addUserSuccess(user));
-    // yield put(setTokenRequest(token));
 
-    history.push('/register/income');
+    api.defaults.headers.Authorization = `Bearer ${token}`;
 
     window.localStorage.setItem('bb:auth', token);
 
-    api.defaults.headers.common = {
-      Authorization: `Bearer ${token}`
-    };
+    history.push('/register/income');
   } catch (err) {
     const error = err as AxiosError;
 

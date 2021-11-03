@@ -11,21 +11,16 @@ const INITIAL_STATE: AuthType = {
 const auth: Reducer<AuthType> = (state = INITIAL_STATE, action) => {
   return produce(state, draft => {
     switch (action.type) {
-      case AuthActions.setTokenRequest: {
-        const { token } = action.payload;
-
-        draft.token = token;
-
+      case AuthActions.logoutRequest: {
+        draft.loading = true;
         break;
       }
-      case AuthActions.setTokenSuccess: {
+      case AuthActions.logoutSuccess: {
         draft.loading = false;
-
         break;
       }
-      case AuthActions.setTokenFailed: {
+      case AuthActions.logoutFailed: {
         draft.loading = false;
-
         break;
       }
       default:

@@ -1,26 +1,20 @@
 import { AuthActions, AuthRequest } from './Auth.types';
 
-export function setTokenRequest(token: string) {
+export function logoutRequest() {
   return {
-    type: AuthActions.setTokenRequest,
-    payload: {
-      token
-    }
+    type: AuthActions.logoutRequest
   };
 }
 
-export function setTokenSuccess(token: string) {
+export function logoutSuccess() {
   return {
-    type: AuthActions.setTokenSuccess,
-    payload: {
-      token
-    }
+    type: AuthActions.logoutSuccess
   };
 }
 
-export function setTokenFailed() {
+export function logoutFailed() {
   return {
-    type: AuthActions.setTokenSuccess
+    type: AuthActions.logoutFailed
   };
 }
 
