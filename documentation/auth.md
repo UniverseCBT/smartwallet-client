@@ -1,0 +1,1 @@
+[] - pass useAuth to redux

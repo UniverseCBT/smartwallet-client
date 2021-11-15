@@ -139,7 +139,8 @@ const Register = () => {
                     register={register}
                     inputName="name"
                     type="text"
-                    text="Typing your full name"
+                    text="Name"
+                    placeholder="Typing your full name"
                     error={errors.name?.message}
                   />
                   <Input
@@ -147,6 +148,7 @@ const Register = () => {
                     inputName="username"
                     type="text"
                     text="Username"
+                    placeholder="Typing your username"
                     error={errors.username?.message}
                   />
                   <Input
@@ -154,6 +156,7 @@ const Register = () => {
                     inputName="email"
                     type="text"
                     text="Email"
+                    placeholder="Typing your email"
                     error={errors.email?.message}
                   />
                   <Input
@@ -161,12 +164,14 @@ const Register = () => {
                     inputName="password"
                     type="password"
                     text="Password"
+                    placeholder="Typing your password"
                     error={errors.password?.message}
                   />
                   <Input
                     inputName="confirmPassword"
                     type="password"
                     text="Repeat Password"
+                    placeholder="Confirm your password"
                     register={register}
                     error={errors.confirmPassword?.message}
                   />

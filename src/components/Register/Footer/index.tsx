@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
+import { logoutRequest } from 'store/modules/auth/Auth.actions';
+
+import { useAuth } from 'hooks/useAuth';
 import { transformMoney } from '../../../utils/currency';
 
 import Button from '../Button';
@@ -14,6 +18,14 @@ type Props = {
 };
 
 const Footer = ({ totalMoney }: Props) => {
+  const dispatch = useDispatch();
+  const { setValidToken } = useAuth();
+
+  const teste = useCallback(() => {
+    dispatch(logoutRequest());
+    setValidToken(false);
+  }, [dispatch, setValidToken]);
+
   return (
     <Container>
       <div className="money">
@@ -26,6 +38,7 @@ const Footer = ({ totalMoney }: Props) => {
           text="Back"
           theme="back"
           icon={{ url: arrowLeftIcon, altText: 'arrow left' }}
+          onClick={teste}
         />
         <Button
           text="Next"

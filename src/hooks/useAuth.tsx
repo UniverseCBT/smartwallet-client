@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, Dispatch, SetStateAction } from 'react';
 import jwt from 'jsonwebtoken';
 
 import { api } from 'services/api';
@@ -8,14 +8,36 @@ type TokenResponse = {
   registered: boolean;
   validToken: boolean;
   loading: boolean;
+  setValidToken: Dispatch<SetStateAction<boolean>>;
 };
 
 export const useAuth = (): TokenResponse => {
-  const { token } = store.getState().auth;
+  const { token: userToken } = store.getState().user;
 
   const [userRegistered, setUserRegistered] = useState(false);
   const [validToken, setValidToken] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!userToken) {
+      setValidToken(false);
+      return;
+    }
+
+    api.defaults.headers.Authorization = `Bearer ${userToken}`;
+
+    const jwtDecode = jwt.decode(userToken, { complete: true });
+    const jwtExpiration = jwtDecode?.payload.exp;
+
+    if (!jwtExpiration) {
+      setValidToken(false);
+      return;
+    }
+
+    const expirationToken = jwtExpiration * 1000 >= new Date().getTime();
+
+    setValidToken(expirationToken);
+  }, [userToken]);
 
   const verifyToken: boolean = useMemo(() => {
     const token = window.localStorage.getItem('bb:auth');
@@ -62,6 +84,7 @@ export const useAuth = (): TokenResponse => {
   return {
     registered: userRegistered,
     validToken,
+    setValidToken,
     loading
   };
 };

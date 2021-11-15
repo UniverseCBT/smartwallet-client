@@ -21,13 +21,13 @@ function* register({ payload }: ActionPayload) {
 
     const { user, token } = response.data;
 
-    yield put(addUserSuccess(user));
+    yield put(addUserSuccess(user, token));
 
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
     window.localStorage.setItem('bb:auth', token);
 
-    history.push('/register/income');
+    history.go(0);
   } catch (err) {
     const error = err as AxiosError;
 
