@@ -38,6 +38,7 @@
       "react/jsx-curly-newline": "off",
       "react/prop-types": "off",
       "react/require-default-props": "off",
+      "import/order": "off",
       "import/prefer-default-export": "off",
       "import/no-extraneous-dependencies": "off",
       "react-hooks/exhaustive-deps": "warn",
@@ -67,10 +68,14 @@
               "/store/",
               "/hooks/",
               "/services/",
+              "/pages/",
               "/components/",
               "/shared/",
-              "/assets/",
-              ["parent", "sibling", "index"]
+              "/utils/",
+              "/routes/",
+              ["parent", "sibling", "index"],
+              "/styles/",
+              "/assets/"
             ],
             "alphabetize": { "order": "asc", "ignoreCase": true }
           }
