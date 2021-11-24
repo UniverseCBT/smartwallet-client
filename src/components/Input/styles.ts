@@ -25,11 +25,12 @@ export const Label = styled.label<Pick<InputProps, 'error'>>`
   padding: 0 10px;
   width: 100%;
   height: 50px;
-  background: #fff;
+  background: transparent;
   border-radius: 4px;
   cursor: text;
   overflow: hidden;
   position: relative;
+  border: 1px solid var(--title);
 
   ${({ error }) => css`
     border: ${error && '1px solid var(--danger)'};
@@ -47,7 +48,7 @@ export const LabelValue = styled.div`
     display: block;
     font-weight: bold;
     font-size: 10px;
-    color: #646464;
+    color: var(--black);
   }
 
   input {
@@ -57,8 +58,8 @@ export const LabelValue = styled.div`
     font-size: 16px;
     margin-top: 5px;
     padding-right: 55px;
-    font-weight: bold;
-    color: #c9c9c9;
+    color: var(--title);
+    background: transparent;
 
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
@@ -69,7 +70,8 @@ export const LabelValue = styled.div`
     }
 
     &::placeholder {
-      color: #c9c9c9;
+      color: var(--title);
+      font-size: 14px;
     }
   }
 `;
@@ -95,8 +97,8 @@ export const VisiblePassword = styled.div`
     top: 50%;
     left: 0;
     transform: translate3d(0, -50%, 0);
-    background: #c9c9c9;
-    width: 2px;
+    background: var(--title);
+    width: 1px;
     height: 25px;
   }
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { UseFormRegister } from 'react-hook-form';
 
 import * as S from './styles';
