@@ -10,13 +10,21 @@ import openEyesIcon from '../../assets/icons/open_eyes.svg';
 export type InputProps = {
   inputName: string;
   text?: string;
+  placeholder?: string;
   type?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: UseFormRegister<any>;
   error?: string;
 };
 
-const Input = ({ inputName, text, type, register, error }: InputProps) => {
+const Input = ({
+  inputName,
+  text,
+  placeholder,
+  type,
+  register,
+  error
+}: InputProps) => {
   const [isPassword, setIsPassword] = useState(false);
   const [visible, setVisible] = useState(false);
   const [defaultType, setDefaultType] = useState('');
@@ -51,11 +59,12 @@ const Input = ({ inputName, text, type, register, error }: InputProps) => {
         <S.LabelValue>
           <span>{text}</span>
           <input
+            {...register(inputName)}
             type={isPassword ? defaultType : type}
             spellCheck="false"
             autoComplete={type === 'email' ? 'on' : 'off'}
             id={inputName}
-            {...register(inputName)}
+            placeholder={placeholder}
           />
         </S.LabelValue>
         {isPassword && (

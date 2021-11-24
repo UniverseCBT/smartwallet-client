@@ -15,6 +15,7 @@ export default createGlobalStyle<GlobalProps>`
   :root {
     --primary: #1ae5bd;
     --secondary: #174c64;
+    --black: #242424;
     --background: ${props =>
       props.theme ? backgroundTheme('#f3f4f8') : '#f3f4f8'};
     --title: #646464;

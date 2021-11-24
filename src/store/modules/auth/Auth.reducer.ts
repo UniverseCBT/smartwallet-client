@@ -1,31 +1,50 @@
 import produce from 'immer';
 import { Reducer } from 'redux';
 
-import { AuthType, AuthActions } from './Auth.types';
+import { AuthActions, AuthType } from './Auth.types';
 
 const INITIAL_STATE: AuthType = {
   token: '',
+  authorized: false,
+  hasRegistered: false,
   loading: false
 };
 
 const auth: Reducer<AuthType> = (state = INITIAL_STATE, action) => {
   return produce(state, draft => {
     switch (action.type) {
-      case AuthActions.setTokenRequest: {
-        const { token } = action.payload;
-
-        draft.token = token;
-
+      case AuthActions.logoutRequest: {
+        draft.loading = true;
+        draft.authorized = false;
         break;
       }
-      case AuthActions.setTokenSuccess: {
+      case AuthActions.logoutSuccess: {
         draft.loading = false;
-
+        draft.authorized = false;
         break;
       }
-      case AuthActions.setTokenFailed: {
+      case AuthActions.logoutFailed: {
         draft.loading = false;
+        draft.authorized = false;
+        break;
+      }
 
+      case AuthActions.loggedRequest: {
+        draft.loading = true;
+        draft.authorized = false;
+        break;
+      }
+      case AuthActions.loggedSuccess: {
+        const { authorized, hasRegistered } = action.payload;
+
+        draft.loading = false;
+        draft.authorized = authorized;
+        draft.hasRegistered = hasRegistered;
+        break;
+      }
+      case AuthActions.loggedFailed: {
+        draft.loading = false;
+        draft.authorized = false;
         break;
       }
       default:

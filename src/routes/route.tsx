@@ -1,13 +1,13 @@
 import React from 'react';
 import {
-  Route,
   Redirect,
-  RouteProps,
+  Route,
   RouteComponentProps,
+  RouteProps,
   useLocation
 } from 'react-router-dom';
 
-import { useToken } from 'hooks/useToken';
+import { useAuth } from 'hooks/useAuth';
 
 import Auth from 'components/_auth/Auth';
 
@@ -25,10 +25,10 @@ const RouteWrapper = ({
 }: Props) => {
   const location = useLocation().pathname.split('/')[1];
 
-  const { validToken, registered, loading } = useToken();
+  const { authorized, registered, loading } = useAuth();
 
-  const userLogged = !isPrivate && validToken;
-  const notLogged = isPrivate && !validToken;
+  const userLogged = !isPrivate && authorized;
+  const notLogged = isPrivate && !authorized;
   const isRegisterPage = location === 'register';
 
   if (userLogged) {

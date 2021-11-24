@@ -1,26 +1,23 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import { v4 } from 'uuid';
+
+import Content, { Ref } from '../../components/_noauth/Content';
+import Form from '../../components/_noauth/Form';
+import Header from '../../components/_noauth/Header';
+import SideNavigation from '../../components/_noauth/SideNavigation';
+import Wrapper from '../../components/_noauth/Wrapper';
+import Col from '../../components/Grid/Col';
+import Row from '../../components/Grid/Row';
+import Input from '../../components/Input';
+import RegisterFooter from '../../components/Register/Footer';
+import RegisterList from '../../components/Register/List';
+import Select, { OptionsProps } from '../../components/Select';
 
 import { detectPhone } from '../../shared/detectPhone';
 
-import { PaycheckForm, ButtonForm } from './styles';
-
-import Wrapper from '../../components/_noauth/Wrapper';
-
-import Row from '../../components/Grid/Row';
-import Col from '../../components/Grid/Col';
-
-import Header from '../../components/_noauth/Header';
-import Content, { Ref } from '../../components/_noauth/Content';
-import Form from '../../components/_noauth/Form';
-import Select, { OptionsProps } from '../../components/Select';
-import Input from '../../components/Input';
-import SideNavigation from '../../components/_noauth/SideNavigation';
-
-import RegisterList from '../../components/Register/List';
-import RegisterFooter from '../../components/Register/Footer';
+import { ButtonForm, PaycheckForm } from './styles';
 
 type PaycheckItems = {
   id: string;
