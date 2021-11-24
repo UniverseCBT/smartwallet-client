@@ -1,23 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import { StoreState } from 'store/store.type';
-import { User } from 'store/modules/user/User.types';
+import { loggedRequest } from 'store/modules/auth/Auth.actions';
 import { addUserRequest } from 'store/modules/user/User.actions';
+import { User } from 'store/modules/user/User.types';
+import { StoreState } from 'store/store.type';
 
-import Row from 'components/Grid/Row';
-import Col from 'components/Grid/Col';
-
-import Wrapper from 'components/_noauth/Wrapper';
-import Header from 'components/_noauth/Header';
 import Content from 'components/_noauth/Content';
 import Form from 'components/_noauth/Form';
+import Header from 'components/_noauth/Header';
 import SideNavigation from 'components/_noauth/SideNavigation';
-
+import Wrapper from 'components/_noauth/Wrapper';
+import Col from 'components/Grid/Col';
+import Row from 'components/Grid/Row';
 import Input from 'components/Input';
 import RegisterButton from 'components/Register/Button';
 
@@ -88,6 +87,7 @@ const Register = () => {
 
   const onSubmit = async (data: RegisterFormInput) => {
     dispatch(addUserRequest(data));
+    dispatch(loggedRequest());
   };
 
   useEffect(() => {
@@ -139,7 +139,8 @@ const Register = () => {
                     register={register}
                     inputName="name"
                     type="text"
-                    text="Typing your full name"
+                    text="Name"
+                    placeholder="Typing your full name"
                     error={errors.name?.message}
                   />
                   <Input
@@ -147,6 +148,7 @@ const Register = () => {
                     inputName="username"
                     type="text"
                     text="Username"
+                    placeholder="Typing your username"
                     error={errors.username?.message}
                   />
                   <Input
@@ -154,6 +156,7 @@ const Register = () => {
                     inputName="email"
                     type="text"
                     text="Email"
+                    placeholder="Typing your email"
                     error={errors.email?.message}
                   />
                   <Input
@@ -161,12 +164,14 @@ const Register = () => {
                     inputName="password"
                     type="password"
                     text="Password"
+                    placeholder="Typing your password"
                     error={errors.password?.message}
                   />
                   <Input
                     inputName="confirmPassword"
                     type="password"
                     text="Repeat Password"
+                    placeholder="Confirm your password"
                     register={register}
                     error={errors.confirmPassword?.message}
                   />

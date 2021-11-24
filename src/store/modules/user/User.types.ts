@@ -17,6 +17,7 @@ export type User = {
   field: string;
   message: string;
   loading: boolean;
+  token: string;
 };
 
 export type UserResponse = {

@@ -13,7 +13,8 @@ const INITIAL_STATE: User = {
   },
   field: '',
   message: '',
-  loading: false
+  loading: false,
+  token: ''
 };
 
 const user: Reducer<User> = (state = INITIAL_STATE, action) => {
@@ -30,9 +31,12 @@ const user: Reducer<User> = (state = INITIAL_STATE, action) => {
         break;
       }
       case UserActions.addUserSuccess: {
+        const { token } = action.payload;
+
         draft.message = '';
         draft.field = '';
         draft.loading = false;
+        draft.token = token;
 
         break;
       }

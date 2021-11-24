@@ -1,4 +1,4 @@
-import { UserType, UserActions } from './User.types';
+import { UserActions, UserType } from './User.types';
 
 export function addUserRequest(user: UserType) {
   return {
@@ -9,11 +9,15 @@ export function addUserRequest(user: UserType) {
   };
 }
 
-export function addUserSuccess(user: Omit<UserType, 'confirmPassword'>) {
+export function addUserSuccess(
+  user: Omit<UserType, 'confirmPassword'>,
+  token: string
+) {
   return {
     type: UserActions.addUserSuccess,
     payload: {
-      user
+      user,
+      token
     }
   };
 }

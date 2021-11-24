@@ -3,28 +3,28 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { v4 } from 'uuid';
 
-import Wrapper from '../../components/_noauth/Wrapper';
-import SideNavigation from '../../components/_noauth/SideNavigation';
-import Content, { Ref } from '../../components/_noauth/Content';
-import Header from '../../components/_noauth/Header';
-import Form from '../../components/_noauth/Form';
+import Wrapper from 'components/_noauth/Wrapper';
+import SideNavigation from 'components/_noauth/SideNavigation';
+import Content, { Ref } from 'components/_noauth/Content';
+import Header from 'components/_noauth/Header';
+import Form from 'components/_noauth/Form';
 
-import Input from '../../components/Input';
-import Select, { OptionsProps } from '../../components/Select';
-import Filter from '../../components/Register/Filter';
-import List from '../../components/Register/List';
-import RegisterFooter from '../../components/Register/Footer';
+import Input from 'components/Input';
+import Select, { OptionsProps } from 'components/Select';
+import Filter from 'components/Register/Filter';
+import List from 'components/Register/List';
+import RegisterFooter from 'components/Register/Footer';
 
-import Row from '../../components/Grid/Row';
-import Col from '../../components/Grid/Col';
+import Row from 'components/Grid/Row';
+import Col from 'components/Grid/Col';
 
-import { detectPhone } from '../../shared/detectPhone';
+import { detectPhone } from 'shared/detectPhone';
+
+import investmentIcon from 'assets/icons/investment.svg';
+import funIcon from 'assets/icons/fun.svg';
+import billsIcon from 'assets/icons/bills.svg';
 
 import { ExpenseForm, ButtonForm, ExpenseList } from './styles';
-
-import investmentIcon from '../../assets/icons/investment.svg';
-import funIcon from '../../assets/icons/fun.svg';
-import billsIcon from '../../assets/icons/bills.svg';
 
 type ExpenseItems = {
   id: string;
