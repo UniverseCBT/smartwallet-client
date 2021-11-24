@@ -3,15 +3,14 @@ import { useDispatch } from 'react-redux';
 
 import { logoutRequest } from 'store/modules/auth/Auth.actions';
 
-import { useAuth } from 'hooks/useAuth';
-import { transformMoney } from '../../../utils/currency';
+import { transformMoney } from 'utils/currency';
 
 import Button from '../Button';
 
-import arrowLeftIcon from '../../../assets/icons/arrowLeft.svg';
-import arrowRightIcon from '../../../assets/icons/arrowRight.svg';
-
 import { Container } from './styles';
+
+import arrowLeftIcon from 'assets/icons/arrowLeft.svg';
+import arrowRightIcon from 'assets/icons/arrowRight.svg';
 
 type Props = {
   totalMoney: number;
@@ -19,12 +18,10 @@ type Props = {
 
 const Footer = ({ totalMoney }: Props) => {
   const dispatch = useDispatch();
-  const { setValidToken } = useAuth();
 
   const teste = useCallback(() => {
     dispatch(logoutRequest());
-    setValidToken(false);
-  }, [dispatch, setValidToken]);
+  }, [dispatch]);
 
   return (
     <Container>

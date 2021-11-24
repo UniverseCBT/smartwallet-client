@@ -1,10 +1,10 @@
 import { AxiosError, AxiosResponse } from 'axios';
-import { all, takeLatest, call, put } from 'redux-saga/effects';
+import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import { api } from 'services/api';
 import { history } from 'services/history';
 
-import { addUserRequest, addUserFailed, addUserSuccess } from './User.actions';
+import { addUserFailed, addUserRequest, addUserSuccess } from './User.actions';
 import { UserActions, UserResponse } from './User.types';
 
 export type ActionPayload = ReturnType<typeof addUserRequest>;

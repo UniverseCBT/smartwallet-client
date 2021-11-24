@@ -18,6 +18,28 @@ export function logoutFailed() {
   };
 }
 
+export function loggedRequest() {
+  return {
+    type: AuthActions.loggedRequest
+  };
+}
+
+export function loggedSuccess(authorized: boolean, hasRegistered: boolean) {
+  return {
+    type: AuthActions.loggedSuccess,
+    payload: {
+      authorized,
+      hasRegistered
+    }
+  };
+}
+
+export function loggedFailed() {
+  return {
+    type: AuthActions.loggedFailed
+  };
+}
+
 export function loginRequest({ username, email, password }: AuthRequest) {
   return {
     type: AuthActions.loginRequest,

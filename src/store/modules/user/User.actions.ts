@@ -1,4 +1,4 @@
-import { UserType, UserActions } from './User.types';
+import { UserActions, UserType } from './User.types';
 
 export function addUserRequest(user: UserType) {
   return {

@@ -1,17 +1,14 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
 
+import Dashboard from 'pages/Dashboard';
+import Expense from 'pages/Expense';
+import Income from 'pages/Income';
+import Login from 'pages/Login';
+import Overview from 'pages/Overview';
+import Register from 'pages/Register';
+
 import Route from './route';
-
-import Login from '../pages/Login';
-import Register from '../pages/Register';
-
-// Private routes
-import Income from '../pages/Income';
-import Expense from '../pages/Expense';
-import Overview from '../pages/Overview';
-
-import Dashboard from '../pages/Dashboard';
 
 const Routes = () => {
   return (
@@ -19,6 +16,7 @@ const Routes = () => {
       <Route path="/login" component={Login} />
       <Route path="/register/perfil" component={Register} />
 
+      {/* Private routes */}
       <Route
         path="/register/income"
         component={Income}
