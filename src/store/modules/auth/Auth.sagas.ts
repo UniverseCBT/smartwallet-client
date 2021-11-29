@@ -5,9 +5,13 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import { api } from 'services/api';
 import { history } from 'services/history';
 
+import { UserResponse } from '../user/User.types';
 import {
   loggedFailed,
   loggedSuccess,
+  loginFailed,
+  loginRequest,
+  loginSuccess,
   logoutFailed,
   logoutSuccess
 } from './Auth.actions';
@@ -44,6 +48,28 @@ function validToken() {
   return expirationToken;
 }
 
+function setToken(token: string) {
+  if (!token) {
+    return;
+  }
+
+  const jwtDecode = jwt.decode(token, { complete: true });
+  const jwtExpiration = jwtDecode?.payload.exp;
+
+  if (!jwtExpiration) {
+    return false;
+  }
+
+  const expirationToken = jwtExpiration * 1000 >= new Date().getTime();
+
+  if (!expirationToken) {
+    return;
+  }
+
+  api.defaults.headers.Authorization = `Bearer ${token}`;
+  window.localStorage.setItem('bb:auth', token);
+}
+
 function* logged() {
   try {
     const tokenIsvalid = validToken();
@@ -71,14 +97,53 @@ function* logout() {
 
     delete api.defaults.headers.Authorization;
 
-    history.push('/login');
     yield put(logoutSuccess());
+    history.push('/login');
   } catch {
     yield put(logoutFailed());
   }
 }
 
+export type ActionPayload = ReturnType<typeof loginRequest>;
+
+function* login({ payload }: ActionPayload) {
+  const { usernameOrEmail, password } = payload;
+
+  try {
+    const userResponse: AxiosResponse<UserResponse> = yield call(
+      api.post,
+      '/sessions',
+      {
+        usernameOrEmail,
+        password
+      }
+    );
+
+    const { token, user } = userResponse.data;
+
+    setToken(token);
+    yield put(loginSuccess({ token, user }));
+
+    const stepResponse: AxiosResponse<{ hasRegistered: boolean }> = yield call(
+      api.get,
+      '/sessions'
+    );
+
+    const { hasRegistered } = stepResponse.data;
+
+    if (hasRegistered) {
+      history.push('/');
+      return;
+    }
+
+    history.push('/register/income');
+  } catch (err) {
+    yield put(loginFailed());
+  }
+}
+
 export default all([
+  takeLatest(AuthActions.loginRequest, login),
   takeLatest(AuthActions.logoutRequest, logout),
   takeLatest(AuthActions.loggedRequest, logged)
 ]);
