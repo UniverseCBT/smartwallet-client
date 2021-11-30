@@ -1,3 +1,5 @@
+import { UserType } from '../user/User.types';
+
 export enum AuthActions {
   loginRequest = 'AUTH/LOGIN_REQUEST',
   loginSuccess = 'AUTH/LOGIN_SUCCESS',
@@ -7,14 +9,13 @@ export enum AuthActions {
   logoutSuccess = 'AUTH/LOGOUT_SUCCESS',
   logoutFailed = 'AUTH/LOGOUT_FAILED',
 
-  loggedRequest = 'AUTH/LOGGED-REQUEST',
-  loggedFailed = 'AUTH/LOGGED-FAILED',
-  loggedSuccess = 'AUTH/LOGGED-SUCCESS'
+  loggedRequest = 'AUTH/LOGGED_REQUEST',
+  loggedFailed = 'AUTH/LOGGED_FAILED',
+  loggedSuccess = 'AUTH/LOGGED_SUCCESS'
 }
 
 export type AuthRequest = {
-  username?: string;
-  email?: string;
+  usernameOrEmail: string;
   password: string;
 };
 
@@ -23,4 +24,5 @@ export type AuthType = {
   loading: boolean;
   authorized: boolean;
   hasRegistered: boolean;
+  user?: UserType;
 };

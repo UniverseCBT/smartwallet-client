@@ -47,6 +47,25 @@ const auth: Reducer<AuthType> = (state = INITIAL_STATE, action) => {
         draft.authorized = false;
         break;
       }
+
+      case AuthActions.loginRequest: {
+        draft.loading = true;
+        draft.authorized = false;
+        break;
+      }
+      case AuthActions.loginSuccess: {
+        const { user } = action.payload;
+
+        draft.user = user;
+        draft.loading = false;
+        draft.authorized = true;
+        break;
+      }
+      case AuthActions.loginFailed: {
+        draft.loading = false;
+        draft.authorized = false;
+        break;
+      }
       default:
         return draft;
     }

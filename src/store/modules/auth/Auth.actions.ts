@@ -1,3 +1,4 @@
+import { UserResponse } from '../user/User.types';
 import { AuthActions, AuthRequest } from './Auth.types';
 
 export function logoutRequest() {
@@ -40,12 +41,27 @@ export function loggedFailed() {
   };
 }
 
-export function loginRequest({ username, email, password }: AuthRequest) {
+export function loginRequest({ usernameOrEmail, password }: AuthRequest) {
   return {
     type: AuthActions.loginRequest,
     payload: {
-      usernameOrEmail: username || email,
+      usernameOrEmail,
       password
     }
+  };
+}
+
+export function loginSuccess(user: UserResponse) {
+  return {
+    type: AuthActions.loginSuccess,
+    payload: {
+      user
+    }
+  };
+}
+
+export function loginFailed() {
+  return {
+    type: AuthActions.loginFailed
   };
 }

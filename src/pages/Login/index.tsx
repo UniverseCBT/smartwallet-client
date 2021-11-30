@@ -1,26 +1,45 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import Wrapper from '../../components/_noauth/Wrapper';
+import { loginRequest } from 'store/modules/auth/Auth.actions';
+
+import Content from 'components/_noauth/Content';
+import Form from 'components/_noauth/Form';
+import Header from 'components/_noauth/Header';
+import SideNavigation from 'components/_noauth/SideNavigation';
+import Wrapper from 'components/_noauth/Wrapper';
+import Col from 'components/Grid/Col';
+import Row from 'components/Grid/Row';
+import LoginArt from 'components/icons/LoginArt';
+import Input from 'components/Input';
+import Button from 'components/Register/Button';
 
 import * as S from './styles';
 
-import Row from '../../components/Grid/Row';
-import Col from '../../components/Grid/Col';
-
-import SideNavigation from '../../components/_noauth/SideNavigation';
-import Header from '../../components/_noauth/Header';
-import Content from '../../components/_noauth/Content';
-import Form from '../../components/_noauth/Form';
-import Input from '../../components/Input';
-
-import Button from '../../components/Register/Button';
-
-import LoginArt from '../../components/icons/LoginArt';
+type LoginFormInput = {
+  usernameOrEmail: string;
+  password: string;
+};
 
 const Login = () => {
-  const { register } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setError,
+    watch
+  } = useForm<LoginFormInput>();
+
+  const dispatch = useDispatch();
+
+  const onSubmit = useCallback(
+    (data: LoginFormInput) => {
+      dispatch(loginRequest(data));
+    },
+    [dispatch]
+  );
 
   return (
     <Wrapper>
@@ -42,7 +61,7 @@ const Login = () => {
                 <Link to="/register/perfil">Sign Up</Link>
               </p>
             </Header>
-            <Form>
+            <Form onSubmit={handleSubmit(onSubmit)}>
               <div className="description">
                 <h1>Welcome Back!</h1>
                 <p>Let`s sign you in</p>
@@ -62,7 +81,7 @@ const Login = () => {
               </div>
               <S.Footer>
                 <Link to="/">Forgot your password?</Link>
-                <Button text="Sign In" />
+                <Button text="Sign In" type="submit" />
               </S.Footer>
             </Form>
           </Content>

@@ -20,9 +20,9 @@ import Row from 'components/Grid/Row';
 import Input from 'components/Input';
 import RegisterButton from 'components/Register/Button';
 
-import arrowRightIcon from 'assets/icons/arrowRight.svg';
-
 import * as S from './styles';
+
+import arrowRightIcon from 'assets/icons/arrowRight.svg';
 
 type RegisterFormInput = {
   name: string;
