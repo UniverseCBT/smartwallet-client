@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import { useDevice } from 'hooks/useDevice';
 
 import Logo from 'components/icons/Logo';
 
-import { Container, Header, Content, Step, StepContent } from './styles';
+import { Container, Content, Header, Step, StepContent } from './styles';
 
 type SideNavigationProps = {
   children?: React.ReactNode;

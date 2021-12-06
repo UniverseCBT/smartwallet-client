@@ -1,9 +1,11 @@
 import React, { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { loginRequest } from 'store/modules/auth/Auth.actions';
+import { AuthType } from 'store/modules/auth/Auth.types';
+import { StoreState } from 'store/store.type';
 
 import Content from 'components/_noauth/Content';
 import Form from 'components/_noauth/Form';
@@ -24,13 +26,11 @@ type LoginFormInput = {
 };
 
 const Login = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setError,
-    watch
-  } = useForm<LoginFormInput>();
+  const auth = useSelector<StoreState, AuthType>(state => state.auth);
+
+  console.log('🚀 ~ file: index.tsx ~ line 31 ~ Login ~ auth', auth.message);
+
+  const { register, handleSubmit } = useForm<LoginFormInput>();
 
   const dispatch = useDispatch();
 

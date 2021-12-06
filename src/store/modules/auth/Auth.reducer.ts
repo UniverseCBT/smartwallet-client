@@ -7,7 +7,8 @@ const INITIAL_STATE: AuthType = {
   token: '',
   authorized: false,
   hasRegistered: false,
-  loading: false
+  loading: false,
+  message: ''
 };
 
 const auth: Reducer<AuthType> = (state = INITIAL_STATE, action) => {
@@ -62,8 +63,11 @@ const auth: Reducer<AuthType> = (state = INITIAL_STATE, action) => {
         break;
       }
       case AuthActions.loginFailed: {
+        const { message } = action.payload;
+
         draft.loading = false;
         draft.authorized = false;
+        draft.message = message;
         break;
       }
       default:

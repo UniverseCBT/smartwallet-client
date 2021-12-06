@@ -60,8 +60,11 @@ export function loginSuccess(user: UserResponse) {
   };
 }
 
-export function loginFailed() {
+export function loginFailed(message: string) {
   return {
-    type: AuthActions.loginFailed
+    type: AuthActions.loginFailed,
+    payload: {
+      message
+    }
   };
 }

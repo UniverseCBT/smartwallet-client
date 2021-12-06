@@ -1,4 +1,4 @@
-import { AxiosResponse } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 import jwt from 'jsonwebtoken';
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 
@@ -138,7 +138,11 @@ function* login({ payload }: ActionPayload) {
 
     history.push('/register/income');
   } catch (err) {
-    yield put(loginFailed());
+    const error = err as AxiosError;
+
+    const { message } = error.response?.data;
+
+    yield put(loginFailed(message));
   }
 }
 

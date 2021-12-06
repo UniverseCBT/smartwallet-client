@@ -24,5 +24,6 @@ export type AuthType = {
   loading: boolean;
   authorized: boolean;
   hasRegistered: boolean;
+  message: string;
   user?: UserType;
 };
