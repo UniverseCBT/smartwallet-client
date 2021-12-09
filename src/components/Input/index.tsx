@@ -14,7 +14,8 @@ export type InputProps = {
   type?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   register: UseFormRegister<any>;
-  error?: string;
+  error?: boolean;
+  errorMessage?: string;
 };
 
 const Input = ({
@@ -23,7 +24,8 @@ const Input = ({
   placeholder,
   type,
   register,
-  error
+  error,
+  errorMessage
 }: InputProps) => {
   const [isPassword, setIsPassword] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -55,7 +57,7 @@ const Input = ({
 
   return (
     <S.Container>
-      <S.Label htmlFor={inputName} error={error}>
+      <S.Label htmlFor={inputName} error={error || errorMessage}>
         <S.LabelValue>
           <span>{text}</span>
           <input
@@ -76,7 +78,7 @@ const Input = ({
           </S.VisiblePassword>
         )}
       </S.Label>
-      {error && <p>{error}</p>}
+      {errorMessage && <p>{errorMessage}</p>}
     </S.Container>
   );
 };

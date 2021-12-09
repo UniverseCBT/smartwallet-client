@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { InputProps } from '.';
-
 export const Container = styled.div`
   user-select: none;
   position: relative;
@@ -17,7 +15,11 @@ export const Container = styled.div`
   }
 `;
 
-export const Label = styled.label<Pick<InputProps, 'error'>>`
+type LabelProps = {
+  error?: boolean | string;
+};
+
+export const Label = styled.label<LabelProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;

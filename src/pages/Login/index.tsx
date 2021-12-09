@@ -1,7 +1,9 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import React, { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import * as yup from 'yup';
 
 import { loginRequest } from 'store/modules/auth/Auth.actions';
 import { AuthType } from 'store/modules/auth/Auth.types';
@@ -25,12 +27,20 @@ type LoginFormInput = {
   password: string;
 };
 
+const schema = yup.object().shape({
+  usernameOrEmail: yup.string().required('Name is a required field.'),
+  password: yup
+    .string()
+    .min(6, 'Password mus be at least 6 characteres')
+    .required('Password is a required field')
+});
+
 const Login = () => {
+  const { register, handleSubmit } = useForm<LoginFormInput>({
+    resolver: yupResolver(schema)
+  });
+
   const auth = useSelector<StoreState, AuthType>(state => state.auth);
-
-  console.log('🚀 ~ file: index.tsx ~ line 31 ~ Login ~ auth', auth.message);
-
-  const { register, handleSubmit } = useForm<LoginFormInput>();
 
   const dispatch = useDispatch();
 
@@ -68,15 +78,18 @@ const Login = () => {
               </div>
               <div>
                 <Input
-                  inputName="usernameOrEmail"
-                  text="Username/Email"
                   register={register}
+                  inputName="usernameOrEmail"
+                  type="text"
+                  text="Username/Email"
+                  error={!!auth.message}
                 />
                 <Input
+                  register={register}
                   inputName="password"
                   type="password"
                   text="Password"
-                  register={register}
+                  error={!!auth.message}
                 />
               </div>
               <S.Footer>

@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -85,10 +85,13 @@ const Register = () => {
     setEmptyValues(true);
   }, [values]);
 
-  const onSubmit = async (data: RegisterFormInput) => {
-    dispatch(addUserRequest(data));
-    dispatch(loggedRequest());
-  };
+  const onSubmit = useCallback(
+    (data: RegisterFormInput) => {
+      dispatch(addUserRequest(data));
+      dispatch(loggedRequest());
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     setError(
@@ -141,7 +144,7 @@ const Register = () => {
                     type="text"
                     text="Name"
                     placeholder="Typing your full name"
-                    error={errors.name?.message}
+                    errorMessage={errors.name?.message}
                   />
                   <Input
                     register={register}
@@ -149,7 +152,7 @@ const Register = () => {
                     type="text"
                     text="Username"
                     placeholder="Typing your username"
-                    error={errors.username?.message}
+                    errorMessage={errors.username?.message}
                   />
                   <Input
                     register={register}
@@ -157,7 +160,7 @@ const Register = () => {
                     type="text"
                     text="Email"
                     placeholder="Typing your email"
-                    error={errors.email?.message}
+                    errorMessage={errors.email?.message}
                   />
                   <Input
                     register={register}
@@ -165,7 +168,7 @@ const Register = () => {
                     type="password"
                     text="Password"
                     placeholder="Typing your password"
-                    error={errors.password?.message}
+                    errorMessage={errors.password?.message}
                   />
                   <Input
                     inputName="confirmPassword"
@@ -173,7 +176,7 @@ const Register = () => {
                     text="Repeat Password"
                     placeholder="Confirm your password"
                     register={register}
-                    error={errors.confirmPassword?.message}
+                    errorMessage={errors.confirmPassword?.message}
                   />
                 </div>
                 <S.Footer>
